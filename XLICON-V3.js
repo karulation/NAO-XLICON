@@ -1386,20 +1386,12 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       for (let bak of bad) {
         if (budy === bak) {
           let baduser = await db.data.users[sender].badword;
-          XliconBotInc.sendMessage(m.chat, {
-            delete: {
-              remoteJid: m.chat,
-              fromMe: false,
-              id: m.key.id,
-              participant: m.key.participant,
-            },
-          });
           XliconBotInc.sendMessage(
             from,
             {
-              text: `\`\`\`「 Bad Word Detected 」\`\`\`\n\n@${
+              text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${
                 m.sender.split("@")[0]
-              } *_was using harsh words and his chat has been deleted_*`,
+              } *_NAO SHION WARNING! CALLING OUT ALL ADMINS!_*`,
               contextInfo: { mentionedJid: [m.sender] },
             },
             { quoted: m }

@@ -198,22 +198,22 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       m.mtype === "conversation"
         ? m.message.conversation
         : m.mtype == "imageMessage"
-        ? m.message.imageMessage.caption
-        : m.mtype == "videoMessage"
-        ? m.message.videoMessage.caption
-        : m.mtype == "extendedTextMessage"
-        ? m.message.extendedTextMessage.text
-        : m.mtype == "buttonsResponseMessage"
-        ? m.message.buttonsResponseMessage.selectedButtonId
-        : m.mtype == "listResponseMessage"
-        ? m.message.listResponseMessage.singleSelectReply.selectedRowId
-        : m.mtype == "templateButtonReplyMessage"
-        ? m.message.templateButtonReplyMessage.selectedId
-        : m.mtype === "messageContextInfo"
-        ? m.message.buttonsResponseMessage?.selectedButtonId ||
-          m.message.listResponseMessage?.singleSelectReply.selectedRowId ||
-          m.text
-        : "";
+          ? m.message.imageMessage.caption
+          : m.mtype == "videoMessage"
+            ? m.message.videoMessage.caption
+            : m.mtype == "extendedTextMessage"
+              ? m.message.extendedTextMessage.text
+              : m.mtype == "buttonsResponseMessage"
+                ? m.message.buttonsResponseMessage.selectedButtonId
+                : m.mtype == "listResponseMessage"
+                  ? m.message.listResponseMessage.singleSelectReply.selectedRowId
+                  : m.mtype == "templateButtonReplyMessage"
+                    ? m.message.templateButtonReplyMessage.selectedId
+                    : m.mtype === "messageContextInfo"
+                      ? m.message.buttonsResponseMessage?.selectedButtonId ||
+                      m.message.listResponseMessage?.singleSelectReply.selectedRowId ||
+                      m.text
+                      : "";
     var budy = typeof m.text == "string" ? m.text : "";
     //prefix 1
     var prefix = [".", "/"]
@@ -243,12 +243,12 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       fatkuns.mtype == "buttonsMessage"
         ? fatkuns[Object.keys(fatkuns)[1]]
         : fatkuns.mtype == "templateMessage"
-        ? fatkuns.hydratedTemplate[Object.keys(fatkuns.hydratedTemplate)[1]]
-        : fatkuns.mtype == "product"
-        ? fatkuns[Object.keys(fatkuns)[0]]
-        : m.quoted
-        ? m.quoted
-        : m;
+          ? fatkuns.hydratedTemplate[Object.keys(fatkuns.hydratedTemplate)[1]]
+          : fatkuns.mtype == "product"
+            ? fatkuns[Object.keys(fatkuns)[0]]
+            : m.quoted
+              ? m.quoted
+              : m;
     const mime = (quoted.msg || quoted).mimetype || "";
     const qmsg = quoted.msg || quoted;
     //media
@@ -287,7 +287,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
     //group
     const isGroup = m.key.remoteJid.endsWith("@g.us");
     const groupMetadata = m.isGroup
-      ? await XliconBotInc.groupMetadata(m.chat).catch((e) => {})
+      ? await XliconBotInc.groupMetadata(m.chat).catch((e) => { })
       : "";
     const groupName = m.isGroup ? groupMetadata.subject : "";
     const participants = m.isGroup ? await groupMetadata.participants : "";
@@ -302,12 +302,12 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
     const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false;
     const mentionByReply =
       type == "extendedTextMessage" &&
-      m.message.extendedTextMessage.contextInfo != null
+        m.message.extendedTextMessage.contextInfo != null
         ? m.message.extendedTextMessage.contextInfo.participant || ""
         : "";
     const mentionByTag =
       type == "extendedTextMessage" &&
-      m.message.extendedTextMessage.contextInfo != null
+        m.message.extendedTextMessage.contextInfo != null
         ? m.message.extendedTextMessage.contextInfo.mentionedJid
         : [];
     //anti media
@@ -1099,8 +1099,8 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
         chalk.black(chalk.bgWhite(!isCommand ? "[ MESSAGE ]" : "[ COMMAND ]")),
         chalk.black(chalk.bgGreen(new Date())),
         chalk.black(chalk.bgBlue(budy || m.mtype)) +
-          "\n" +
-          chalk.magenta("=> From"),
+        "\n" +
+        chalk.magenta("=> From"),
         chalk.green(pushname),
         chalk.yellow(m.sender) + "\n" + chalk.blueBright("=> In"),
         chalk.green(m.isGroup ? pushname : "Private Chat", m.chat)
@@ -1147,8 +1147,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
         );
         XliconBotInc.sendText(
           m.chat,
-          `*MARK AS READ*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n *Virus sender here👇:* \nwa.me/${
-            sender.split("@")[0]
+          `*MARK AS READ*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n *Virus sender here👇:* \nwa.me/${sender.split("@")[0]
           }`
         );
         if (!isBotAdmins) return;
@@ -1163,9 +1162,8 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
           },
         });
         XliconBotInc.sendMessage(`${ownernumber}@s.whatsapp.net`, {
-          text: `Hi Owner! wa.me/${
-            sender.split("@")[0]
-          } Detected Having Sent Virtex ${isGroup ? `in ${groupName}` : ""}`,
+          text: `Hi Owner! wa.me/${sender.split("@")[0]
+            } Detected Having Sent Virtex ${isGroup ? `in ${groupName}` : ""}`,
         });
       }
     }
@@ -1368,31 +1366,27 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
 
     if (db.data.chats[m.chat].badword) {
       for (let bak of bad) {
-        if (budy === bak) {
-          const groupAdmins = participants.filter((p) => p.admin);
-          const owner = groupMetadata.owner || 
-                       groupAdmins.find((p) => p.admin === "superadmin")?.id || 
-                       m.chat.split`-`[0] + "@s.whatsapp.net";
-          const listAdmin = groupAdmins
-            .map((v, i) => `${i + 1}. @${v.id.split("@")[0]}`)
-            .join("\n");
-          
-          XliconBotInc.sendMessage(
-            from,
-            {
-              text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${
-                m.sender.split("@")[0]
-              } *_NAO SHION WARNING! CALLING OUT ALL ADMINS TO CHECK!_*\n\n*Group Admins:*\n${listAdmin}`,
-              mentions: [...groupAdmins.map((v) => v.id), owner]
-            },
-            { quoted: m }
-          );
-        }
+          if (budy.includes(bak)) {
+              const groupAdmins = participants.filter((p) => p.admin);
+              const listAdmin = groupAdmins
+                  .map((v, i) => `${i + 1}. @${v.id.split("@")[0]}`)
+                  .join("\n");
+  
+              XliconBotInc.sendMessage(
+                  from, {
+                      text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${m.sender.split("@")[0]} *_NAO SHION WARNING! CALLING OUT ALL ADMINS TO CHECK!_*\n\n*Group Admins:*\n${listAdmin}`,
+                      mentions: [...groupAdmins.map((v) => v.id)]
+                  }, { quoted: m }
+              );
+              break; // Stop iterating through bad words once one is found
+          }
       }
-    }
+  }
+  
 
 
-    
+
+
     //autosticker
     if (db.data.settings[botNumber].autosticker) {
       if (m.key.fromMe) return;
@@ -1430,9 +1424,8 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
         XliconBotInc.sendMessage(
           from,
           {
-            text: `\`\`\`「 GC Link Detected 」\`\`\`\n\n@${
-              m.sender.split("@")[0]
-            } *_has sent a link and successfully deleted_*`,
+            text: `\`\`\`「 GC Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]
+              } *_has sent a link and successfully deleted_*`,
             contextInfo: { mentionedJid: [m.sender] },
           },
           { quoted: m }
@@ -1456,9 +1449,8 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
         XliconBotInc.sendMessage(
           from,
           {
-            text: `\`\`\`「 Link Detected 」\`\`\`\n\n@${
-              m.sender.split("@")[0]
-            } *_has sent a link and successfully deleted_*`,
+            text: `\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]
+              } *_has sent a link and successfully deleted_*`,
             contextInfo: { mentionedJid: [m.sender] },
           },
           { quoted: m }
@@ -1481,8 +1473,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       let afkDuration = formatAfkDuration(new Date() - user.afkTime);
       let reason = user.afkReason || "";
       replygcXlicon(
-        `Don't Mention.. *${nick}* is currently AFK ${
-          reason ? "for: " + reason : reason
+        `Don't Mention.. *${nick}* is currently AFK ${reason ? "for: " + reason : reason
         }\nAFK Since \`${afkDuration}\``
       );
     }
@@ -1652,10 +1643,10 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       if (
         !isSurrender &&
         1 >
-          (ok = room.game.turn(
-            m.sender === room.game.playerO,
-            parseInt(m.text) - 1
-          ))
+        (ok = room.game.turn(
+          m.sender === room.game.playerO,
+          parseInt(m.text) - 1
+        ))
       ) {
         replygcXlicon(
           {
@@ -1695,15 +1686,13 @@ ${arr.slice(0, 3).join("")}
 ${arr.slice(3, 6).join("")}
 ${arr.slice(6).join("")}
 
-${
-  isWin
-    ? `@${winner.split("@")[0]} Won!`
-    : isTie
-    ? `Game over`
-    : `Turn ${["❌", "⭕"][1 * room.game._currentTurn]} (@${
-        room.game.currentTurn.split("@")[0]
-      })`
-}
+${isWin
+          ? `@${winner.split("@")[0]} Won!`
+          : isTie
+            ? `Game over`
+            : `Turn ${["❌", "⭕"][1 * room.game._currentTurn]} (@${room.game.currentTurn.split("@")[0]
+            })`
+        }
 ❌: @${room.game.playerX.split("@")[0]}
 ⭕: @${room.game.playerO.split("@")[0]}
 
@@ -1785,8 +1774,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             win = !roof.pilih ? roof.p2 : roof.p;
             XliconBotInc.sendTextWithMentions(
               m.chat,
-              `@${
-                (roof.pilih ? roof.p2 : roof.p).split`@`[0]
+              `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]
               } Didn't Choose an Option, Game Over!`,
               m
             );
@@ -1805,8 +1793,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         roof.pilih = reg.exec(m.text.toLowerCase())[0];
         roof.text = m.text;
         replygcXlicon(
-          `_You have chosen_ ${m.text} ${
-            !roof.pilih2 ? `\n\n*_Waiting for the opponent to choose_*` : ""
+          `_You have chosen_ ${m.text} ${!roof.pilih2 ? `\n\n*_Waiting for the opponent to choose_*` : ""
           }`
         );
         if (!roof.pilih2)
@@ -1820,8 +1807,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         roof.pilih2 = reg.exec(m.text.toLowerCase())[0];
         roof.text2 = m.text;
         replygcXlicon(
-          `_You have chosen_ ${m.text} ${
-            !roof.pilih ? `\n\n*_Waiting for the opponent to choose_*` : ""
+          `_You have chosen_ ${m.text} ${!roof.pilih ? `\n\n*_Waiting for the opponent to choose_*` : ""
           }`
         );
         if (!roof.pilih)
@@ -1846,12 +1832,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           roof.asal,
           `_*Game Result*_${tie ? "\nTIE" : ""}
 
-@${roof.p.split`@`[0]} (${roof.text}) ${
-            tie ? "" : roof.p == win ? ` Win \n` : ` Lost \n`
-          }
-@${roof.p2.split`@`[0]} (${roof.text2}) ${
-            tie ? "" : roof.p2 == win ? ` Win \n` : ` Lost  \n`
-          }
+@${roof.p.split`@`[0]} (${roof.text}) ${tie ? "" : roof.p == win ? ` Win \n` : ` Lost \n`
+            }
+@${roof.p2.split`@`[0]} (${roof.text2}) ${tie ? "" : roof.p2 == win ? ` Win \n` : ` Lost  \n`
+            }
 `.trim(),
           m,
           { mentions: [roof.p, roof.p2] }
@@ -1924,8 +1908,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!XeonTheCreator) return XliconStickOwner();
           if (!text)
             return replygcXlicon(
-              `*_There are 8 menu(v1,v2,v3,v4,v5,v6,v7,v8)_*\n*_Please select one\nExample ${
-                prefix + command
+              `*_There are 8 menu(v1,v2,v3,v4,v5,v6,v7,v8)_*\n*_Please select one\nExample ${prefix + command
               } v1_*`
             );
           if (text.startsWith("v")) {
@@ -1933,8 +1916,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             replygcXlicon(mess.done);
           } else {
             replygcXlicon(
-              `*_There are 8 menu(v1,v2,v3,v4,v5,v6,v7,v8)_*\n*_Please select one\nExample ${
-                prefix + command
+              `*_There are 8 menu(v1,v2,v3,v4,v5,v6,v7,v8)_*\n*_Please select one\nExample ${prefix + command
               } v1_*`
             );
           }
@@ -1945,8 +1927,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!XeonTheCreator) return XliconStickOwner();
           if (!text)
             return replygcXlicon(
-              `*_There are 3 reply(v1,v2,v3)_*\n*_Please select 1\nExample ${
-                prefix + command
+              `*_There are 3 reply(v1,v2,v3)_*\n*_Please select 1\nExample ${prefix + command
               } v1_*`
             );
           if (text.startsWith("v")) {
@@ -1954,8 +1935,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             replygcXlicon(mess.done);
           } else {
             replygcXlicon(
-              `*_There are 3 reply(v1,v2,v3)_*\n*_Please select 1\nExample ${
-                prefix + command
+              `*_There are 3 reply(v1,v2,v3)_*\n*_Please select 1\nExample ${prefix + command
               } v1_*`
             );
           }
@@ -2134,8 +2114,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 2)
           return replygcXlicon(
-            `*_Usage ${prefix + command} @tag time\n${
-              prefix + command
+            `*_Usage ${prefix + command} @tag time\n${prefix + command
             } number time\n\nExample : ${prefix + command} @tag 30d_*`
           );
         if (m.mentionedJid.length !== 0) {
@@ -2152,8 +2131,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
           return replygcXlicon(
-            `*_Usage ${prefix + command} @tag\n${
-              prefix + command
+            `*_Usage ${prefix + command} @tag\n${prefix + command
             } number\n\nExample : ${prefix + command} 916909137213_*`
           );
         if (m.mentionedJid.length !== 0) {
@@ -2202,8 +2180,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         if (!XeonTheCreator) return XliconStickOwner();
         if (!args[0])
           return replygcXlicon(
-            `*_Use ${prefix + command} number\nExample ${
-              prefix + command
+            `*_Use ${prefix + command} number\nExample ${prefix + command
             } ${ownernumber}_*`
           );
         bnnd = q.split("|")[0].replace(/[^0-9]/g, "");
@@ -2220,8 +2197,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         if (!XeonTheCreator) return XliconStickOwner();
         if (!args[0])
           return replygcXlicon(
-            `*_Use ${prefix + command} nomor\nExample ${
-              prefix + command
+            `*_Use ${prefix + command} nomor\nExample ${prefix + command
             } 916909137213_*`
           );
         ya = q.split("|")[0].replace(/[^0-9]/g, "");
@@ -2333,9 +2309,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               `Example : ${prefix + command} hi dev play command is not working`
             );
           textt = `*| REQUEST/BUG |*`;
-          teks1 = `\n\n*User* : @${
-            m.sender.split("@")[0]
-          }\n*Request/Bug* : ${text}`;
+          teks1 = `\n\n*User* : @${m.sender.split("@")[0]
+            }\n*Request/Bug* : ${text}`;
           teks2 = `\n\n*Hii ${pushname},You request has been forwarded to my Owners*.\n*Please wait...*`;
           for (let i of owner) {
             XliconBotInc.sendMessage(
@@ -2672,8 +2647,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             }
           }
           replygcXlicon(
-            `*_Success ${command} To ${
-              Object.keys(global.db.data.users).length
+            `*_Success ${command} To ${Object.keys(global.db.data.users).length
             } Users_*`
           );
         }
@@ -2699,8 +2673,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!XeonTheCreator) return XliconStickOwner();
           if (!q)
             return replygcXlicon(
-              `*_Incorrect Usage Please Use Command Like This\n${
-                prefix + command
+              `*_Incorrect Usage Please Use Command Like This\n${prefix + command
               } idgc|text_*`
             );
           await XliconStickWait();
@@ -2723,8 +2696,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           let users = m.mentionedJid[0]
             ? m.mentionedJid[0]
             : m.quoted
-            ? m.quoted.sender
-            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+              ? m.quoted.sender
+              : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
           await XliconBotInc.updateBlockStatus(users, "block");
           await replygcXlicon(`*_Done_*`);
         }
@@ -2736,8 +2709,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           let users = m.mentionedJid[0]
             ? m.mentionedJid[0]
             : m.quoted
-            ? m.quoted.sender
-            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+              ? m.quoted.sender
+              : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
           await XliconBotInc.updateBlockStatus(users, "unblock");
           await replygcXlicon(`*_Done_*`);
         }
@@ -2756,8 +2729,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             .map((entry) => entry[1]);
           let anu = groups.map((v) => v.id);
           replygcXlicon(
-            `*_Sending Broadcast To ${anu.length} Group Chat, End Time ${
-              anu.length * 1.5
+            `*_Sending Broadcast To ${anu.length} Group Chat, End Time ${anu.length * 1.5
             } seconds_*`
           );
           for (let i of anu) {
@@ -2874,10 +2846,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             replygcXlicon("*_Success in turning off nsfw in this group_*");
           } else {
             await replygcXlicon(
-              `*_Please Type The Option\n\nExample: ${
-                prefix + command
-              } on\nExample: ${
-                prefix + command
+              `*_Please Type The Option\n\nExample: ${prefix + command
+              } on\nExample: ${prefix + command
               } off\n\non to enable\noff to disable_*`
             );
           }
@@ -3182,8 +3152,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!text)
             return replygcXlicon(
-              `*_Enter the number you want to invite to the group_*\n\nExample :\n*${
-                prefix + command
+              `*_Enter the number you want to invite to the group_*\n\nExample :\n*${prefix + command
               }* 916909137213`
             );
           if (text.includes("+"))
@@ -3263,8 +3232,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         let blockwww = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XliconBotInc.groupParticipantsUpdate(
           m.chat,
           [blockwww],
@@ -3288,7 +3257,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           }
           replygcXlicon(
             teks +
-              `To Use Please Type Command ${prefix}pushcontact idgroup|teks\n\nBefore using, please first copy the group id above`
+            `To Use Please Type Command ${prefix}pushcontact idgroup|teks\n\nBefore using, please first copy the group id above`
           );
         }
         break;
@@ -3299,8 +3268,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (!text)
             return replygcXlicon(
-              `*_Provide Number with last number x_*\n\nExample: ${
-                prefix + command
+              `*_Provide Number with last number x_*\n\nExample: ${prefix + command
               } 91690913721x`
             );
           var inputnumber = text.split(" ")[0];
@@ -3354,13 +3322,12 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               if (anu1 == "401" || anu1.status.length == 0) {
                 nobio += `wa.me/${anu[0].jid.split("@")[0]}\n`;
               } else {
-                text66 += `🪀 *Number:* wa.me/${
-                  anu[0].jid.split("@")[0]
-                }\n 🎗️*Bio :* ${anu1.status}\n🧐*Last update :* ${moment(
-                  anu1.setAt
-                )
-                  .tz("Asia/Kuala_Lumpur")
-                  .format("HH:mm:ss DD/MM/YYYY")}\n\n`;
+                text66 += `🪀 *Number:* wa.me/${anu[0].jid.split("@")[0]
+                  }\n 🎗️*Bio :* ${anu1.status}\n🧐*Last update :* ${moment(
+                    anu1.setAt
+                  )
+                    .tz("Asia/Kuala_Lumpur")
+                    .format("HH:mm:ss DD/MM/YYYY")}\n\n`;
               }
             } catch {
               nowhatsapp += `${number0}${i}${number1}\n`;
@@ -3399,17 +3366,15 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           vcard = "";
           noPort = 0;
           for (let a of cmiggc.participants) {
-            vcard += `BEGIN:VCARD\nVERSION:3.0\nFN:[${noPort++}] +${
-              a.id.split("@")[0]
-            }\nTEL;type=CELL;type=VOICE;waid=${a.id.split("@")[0]}:+${
-              a.id.split("@")[0]
-            }\nEND:VCARD\n`;
+            vcard += `BEGIN:VCARD\nVERSION:3.0\nFN:[${noPort++}] +${a.id.split("@")[0]
+              }\nTEL;type=CELL;type=VOICE;waid=${a.id.split("@")[0]}:+${a.id.split("@")[0]
+              }\nEND:VCARD\n`;
           }
           let nmfilect = "./contacts.vcf";
           replygcXlicon(
             "\nBe patient bro, saving... " +
-              cmiggc.participants.length +
-              " contact"
+            cmiggc.participants.length +
+            " contact"
           );
           require("fs").writeFileSync(nmfilect, vcard.trim());
           await sleep(2000);
@@ -3518,8 +3483,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         let blockwwwww = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XliconBotInc.groupParticipantsUpdate(
           m.chat,
           [blockwwwww],
@@ -3535,8 +3500,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         let blockwwwwwa = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XliconBotInc.groupParticipantsUpdate(
           m.chat,
           [blockwwwwwa],
@@ -3558,7 +3523,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (!XeonTheCreator) return XliconStickOwner();
           const groupMetadata = m.isGroup
-            ? await XliconBotInc.groupMetadata(m.chat).catch((e) => {})
+            ? await XliconBotInc.groupMetadata(m.chat).catch((e) => { })
             : "";
           const participants = m.isGroup
             ? await groupMetadata.participants
@@ -3584,8 +3549,8 @@ click https://wa.me/${botNumber.split`@`[0]}`,
 ▸ Name : ${cret.subject}
 ▸ Owner : @${cret.owner.split("@")[0]}
 ▸ Creation : ${moment(cret.creation * 1000)
-              .tz("Asia/Kuala_Lumpur")
-              .format("DD/MM/YYYY HH:mm:ss")}
+                .tz("Asia/Kuala_Lumpur")
+                .format("DD/MM/YYYY HH:mm:ss")}
 
 https://chat.whatsapp.com/${response}`;
             XliconBotInc.sendMessage(
@@ -3702,9 +3667,8 @@ https://chat.whatsapp.com/${response}`;
           return XliconStickAdmin();
         if (!isBotAdmins) return XliconStickBotAdmin();
         let me = m.sender;
-        let teks = `╚»˙·٠${themeemoji}●♥ Tag All ♥●${themeemoji}٠·˙«╝\n😶 *Tagger :*  @${
-          me.split("@")[0]
-        }\n🌿 *Message : ${q ? q : "no message"}*\n\n`;
+        let teks = `╚»˙·٠${themeemoji}●♥ Tag All ♥●${themeemoji}٠·˙«╝\n😶 *Tagger :*  @${me.split("@")[0]
+          }\n🌿 *Message : ${q ? q : "no message"}*\n\n`;
         for (let mem of participants) {
           teks += `${themeemoji} @${mem.id.split("@")[0]}\n`;
         }
@@ -3797,16 +3761,12 @@ https://chat.whatsapp.com/${response}`;
         let response = await XliconBotInc.groupInviteCode(m.chat);
         XliconBotInc.sendText(
           m.chat,
-          `👥 *GROUP LINK*\n📛 *Name :* ${
-            groupMetadata.subject
-          }\n👤 *Owner Grup :* ${
-            groupMetadata.owner !== undefined
-              ? "+" + groupMetadata.owner.split`@`[0]
-              : "Not known"
-          }\n🌱 *ID :* ${
-            groupMetadata.id
-          }\n🔗 *Chat Link :* https://chat.whatsapp.com/${response}\n👥 *Member :* ${
-            groupMetadata.participants.length
+          `👥 *GROUP LINK*\n📛 *Name :* ${groupMetadata.subject
+          }\n👤 *Owner Grup :* ${groupMetadata.owner !== undefined
+            ? "+" + groupMetadata.owner.split`@`[0]
+            : "Not known"
+          }\n🌱 *ID :* ${groupMetadata.id
+          }\n🔗 *Chat Link :* https://chat.whatsapp.com/${response}\n👥 *Member :* ${groupMetadata.participants.length
           }\n`,
           m,
           {
@@ -3851,8 +3811,7 @@ https://chat.whatsapp.com/${response}`;
             );
           if (!text)
             return replygcXlicon(
-              `Enter Reason for Vote, Example: *${
-                prefix + command
+              `Enter Reason for Vote, Example: *${prefix + command
               } Handsome Owner*`
             );
           replygcXlicon(
@@ -4079,45 +4038,44 @@ RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 _NodeJS Memory Usaage_
 ${Object.keys(used)
-  .map(
-    (key, _, arr) =>
-      `${key.padEnd(Math.max(...arr.map((v) => v.length)), " ")}: ${formatp(
-        used[key]
-      )}`
-  )
-  .join("\n")}
+                .map(
+                  (key, _, arr) =>
+                    `${key.padEnd(Math.max(...arr.map((v) => v.length)), " ")}: ${formatp(
+                      used[key]
+                    )}`
+                )
+                .join("\n")}
 
-${
-  cpus[0]
-    ? `_Total CPU Usage_
+${cpus[0]
+                ? `_Total CPU Usage_
 ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times)
-        .map(
-          (type) =>
-            `- *${(type + "*").padEnd(6)}: ${(
-              (100 * cpu.times[type]) /
-              cpu.total
-            ).toFixed(2)}%`
-        )
-        .join("\n")}
+                  .map(
+                    (type) =>
+                      `- *${(type + "*").padEnd(6)}: ${(
+                        (100 * cpu.times[type]) /
+                        cpu.total
+                      ).toFixed(2)}%`
+                  )
+                  .join("\n")}
 _CPU Core(s) Usage (${cpus.length} Core CPU)_
 ${cpus
-  .map(
-    (cpu, i) =>
-      `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(
-        cpu.times
-      )
-        .map(
-          (type) =>
-            `- *${(type + "*").padEnd(6)}: ${(
-              (100 * cpu.times[type]) /
-              cpu.total
-            ).toFixed(2)}%`
-        )
-        .join("\n")}`
-  )
-  .join("\n\n")}`
-    : ""
-}
+                  .map(
+                    (cpu, i) =>
+                      `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(
+                        cpu.times
+                      )
+                        .map(
+                          (type) =>
+                            `- *${(type + "*").padEnd(6)}: ${(
+                              (100 * cpu.times[type]) /
+                              cpu.total
+                            ).toFixed(2)}%`
+                        )
+                        .join("\n")}`
+                  )
+                  .join("\n\n")}`
+                : ""
+              }
                 `.trim();
           XliconBotInc.relayMessage(
             m.chat,
@@ -4352,11 +4310,9 @@ ${themeemoji} URL: ${repoData.html_url}
       case "sourcecode":
         {
           let me = m.sender;
-          let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${
-            global.websitex
-          }\nGitHub: ${global.botscript}\n\nHi @${
-            me.split("@")[0]
-          } 👋\nDont forget to donate yeah🍜 👇 https://www.buymeacoffee.com/ahmmikun`;
+          let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex
+            }\nGitHub: ${global.botscript}\n\nHi @${me.split("@")[0]
+            } 👋\nDont forget to donate yeah🍜 👇 https://www.buymeacoffee.com/ahmmikun`;
           sendXliconBotIncMessage(from, {
             text: teks,
             mentions: [sender],
@@ -4401,8 +4357,7 @@ ${themeemoji} URL: ${repoData.html_url}
         {
           if (!quoted)
             return replygcXlicon(
-              `Send/Reply Images/Videos/Gifs With Captions ${
-                prefix + command
+              `Send/Reply Images/Videos/Gifs With Captions ${prefix + command
               }\nVideo Duration 1-9 Seconds`
             );
           if (/image/.test(mime)) {
@@ -4427,8 +4382,7 @@ ${themeemoji} URL: ${repoData.html_url}
             );
           } else {
             replygcXlicon(
-              `Send/Reply Images/Videos/Gifs With Captions ${
-                prefix + command
+              `Send/Reply Images/Videos/Gifs With Captions ${prefix + command
               }\nVideo Duration 1-9 Seconds`
             );
           }
@@ -4531,8 +4485,7 @@ ${themeemoji} URL: ${repoData.html_url}
         {
           if (!/video/.test(mime) && !/audio/.test(mime))
             return replygcXlicon(
-              `Send/Reply Video/Audio that you want to make into audio with captions ${
-                prefix + command
+              `Send/Reply Video/Audio that you want to make into audio with captions ${prefix + command
               }`
             );
           await XliconStickWait();
@@ -4554,8 +4507,7 @@ ${themeemoji} URL: ${repoData.html_url}
         {
           if (!/video/.test(mime) && !/audio/.test(mime))
             return replygcXlicon(
-              `Send/Reply Video/Audio that you want to make into MP3 with captions ${
-                prefix + command
+              `Send/Reply Video/Audio that you want to make into MP3 with captions ${prefix + command
               }`
             );
           await XliconStickWait();
@@ -4579,8 +4531,7 @@ ${themeemoji} URL: ${repoData.html_url}
         {
           if (!/video/.test(mime) && !/audio/.test(mime))
             return replygcXlicon(
-              `Send/Reply Video/Audio that you want to make into a VN with captions ${
-                prefix + command
+              `Send/Reply Video/Audio that you want to make into a VN with captions ${prefix + command
               }`
             );
           await XliconStickWait();
@@ -4874,8 +4825,7 @@ ${themeemoji} URL: ${repoData.html_url}
             });
           } else
             replygcXlicon(
-              `Reply to the audio you want to change with a caption *${
-                prefix + command
+              `Reply to the audio you want to change with a caption *${prefix + command
               }*`
             );
         } catch (e) {
@@ -4960,9 +4910,9 @@ Type *surrender* to give up and admit defeat`;
             if (text) room.name = text;
             replygcXlicon(
               "Waiting for partner" +
-                (text
-                  ? ` type the command below ${prefix}${command} ${text}`
-                  : "")
+              (text
+                ? ` type the command below ${prefix}${command} ${text}`
+                : "")
             );
             this.game[room.id] = room;
           }
@@ -5026,9 +4976,8 @@ Type *surrender* to give up and admit defeat`;
           let id = "suit_" + new Date() * 1;
           let caption = `_*ROCK PAPER SCISSORS*_
 
-@${m.sender.split`@`[0]} challenged @${
-            m.mentionedJid[0].split`@`[0]
-          } to play rock paper scissors
+@${m.sender.split`@`[0]} challenged @${m.mentionedJid[0].split`@`[0]
+            } to play rock paper scissors
 
 @${m.mentionedJid[0].split`@`[0]} Please type *accept* or *reject*...`;
           this.suit[id] = {
@@ -5114,8 +5063,7 @@ Type *surrender* to give up and admit defeat`;
         {
           if (!q)
             return replygcXlicon(
-              `📌Example: ${
-                prefix + command
+              `📌Example: ${prefix + command
               } pink hallo\n\n꒰ 🖌️ Color List ꒱ ೄྀ࿐ ˊˎ-\n━━━━━━⊱⋆⊰━━━━━━\npink\nblue\nred\ngreen\nyellow\npurple\ndarkblue\nlightblue\nash\norange\nblack\nwhite\nteal\nlightpink\nchocolate\nsalmon\nmagenta\ntan\nwheat\ndeeppink\nfire\nskyblue\nsafron\nbrightskyblue\nhotpink\nlightskyblue\nseagreen\ndarkred\norangered\ncyan\nviolet\nmossgreen\ndarkgreen\nnavyblue\ndarkorange\ndarkpurple\nfuchsia\ndarkmagenta\ndarkgray\npeachpuff\nblackishgreen\ndarkishred\ngoldenrod\ndarkishgray\ndarkishpurple\ngold\nsilver`
             );
           if (text.length > 100) return replygcXlicon(`Max 100 character.`);
@@ -5535,8 +5483,7 @@ View list of Messages With ${prefix}listmsg`);
         {
           if (!text)
             return replygcXlicon(
-              `Example : ${
-                prefix + command
+              `Example : ${prefix + command
               } file name\n\nView list of messages with ${prefix}listmsg`
             );
           let msgs = global.db.data.database;
@@ -5555,12 +5502,11 @@ View list of Messages With ${prefix}listmsg`);
           );
           let teks = " DATABASE LIST \n\n";
           for (let i of seplit) {
-            teks += `${themeemoji} *Name :* ${
-              i.nama
-            }\n${themeemoji} *Type :* ${getContentType(i.message).replace(
-              /Message/i,
-              ""
-            )}\n────────────────────────\n\n`;
+            teks += `${themeemoji} *Name :* ${i.nama
+              }\n${themeemoji} *Type :* ${getContentType(i.message).replace(
+                /Message/i,
+                ""
+              )}\n────────────────────────\n\n`;
           }
           replygcXlicon(teks);
         }
@@ -5956,7 +5902,7 @@ View list of Messages With ${prefix}listmsg`);
         {
           await XliconStickWait();
           let teman = pickRandom(xeonverifieduser);
-          setTimeout(() => {}, 1000);
+          setTimeout(() => { }, 1000);
           setTimeout(() => {
             replygcXlicon("Managed to Get One Person");
           }, 5000);
@@ -6018,15 +5964,11 @@ ${meg.result}`);
           let teks = "YouTube Search\n\n Result From " + text + "\n\n";
           let no = 1;
           for (let i of search.all) {
-            teks += `${themeemoji} No : ${no++}\n${themeemoji} Type : ${
-              i.type
-            }\n${themeemoji} Video ID : ${i.videoId}\n${themeemoji} Title : ${
-              i.title
-            }\n${themeemoji} Views : ${i.views}\n${themeemoji} Duration : ${
-              i.timestamp
-            }\n${themeemoji} Uploaded : ${i.ago}\n${themeemoji} Url : ${
-              i.url
-            }\n\n─────────────────\n\n`;
+            teks += `${themeemoji} No : ${no++}\n${themeemoji} Type : ${i.type
+              }\n${themeemoji} Video ID : ${i.videoId}\n${themeemoji} Title : ${i.title
+              }\n${themeemoji} Views : ${i.views}\n${themeemoji} Duration : ${i.timestamp
+              }\n${themeemoji} Uploaded : ${i.ago}\n${themeemoji} Url : ${i.url
+              }\n\n─────────────────\n\n`;
           }
           XliconBotInc.sendMessage(
             m.chat,
@@ -6075,8 +6017,7 @@ ${meg.result}`);
         let xeonaudp3 = require("./lib/ytdl");
         if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text))
           return replygcXlicon(
-            `Where's the yt link?\nExample: ${
-              prefix + command
+            `Where's the yt link?\nExample: ${prefix + command
             } https://youtube.com/shorts/YQf-vMjDuKY?feature=share`
           );
         let audio = await xeonaudp3.mp3(text);
@@ -6106,8 +6047,7 @@ ${meg.result}`);
           const xeonvidoh = require("./lib/ytdl");
           if (args.length < 1 || !isUrl(text) || !xeonvidoh.isYTUrl(text))
             replygcXlicon(
-              `Where is the link??\n\nExample : ${
-                prefix + command
+              `Where is the link??\n\nExample : ${prefix + command
               } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
             );
           const vid = await xeonvidoh.mp4(text);
@@ -6261,8 +6201,7 @@ ${meg.result}`);
         {
           if (!args[0]) {
             return replygcXlicon(
-              `Please send the link of a Facebook video\n\nEXAMPLE :\n*${
-                prefix + command
+              `Please send the link of a Facebook video\n\nEXAMPLE :\n*${prefix + command
               }* https://fb.watch/pLLTM4AFrO/?mibextid=Nif5oz`
             );
           }
@@ -6362,8 +6301,7 @@ ${themeemoji} Title: ${result.title}`;
         {
           if (!args[0])
             return replygcXlicon(
-              `Enter Instagram Username\n\nExample: ${
-                prefix + command
+              `Enter Instagram Username\n\nExample: ${prefix + command
               } ahmmikun`
             );
           const fg = require("api-dylux");
@@ -7218,11 +7156,11 @@ ID Zone: ${q.split("|")[1]}`);
           const reply = `
 *${themeemoji} Word:* ${q}
 *${themeemoji} Definition:* ${targetfine.data.list[0].definition
-            .replace(/\[/g, "")
-            .replace(/\]/g, "")}
+              .replace(/\[/g, "")
+              .replace(/\]/g, "")}
 *${themeemoji} Example:* ${targetfine.data.list[0].example
-            .replace(/\[/g, "")
-            .replace(/\]/g, "")}`;
+              .replace(/\[/g, "")
+              .replace(/\]/g, "")}`;
           XliconBotInc.sendMessage(m.chat, { text: reply }, { quoted: m });
         } catch (err) {
           console.log(err);
@@ -7257,8 +7195,7 @@ ID Zone: ${q.split("|")[1]}`);
         {
           if (!text)
             return replygcXlicon(
-              `Ask question\n\nExample : ${
-                prefix + command
+              `Ask question\n\nExample : ${prefix + command
               } will i get married?`
             );
           let kapan = [
@@ -7477,15 +7414,11 @@ Cieeee, What's Going On❤️💖👀`,
           XliconBotInc.sendMessage(
             m.chat,
             {
-              caption: `${themeemoji} Title : ${
-                result.title
-              }\n${themeemoji} Category : ${
-                result.type
-              }\n${themeemoji} Detail : ${
-                result.source
-              }\n${themeemoji} Media Url : ${
-                result.image[2] || result.image[1] || result.image[0]
-              }`,
+              caption: `${themeemoji} Title : ${result.title
+                }\n${themeemoji} Category : ${result.type
+                }\n${themeemoji} Detail : ${result.source
+                }\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]
+                }`,
               image: { url: result.image[0] },
             },
             { quoted: m }
@@ -7528,8 +7461,7 @@ Cieeee, What's Going On❤️💖👀`,
             } catch (error) {
               console.error(error);
               replygcXlicon(
-                `An error occurred while fetching the ${type} image. Please use the command properly \nExample: ${
-                  prefix + command
+                `An error occurred while fetching the ${type} image. Please use the command properly \nExample: ${prefix + command
                 } loli\n`
               );
             }
@@ -8078,7 +8010,7 @@ Cieeee, What's Going On❤️💖👀`,
               `What do you want to pick?\nExample: ${prefix + command} idiot`
             );
           const groupMetadata = m.isGroup
-            ? await XliconBotInc.groupMetadata(m.chat).catch((e) => {})
+            ? await XliconBotInc.groupMetadata(m.chat).catch((e) => { })
             : "";
           const participants = m.isGroup
             ? await groupMetadata.participants
@@ -9441,7 +9373,7 @@ Cieeee, What's Going On❤️💖👀`,
           m.chat,
           { video: bogif, gifPlayback: true },
           { quoted: m }
-        ).catch((err) => {});
+        ).catch((err) => { });
         break;
       case "gifhentai":
         if (!m.isGroup) return XeonStickGroup();
@@ -9455,7 +9387,7 @@ Cieeee, What's Going On❤️💖👀`,
           m.chat,
           { video: xeonyresultx, gifPlayback: true },
           { quoted: m }
-        ).catch((err) => {});
+        ).catch((err) => { });
         break;
       case "gifs":
       case "foot":
@@ -9763,8 +9695,7 @@ Cieeee, What's Going On❤️💖👀`,
             }
           } else
             replygcXlicon(
-              `Where is the telegram sticker link?\nExample. ${
-                prefix + command
+              `Where is the telegram sticker link?\nExample. ${prefix + command
               } https://t.me/addstickers/FriendlyDeath`
             );
         }
@@ -10066,11 +9997,11 @@ Cieeee, What's Going On❤️💖👀`,
 *List Hash*
 Info: *bold* hash is Locked
 ${Object.entries(global.db.data.sticker)
-  .map(
-    ([key, value], index) =>
-      `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`
-  )
-  .join("\n")}
+              .map(
+                ([key, value], index) =>
+                  `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`
+              )
+              .join("\n")}
 `.trim();
           XliconBotInc.sendText(m.chat, teks, m, {
             mentions: Object.values(global.db.data.sticker)
@@ -10148,8 +10079,7 @@ ${Object.entries(global.db.data.sticker)
             let chapterInput = m.text.split(" ").slice(1).join("").trim();
             if (!chapterInput) {
               throw new Error(
-                `Please specify the chapter number or name. Example: ${
-                  prefix + command
+                `Please specify the chapter number or name. Example: ${prefix + command
                 } john 3:16`
               );
             }
@@ -10159,8 +10089,7 @@ ${Object.entries(global.db.data.sticker)
             let chapterRes = await fetch(`${BASE_URL}/${chapterInput}`);
             if (!chapterRes.ok) {
               throw new Error(
-                `Please specify the chapter number or name. Example: ${
-                  prefix + command
+                `Please specify the chapter number or name. Example: ${prefix + command
                 } john 3:16`
               );
             }
@@ -10193,8 +10122,7 @@ ${translatedChapterHindi.text}`;
         {
           if (!text)
             return replygcXlicon(
-              `*This command generates images from text prompts*\n\n*𝙴xample usage*\n*${
-                prefix + command
+              `*This command generates images from text prompts*\n\n*𝙴xample usage*\n*${prefix + command
               } Beautiful anime girl*\n*${prefix + command} girl in pink dress*`
             );
           try {
@@ -10225,8 +10153,7 @@ ${translatedChapterHindi.text}`;
         {
           if (!q)
             return replygcXlicon(
-              `*Where is the text*\n\n*𝙴xample usage*\n*${
-                prefix + command
+              `*Where is the text*\n\n*𝙴xample usage*\n*${prefix + command
               } <language id> <text>*\n*${prefix + command} ja yo wassup*`
             );
           const defaultLang = "en";
@@ -10274,7 +10201,7 @@ https://cloud.google.com/translate/docs/languages
               (surah) =>
                 surah.number === Number(surahInput) ||
                 surah.asma.ar.short.toLowerCase() ===
-                  surahInput.toLowerCase() ||
+                surahInput.toLowerCase() ||
                 surah.asma.en.short.toLowerCase() === surahInput.toLowerCase()
             );
             if (!surahData) {
@@ -14531,8 +14458,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
@@ -14570,8 +14496,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
@@ -14609,15 +14534,13 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
           if (args.length < 1)
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           victim = text.split("|")[0] + "@s.whatsapp.net";
@@ -14654,8 +14577,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
@@ -14693,8 +14615,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
@@ -14732,8 +14653,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
@@ -14771,8 +14691,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916909137213`
             );
           await loading();
@@ -14810,8 +14729,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -14850,8 +14768,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -14890,8 +14807,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -14930,8 +14846,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -14970,8 +14885,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -15010,8 +14924,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -15050,8 +14963,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replygcXlicon(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} link\nExample ${
-                prefix + command
+              `Use ${prefix + command} link\nExample ${prefix + command
               } https://chat.whatsapp.com/JVKKTg3rmmiKEL3MQBVplg`
             );
           await loading();
@@ -15093,8 +15005,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15155,8 +15066,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15220,8 +15130,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15285,8 +15194,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15350,8 +15258,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15415,8 +15322,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15480,8 +15386,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15545,8 +15450,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15610,8 +15514,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15675,8 +15578,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15740,8 +15642,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");
@@ -15805,8 +15706,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           if (!isPremium) return replyprem(mess.premium);
           if (!args[0])
             return replygcXlicon(
-              `Use ${prefix + command} number\nExample ${
-                prefix + command
+              `Use ${prefix + command} number\nExample ${prefix + command
               } 916969696969`
             );
           let xeonnumx = `+` + q.split("|")[0].replace(/[^0-9]/g, "");

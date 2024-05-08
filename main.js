@@ -208,7 +208,7 @@ function _0x33fb() {
     "Unknown\x20DisconnectReason:\x20",
     "existsSync",
     "redBright",
-    "Asia/Kolkata",
+    "Asia/Kuala_Lumpur",
     "th\x0a\x20\x20\x20\x20│\x20➪\x20\x20\x20*Tɪᴍᴇ\x20:*\x0a\x20\x20\x20\x20◎\x20\x20\x20\x20\x20\x20",
     "cyan",
     "loadDatabase",
@@ -682,7 +682,7 @@ async function startXliconBotInc() {
                   _0x420046 = moment["tz"](_0x4b0255(0x14d))["format"](
                     _0x4b0255(0x116)
                   ),
-                  _0x3aa69c = moment["tz"]("Asia/Kolkata")[_0x4b0255(0x17a)](
+                  _0x3aa69c = moment["tz"]("Asia/Kuala_Lumpur")[_0x4b0255(0x17a)](
                     _0x4b0255(0x138)
                   );
                 let _0x518a2e = _0x5c4581;

@@ -1,38 +1,4 @@
-//══════════════════════════════════════════════════════════════════════════════════════════════════════//
-//                                                                                                      //
-//                                 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑-𝐌𝐃    𝐁𝐎𝐓                                                //
-//                                                                                                      //
-//                                         Ｖ：3.0                                                      //
-//                                                                                                      //
-//              ██╗  ██╗██╗     ██╗ ██████╗ ██████╗ ███╗   ██╗      ██╗   ██╗██████╗                    //
-//              ╚██╗██╔╝██║     ██║██╔════╝██╔═══██╗████╗  ██║      ██║   ██║╚════██╗                   //
-//                ╚███╔╝ ██║     ██║██║     ██║   ██║██╔██╗ ██║█████╗██║   ██║ █████╔╝                  //
-//               ██╔██╗ ██║     ██║██║     ██║   ██║██║╚██╗██║╚════╝╚██╗ ██╔╝ ╚═══██╗                   //
-//              ██╔╝ ██╗███████╗██║╚██████╗╚██████╔╝██║ ╚████║       ╚████╔╝ ██████╔╝                   //
-//              ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═══╝  ╚═════╝                    //
-//                                                                                                      //
-//                                                                                                      //
-//                                                                                                      //
-//══════════════════════════════════════════════════════════════════════════════════════════════════════//
-//*
-//  * @project_name : XLICON-V3-MD
-//  * @author : salmanytofficial
-//  * @youtube : https://www.youtube.com/@s4salmanyt
-//   * @description : XLICON-V3 ,A Multi-functional whatsapp user bot.
-//*
-//*
-//base by DGXeon
-//re-upload? recode? copy code? give credit ya :)
-//Instagram: unicorn_xeon13
-//Telegram: t.me/ahmmitech
-//GitHub: @salmanytofficial
-//WhatsApp: +923184070915
-//want more free bot scripts? subscribe to my youtube channel: https://youtube.com/@DGXeon
-//   * Created By Github: DGXeon.
-//   * Credit To Xeon
-//   * © 2024 XLICON-V3-MD.
-// ⛥┌┤
-// */
+
 
 require("./lib/listmenu");
 const {
@@ -194,9 +160,9 @@ function formatAfkDuration(ms) {
   return parts.join(", ");
 }
 //time
-const xtime = moment.tz("Asia/Karachi").format("HH:mm:ss");
-const xdate = moment.tz("Asia/Karachi").format("DD/MM/YYYY");
-const time2 = moment().tz("Asia/Karachi").format("HH:mm:ss");
+const xtime = moment.tz("Asia/Kuala_Lumpur").format("HH:mm:ss");
+const xdate = moment.tz("Asia/Kuala_Lumpur").format("DD/MM/YYYY");
+const time2 = moment().tz("Asia/Kuala_Lumpur").format("HH:mm:ss");
 if (time2 < "23:59:00") {
   var xeonytimewisher = `Good Night 🌌`;
 }
@@ -3393,7 +3359,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
                 }\n 🎗️*Bio :* ${anu1.status}\n🧐*Last update :* ${moment(
                   anu1.setAt
                 )
-                  .tz("Asia/Karachi")
+                  .tz("Asia/Kuala_Lumpur")
                   .format("HH:mm:ss DD/MM/YYYY")}\n\n`;
               }
             } catch {
@@ -3618,7 +3584,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
 ▸ Name : ${cret.subject}
 ▸ Owner : @${cret.owner.split("@")[0]}
 ▸ Creation : ${moment(cret.creation * 1000)
-              .tz("Asia/Karachi")
+              .tz("Asia/Kuala_Lumpur")
               .format("DD/MM/YYYY HH:mm:ss")}
 
 https://chat.whatsapp.com/${response}`;
@@ -14541,7 +14507,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14580,7 +14546,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14619,7 +14585,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14664,7 +14630,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14703,7 +14669,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14742,7 +14708,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14781,7 +14747,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14860,7 +14826,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14900,7 +14866,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14940,7 +14906,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -14980,7 +14946,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -15020,7 +14986,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -15100,7 +15066,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
                 scheduledCallCreationMessage: {
                   callType: "2",
                   scheduledTimestampMs: `${moment(1000)
-                    .tz("Asia/Karachi")
+                    .tz("Asia/Kuala_Lumpur")
                     .format("DD/MM/YYYY HH:mm:ss")}`,
                   title: xeonybug1,
                 },
@@ -15154,7 +15120,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15216,7 +15182,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15281,7 +15247,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15346,7 +15312,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15411,7 +15377,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15476,7 +15442,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15541,7 +15507,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15606,7 +15572,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15671,14 +15637,14 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
           form.append("platform", "ANDROID");
           form.append(
             "your_message",
-            "Equipe, o sistema de vocês baniram meu número por engano. Peço que vocês reativem meu número pois tenho família em outro país e preciso me comunicar com eles"
+            "Hello Team, It seems that your system has mistakenly banned my number. I kindly request you to reactivate my number as I have family in another country and need to communicate with them. Thank you for your assistance."
           );
           form.append("__user", "0");
           form.append("__a", "1");
@@ -15736,14 +15702,14 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
           form.append("platform", "ANDROID");
           form.append(
             "your_message",
-            "Kepada pihak WhatsApp yang bijak Sana kenapa akun WhatsApp saya terblokir padahal aktifitas WhatsApp messenger saya normal normal saja mohon dibukakan kembali akun WhatsApp saya dengan ini saya cantumkan kode nomor akun WhatsApp messenger saya sekian banyak Terimakasih"
+            "Dear WhatsApp Support Team, I hope this message finds you well. I am reaching out regarding the recent block on my WhatsApp account, despite my usage of WhatsApp Messenger being completely normal. I kindly request the reactivation of my WhatsApp account. Thank you very much for your attention to this matter."
           );
           form.append("__user", "0");
           form.append("__a", "1");
@@ -15801,7 +15767,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
@@ -15866,14 +15832,14 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           form.append("jazoest", $form.find("input[name=jazoest]").val());
           form.append("lsd", $form.find("input[name=lsd]").val());
           form.append("step", "submit");
-          form.append("country_selector", "INDIA");
+          form.append("country_selector", "MALAYSIA");
           form.append("phone_number", xeonnumx);
           form.append("email", email.data[0]);
           form.append("email_confirm", email.data[0]);
           form.append("platform", "ANDROID");
           form.append(
             "your_message",
-            "Halo pak, Akun Whatsapp Saya diblokir Saya Maaf Saya Telah Menginstal Aplikasi Pihak Ketiga Secara Tidak Sengaja. Harap Buka Blokir Akun Saya Sesegera Mungkin. Terimakasih"
+            "Hello, I apologize for the inconvenience. My WhatsApp account has been blocked because I unintentionally installed a third-party application. Kindly unblock my account as soon as possible.Thank you for your prompt attention to this matter."
           );
           form.append("__user", "0");
           form.append("__a", "1");

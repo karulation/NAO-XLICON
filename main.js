@@ -287,7 +287,7 @@ function _0x33fb() {
     "conflict",
     "Error\x20in\x20Connection.update\x20",
     "uncaughtException",
-    "\x0a\x20\x20\x20\x20│\x20➪\x20\x20\x20*Support\x20by\x20Subscribe\x20My\x20Channel\x20:*\x0a\x20\x20\x20\x20◎\x20\x20\x20\x20\x20youtube.com/@s4salmanyt\x0a\x20\x20\x20\x20└─────────────|",
+    "\x0a\x20\x20\x20\x20│\x20➪\x20\x20\x20*Support\x20by\x20Join\x20Our\x20Community\x20:*\x0a\x20\x20\x20\x20◎\x20\x20\x20\x20\x20neoanicom.com/joinUs.php\x0a\x20\x20\x20\x20└─────────────|",
     "Bad\x20Session\x20File,\x20Please\x20Delete\x20Session\x20and\x20Scan\x20Again",
     "PHOTO",
     "@s.whatsapp.net",
@@ -698,7 +698,7 @@ async function startXliconBotInc() {
                   _0x420046 +
                   "\x20" +
                   _0x3aa69c +
-                  "\x0a\x20\x20\x20\x20│\x20➪\x20\x20\x20*Support\x20by\x20Subscribe\x20My\x20Channel\x20:*\x0a\x20\x20\x20\x20◎\x20\x20\x20\x20\x20youtube.com/@s4salmanyt\x0a\x20\x20\x20\x20└─────────────||"),
+                  "\x0a\x20\x20\x20\x20│\x20➪\x20\x20\x20*Support\x20by\x20Joining\x20Our\x20Community\x20:*\x0a\x20\x20\x20\x20◎\x20\x20\x20\x20\x20neoanicom.com?joinUs.php\x0a\x20\x20\x20\x20└─────────────||"),
                   _0x1bbc17["sendMessage"](_0x1036b8["id"], {
                     text: xeonbody,
                     contextInfo: {

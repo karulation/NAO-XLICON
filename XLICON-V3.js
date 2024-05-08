@@ -1382,23 +1382,51 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       }
     }
     //respond
+    // if (db.data.chats[m.chat].badword) {
+    //   for (let bak of bad) {
+    //     if (budy === bak) {
+    //       let baduser = await db.data.users[sender].badword;
+    //       XliconBotInc.sendMessage(
+    //         from,
+    //         {
+    //           text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${
+    //             m.sender.split("@")[0]
+    //           } *_NAO SHION WARNING! CALLING OUT ALL ADMINS!_*`,
+    //           contextInfo: { mentionedJid: [m.sender] },
+    //         },
+    //         { quoted: m }
+    //       );
+    //     }
+    //   }
+    // }
+
     if (db.data.chats[m.chat].badword) {
       for (let bak of bad) {
         if (budy === bak) {
-          let baduser = await db.data.users[sender].badword;
+          const groupAdmins = participants.filter((p) => p.admin);
+          const owner = groupMetadata.owner || 
+                       groupAdmins.find((p) => p.admin === "superadmin")?.id || 
+                       m.chat.split`-`[0] + "@s.whatsapp.net";
+          const listAdmin = groupAdmins
+            .map((v, i) => `${i + 1}. @${v.id.split("@")[0]}`)
+            .join("\n");
+          
           XliconBotInc.sendMessage(
             from,
             {
               text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${
                 m.sender.split("@")[0]
-              } *_NAO SHION WARNING! CALLING OUT ALL ADMINS!_*`,
-              contextInfo: { mentionedJid: [m.sender] },
+              } *_NAO SHION WARNING! CALLING OUT ALL ADMINS TO CHECK!_*\n\n*Group Admins:*\n${listAdmin}`,
+              mentions: [...groupAdmins.map((v) => v.id), owner]
             },
             { quoted: m }
           );
         }
       }
     }
+
+
+    
     //autosticker
     if (db.data.settings[botNumber].autosticker) {
       if (m.key.fromMe) return;

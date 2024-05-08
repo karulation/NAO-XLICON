@@ -1,21 +1,21 @@
 {
-  "name": "Xlicon-MD",
+  "name": "Nao Shion",
   "version": "3.0.5",
-  "description": "Xlicon-MD, A modular advanced wabot",
+  "description": "Nao Shion, A modular advanced wabot",
   "logo": "https://i.ibb.co/FsvbwqF/XLICON.jpg",
-  "keywords": ["whatsapp", "bot", "md", "multi-device", "Xlicon", "Xlicon-MD", "wabot", "termux-bot", "sc-bot"],
+  "keywords": ["whatsapp", "bot", "md", "multi-device", "Xlicon", "Nao Shion", "wabot", "termux-bot", "sc-bot"],
   "repository": "https://github.com/salmanytofficial/XLICON-V3-MD",
   "stack": "container",
   "env": {
     "SUDO": {
       "description": "Add Owwner Number Here",
       "required": true,
-      "value": "923184070915"
+      "value": "60177637943"
     },
     "SUDO_NAME": {
       "description": "Add Your Name Here",
       "required": true,
-      "value": "SᴀʟᴍᴀɴSᴇʀ"
+      "value": "Karu Shion"
     },
      "HKEY": {
       "description": "Put your Heroku api key Here , Get one from here https://dashboard.heroku.com/account",
@@ -30,27 +30,27 @@
     "PREFIX": {
       "description": "Set Your Prefix Here",
       "required": true,
-      "value": "."
+      "value": "/"
     },
     "BOT_NAME": {
       "description": "Set Your Bot Name Here",
       "required": false,
-      "value": "Xʟɪᴄᴏɴ_Mᴅ_V3"
+      "value": "Nao Shion"
     },
      "PACK_NAME": {
       "description": "Enter Pack Name Here",
       "required": false,
-      "value": "𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑"
+      "value": "Nao Shion"
      },
      "AUTHER_NAME": {
       "description": "Enter Auther Name Here",
       "required": false,
-      "value": "ＭＡＤＥ   ＢＹ   ＳＡＬＭＡＮ"
+      "value": "ＭＡＤＥ   ＢＹ   KARU SHION"
      },
      "GL_VIP": {
       "description": "Enter Premium Members Numbers [ Each Saperated By Comma ]",
       "required": false,
-      "value": "923184070915,923264476886"
+      "value": "60177637943"
      },
     "WELCOME_MSG": {
       "description": "Welcome Message True/False",
@@ -70,7 +70,7 @@
      "AUTO_BLOCK": {
       "description": "Set A Contary Code To Auto banned if u wanna",
       "required": false,
-      "value": "212"
+      "value": ""
      }
     },
     "buildpacks": [

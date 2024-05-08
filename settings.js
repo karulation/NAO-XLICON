@@ -27,7 +27,7 @@
 //Instagram: unicorn_xeon13
 //Telegram: t.me/ahmmitech
 //GitHub: @salmanytofficial
-//WhatsApp: +0177637943
+//WhatsApp: +60177637943
 //want more free bot scripts? subscribe to my youtube channel: https://youtube.com/@DGXeon
 //   * Created By Github: DGXeon.
 //   * Credit To Xeon
@@ -52,7 +52,7 @@ global.location = process.env.GL_INFO || "Malaysia" //ur location
 //________________________________________________________________________________________________________
 global.botname = process.env.BOT_NAME || 'Nao Shion' //ur bot name
 //________________________________________________________________________________________________________
-global.ownernumber = process.env.SUDO || '0177637943' //ur owner number
+global.ownernumber = process.env.SUDO || '60177637943' //ur owner number
 //________________________________________________________________________________________________________
 global.ownername = process.env.SUDO_NAME || 'Karu Shion' //ur owner name
 //________________________________________________________________________________________________________
@@ -70,11 +70,11 @@ global.packname = process.env.PACK_NAME || "Nao Shion�"
 //________________________________________________________________________________________________________
 global.author = process.env.AUTHER_NAME || "ᗰᗩᗪE ᗷY Karu Shion�"
 //________________________________________________________________________________________________________
-global.creator = process.env.GL_DEVS || "0177637943@s.whatsapp.net"
+global.creator = process.env.GL_DEVS || "60177637943@s.whatsapp.net"
 //________________________________________________________________________________________________________
-global.xprefix = process.env.PREFIX || '.'
+global.xprefix = process.env.PREFIX || '/'
 //________________________________________________________________________________________________________
-global.premium = process.env.GL_VIP || ["0177637943"] // Premium User
+global.premium = process.env.GL_VIP || ["60177637943"] // Premium User
 //________________________________________________________________________________________________________
 global.hituet = 0
 //________________________________________________________________________________________________________

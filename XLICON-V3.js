@@ -1259,7 +1259,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       if (isXliconMedia === "audioMessage") {
         if (XeonTheCreator || isAdmins || !isBotAdmins) {
         } else {
-          replygcXlicon(
+          replygcXlicon( 
             `\`\`\`「 Audio Detected 」\`\`\`\n\n*_Sorry, but I have to delete it, because the admin/owner has activated anti-audio for this group_*`
           );
           return XliconBotInc.sendMessage(m.chat, {
@@ -1489,7 +1489,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
 
     //total features
     const Xliconfeature = () => {
-      var mytext = fs.readFileSync("./XLICON-V3.js").toString();
+      var mytext = fs.readFileSync("./Nao Shion.js").toString();
       var numUpper = (mytext.match(/case "/g) || []).length;
       return numUpper;
     };
@@ -2767,7 +2767,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               "case" +
               `'${cases}'` +
               fs
-                .readFileSync("XLICON-V3.js")
+                .readFileSync("Nao Shion.js")
                 .toString()
                 .split("case '" + cases + "'")[1]
                 .split("break")[0] +
@@ -4109,7 +4109,7 @@ ${cpus
               /github\.com\/([^/]+)\/([^/]+)/
             );
             const response = await axios.get(
-              `https://api.github.com/repos/salmanytofficial/XLICON-V3-MD`
+              `https://api.github.com/repos/salmanytofficial/Nao Shion-MD`
             );
             if (response.status === 200) {
               const repoData = response.data;
@@ -4714,7 +4714,7 @@ ${themeemoji} URL: ${repoData.html_url}
           let medi = fs.readFileSync("./" + buff);
           await XliconBotInc.sendMessage(
             from,
-            { image: medi, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�" },
+            { image: medi, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��" },
             { quoted: m }
           );
           setTimeout(() => {
@@ -5038,10 +5038,23 @@ Type *surrender* to give up and admit defeat`;
 
           if (text) {
             user.afkReason = text;
-            replygcXlicon(`*${m.pushName}* is now AFK for: \`${text}\``);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `*${m.pushName}* is now AFK for: \`${text}\``,
+                quoted: m,
+              }
+            );
+
           } else {
             user.afkReason = "";
-            replygcXlicon(`*${m.pushName}* is now AFK.`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `*${m.pushName}* is now AFK`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -5051,9 +5064,14 @@ Type *surrender* to give up and admit defeat`;
         {
           if (db.data.users[sender].limit < 1) return replygcXlicon(mess.limit);
           if (!q)
-            return replygcXlicon(
-              `Example : ${prefix + command} who is ronaldo`
-            );
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Example : ${prefix + command} who is ronaldo`,
+    quoted: m,
+  }
+);
+
           var isiai = await fetchJson(`https://aemt.me/openai?text=${q}`);
           var isi = isiai.result;
           await replygcXlicon(isi);
@@ -5956,9 +5974,14 @@ ${meg.result}`);
       case "ytsearch":
         {
           if (!text)
-            return replygcXlicon(
-              `Example : ${prefix + command} story wa anime`
-            );
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Example : ${prefix + command} story wa anime`,
+    quoted: m,
+  }
+);
+
           let yts = require("yt-search");
           let search = await yts(text);
           let teks = "YouTube Search\n\n Result From " + text + "\n\n";
@@ -5981,9 +6004,13 @@ ${meg.result}`);
       case "song":
         {
           if (!text)
-            return replygcXlicon(
-              `Example : ${prefix + command} anime whatsapp status`
-            );
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Example : ${prefix + command} anime whatsapp status`,
+    quoted: m,
+  }
+);
           const xeonplaymp3 = require("./lib/ytdl");
           let yts = require("youtube-yts");
           let search = await yts(text);
@@ -6016,10 +6043,14 @@ ${meg.result}`);
       case "ytaudio":
         let xeonaudp3 = require("./lib/ytdl");
         if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text))
-          return replygcXlicon(
-            `Where's the yt link?\nExample: ${prefix + command
-            } https://youtube.com/shorts/YQf-vMjDuKY?feature=share`
-          );
+          return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Where's the yt link?\nExample: ${prefix + command
+            } https://youtube.com/shorts/YQf-vMjDuKY?feature=share`,
+    quoted: m,
+  }
+);
         let audio = await xeonaudp3.mp3(text);
         await XliconBotInc.sendMessage(
           m.chat,
@@ -6046,10 +6077,14 @@ ${meg.result}`);
         {
           const xeonvidoh = require("./lib/ytdl");
           if (args.length < 1 || !isUrl(text) || !xeonvidoh.isYTUrl(text))
-            replygcXlicon(
-              `Where is the link??\n\nExample : ${prefix + command
-              } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-            );
+            XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Where is the link??\n\nExample : ${prefix + command
+              } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`,
+    quoted: m,
+  }
+);
           const vid = await xeonvidoh.mp4(text);
           const ytc = `
 *${themeemoji}Tittle:* ${vid.title}
@@ -6101,7 +6136,13 @@ ${meg.result}`);
       case "tiktokvideo":
         {
           if (!args[0])
-            return replygcXlicon(`Example : ${prefix + command} link`);
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Example : ${prefix + command} link`,
+    quoted: m,
+  }
+);
           await XliconStickWait();
           let resxeon = await fetch(
             `https://api.maher-zubair.tech/download/tiktok2?url=${args[0]}`
@@ -6111,7 +6152,7 @@ ${meg.result}`);
             XliconBotInc.sendMessage(
               from,
               {
-                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�`,
+                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��`,
                 video: { url: jsonxeon.result.url.nowm },
                 fileName: "video.mp4",
                 mimetype: "video/mp4",
@@ -6119,14 +6160,32 @@ ${meg.result}`);
               { quoted: m }
             );
           } else {
-            return replygcXlicon("Failed to get video. Try after a while...");
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Failed to get video. Try after a while...`,
+    quoted: m,
+  }
+);
           }
         }
         break;
       case "tiktokaudio":
         {
-          if (!q) return replygcXlicon(`Example : ${prefix + command} link`);
-          if (!q.includes("tiktok")) return replygcXlicon(`Link Invalid!!`);
+          if (!q) return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Example : ${prefix + command} link`,
+    quoted: m,
+  }
+);
+          if (!q.includes("tiktok")) return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Link Invalid!!`,
+    quoted: m,
+  }
+);
           await XliconStickWait();
           let resxeon = await fetch(
             `https://api.maher-zubair.tech/download/tiktok2?url=${q}`
@@ -6143,7 +6202,13 @@ ${meg.result}`);
               { quoted: m }
             );
           } else {
-            return replygcXlicon("Failed to get audio. Try after a while...");
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Failed to get audio. Try after a while...`,
+    quoted: m,
+  }
+);
           }
         }
 
@@ -6151,7 +6216,13 @@ ${meg.result}`);
       case "google":
         {
           if (!q)
-            return replygcXlicon(`Example : ${prefix + command} ${botname}`);
+            return XliconBotInc.sendMessage(
+  from,
+  {
+    text: `Example : ${prefix + command} ${botname}`,
+    quoted: m,
+  }
+);
           await XliconStickWait();
           let google = require("google-it");
           google({ query: text }).then((res) => {
@@ -6161,7 +6232,13 @@ ${meg.result}`);
               teks += `⭔ *Description* : ${g.snippet}\n`;
               teks += `⭔ *Link* : ${g.link}\n\n────────────────────────\n\n`;
             }
-            replygcXlicon(teks);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: teks,
+                quoted: m,
+              }
+            );
           });
         }
         break;
@@ -8990,7 +9067,7 @@ Cieeee, What's Going On❤️💖👀`,
         await XliconBotInc.sendMessage(
           m.chat,
           {
-            caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�`,
+            caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��`,
             image: { url: waifudd.data.url },
           },
           { quoted: m }
@@ -10577,7 +10654,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/blur?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10598,7 +10675,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/beautiful?url${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10619,7 +10696,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/facepalm?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10640,7 +10717,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/invert?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10661,7 +10738,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/pixelate?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10682,7 +10759,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/rainbow?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10701,7 +10778,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/maker/trigger?url=${anu}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10722,7 +10799,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/trigger?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10743,7 +10820,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/wasted?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10760,7 +10837,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/maker/carbonimg?q=${text}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10778,7 +10855,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/tools/colorize?url=${anu}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10799,7 +10876,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/burn?amount=5&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10820,7 +10897,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/sharpen?amount=3&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10841,7 +10918,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/brightness?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10862,7 +10939,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/darkness?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10883,7 +10960,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/resize?height=500&width=500&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10904,7 +10981,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/delete?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10925,7 +11002,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/jail?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10946,7 +11023,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/jokeOverHead?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10967,7 +11044,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/hitler?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -10988,7 +11065,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/trash?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11009,7 +11086,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/rip?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11030,7 +11107,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/greyscale?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11051,7 +11128,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/sepia?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11072,7 +11149,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/shit?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11093,7 +11170,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/circle?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11114,7 +11191,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/reply?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11135,7 +11212,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/guildIcon?name=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11156,7 +11233,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/phub?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11268,7 +11345,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/quote?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11289,7 +11366,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/clyde?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11310,7 +11387,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/opinion?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11331,7 +11408,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/bed?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11349,7 +11426,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/kiss?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11370,7 +11447,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/fuse?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11389,7 +11466,7 @@ ${listAdmin}
               image: {
                 url: `https://api.maher-zubair.tech/maker/enhance?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );
@@ -11408,7 +11485,7 @@ ${listAdmin}
               image: {
                 url: `https://api.maher-zubair.tech/maker/dehaze?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
             },
             { quoted: m }
           );

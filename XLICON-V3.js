@@ -2789,10 +2789,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].badword = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].badword = false;
-            replygcXlicon(`${commad} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -2866,10 +2878,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antiaudio = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antiaudio = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -2881,10 +2905,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[m.chat].antiforeignnum = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             db.data.chats[m.chat].antiforeignnum = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -2916,10 +2952,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antipoll = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antipoll = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -2931,10 +2979,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antisticker = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antisticker = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -2946,10 +3006,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antiimage = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antiimage = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -2961,10 +3033,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antivideo = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antivideo = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -2976,10 +3048,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antivirtex = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antivirtex = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -2991,10 +3063,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antibot = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antibot = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3006,10 +3078,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antiviewonce = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antiviewonce = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3021,10 +3093,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antimedia = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antimedia = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3036,10 +3108,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antidocument = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antidocument = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3051,10 +3123,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].anticontact = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].anticontact = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3066,10 +3138,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antilocation = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antilocation = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3081,10 +3153,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antilink = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antilink = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3096,10 +3168,10 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antilinkgc = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
           } else if (args[0] === "off") {
             db.data.chats[from].antilinkgc = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
           }
         }
         break;
@@ -3111,10 +3183,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             welcome = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             welcome = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disable`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -3125,10 +3209,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             adminevent = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             adminevent = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disable`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -3139,10 +3235,22 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             groupevent = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             groupevent = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -5323,10 +5431,22 @@ Type *surrender* to give up and admit defeat`;
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             antiswview = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             antiswview = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;
@@ -5336,10 +5456,22 @@ Type *surrender* to give up and admit defeat`;
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             anticall = true;
-            replygcXlicon(`${command} is enabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is enabled`,
+                quoted: m,
+              }
+            );
           } else if (args[0] === "off") {
             anticall = false;
-            replygcXlicon(`${command} is disabled`);
+            XliconBotInc.sendMessage(
+              from,
+              {
+                text: `${command} is disabled`,
+                quoted: m,
+              }
+            );
           }
         }
         break;

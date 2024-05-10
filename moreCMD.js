@@ -319,34 +319,56 @@ function additionalCommmand(isCommand) {
                 );
                 break;
 
-            case 'karusdsdsd':
-                var media = '';
-                var textMessage = "";
-                XliconBotInc.sendMessage(
-                    from, {
-                      image: media,
-                      caption: textMessage,
-                    }, { quoted: m }
-                );
-                break;
-
-            case 'karusdsdsd':
-                var media = '';
-                var textMessage = "";
-                XliconBotInc.sendMessage(
-                    from, {
-                      image: media,
-                      caption: textMessage,
-                    }, { quoted: m }
-                );
-                break;
-
             
             // -------------------------------- NEO INTRO END ------------------------------------
             
             default:
-                // Default case or additional logic
-                break;
+                if (budy.startsWith("=>")) {
+                  if (!XeonTheCreator) return XliconStickOwner();
+                  function Return(sul) {
+                    sat = JSON.stringify(sul, null, 2);
+                    bang = util.format(sat);
+                    if (sat == undefined) {
+                      bang = util.format(sul);
+                    }
+                    return replygcXlicon(bang);
+                  }
+                  try {
+                    replygcXlicon(
+                      util.format(eval(`(async () => { return ${budy.slice(3)} })()`))
+                    );
+                  } catch (e) {
+                    replygcXlicon(String(e));
+                  }
+                }
+        
+                if (budy.startsWith(">")) {
+                  if (!XeonTheCreator) return XliconStickOwner();
+                  try {
+                    let evaled = await eval(budy.slice(2));
+                    if (typeof evaled !== "string")
+                      evaled = require("util").inspect(evaled);
+                    await replygcXlicon(evaled);
+                  } catch (err) {
+                    await replygcXlicon(String(err));
+                  }
+                }
+                if (budy.startsWith("$")) {
+                  if (!XeonTheCreator) return XliconStickOwner();
+                  exec(budy.slice(2), (err, stdout) => {
+                    if (err) return replygcXlicon(err);
+                    if (stdout) return replygcXlicon(stdout);
+                  });
+                }
+                if (isCmd && budy.toLowerCase() != undefined) {
+                  if (m.chat.endsWith("broadcast")) return;
+                  if (m.isBaileys) return;
+                  let msgs = global.db.data.database;
+                  if (!(budy.toLowerCase() in msgs)) return;
+                  XliconBotInc.copyNForward(m.chat, msgs[budy.toLowerCase()], true, {
+                    quoted: m,
+                  });
+                }
     }
 }
 

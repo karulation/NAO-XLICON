@@ -1,14 +1,14 @@
 
 
-# `XLICON-V3-MD`
+# `NAO-SHION`
 <br>
 <br>
 
 
-![Typing SVG](https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=3F00FF&center=true&width=900&height=100&lines=Its%20XLICON-V3-MD;%20Multi-Device%20WhatsApp%20Bot;%20Developed%20By%20SALMAN%20AHMAD)
+![Typing SVG](https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=3F00FF&center=true&width=900&height=100&lines=Nao%20Shion%20by%20Karu%20Shion)
 <p align="center">
   
->XLICON-V3-MD is based on :
+>NAO-SHION is based on :
 >- [Cheems V10](https://github.com/DGXeon) by [DGXeon](https://github.com/DGXeon) (License: Apache License 2.0)
 >
 > :unicorn: Don't forget to check out! :point_right: [Cheems V10](https://github.com/DGXeon)
@@ -20,21 +20,21 @@
 <p align="center">
 <a href="https://github.com/salmanytofficial"><img title="Author" src="https://img.shields.io/badge/CREATOR-SALMAN SER-black.svg?style=for-the-badge&logo=github"></a>
 
-### ℹ️ **About XLICON-V3**
-XLICON-V3 is a Cool Multi-Device WhatsApp bot developed by [Salman Ahamed](https://github.com/salmanytofficial). It offers a wide range of extraordinary features, making it an advanced and user-friendly bot for various purposes.
+### ℹ️ **About Nao Shion**
+Nao Shion is a Cool Multi-Device WhatsApp bot developed by [Karu Shion](https://github.com/salmanytofficial). It offers a wide range of extraordinary features, making it an advanced and user-friendly bot for various purposes.
 
-<p align="center"><img src="https://profile-counter.glitch.me/{XLICON-V3}/count.svg" alt="SALMAN AHMAD :: Visitor's Count" /></p>
+<p align="center"><img src="https://profile-counter.glitch.me/{Nao Shion}/count.svg" alt="SALMAN AHMAD :: Visitor's Count" /></p>
 
 ### 📊 **Bot Statistics**
 <p align="center">
 <a href="https://github.com/salmanytofficial/followers"><img title="Followers" src="https://img.shields.io/github/followers/salmanytofficial?color=red&style=flat-square"></a>
-<a href="https://github.com/salmanytofficial/XLICON-V3-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/salmanytofficial/XLICON-V3-MD?color=blue&style=flat-square"></a>
-<a href="https://github.com/salmanytofficial/XLICON-V3-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/salmanytofficial/XLICON-V3-MD?color=red&style=flat-square"></a>
-<a href="https://github.com/salmanytofficial/XLICON-V3-MD/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/salmanytofficial/XLICON-V3-MD?label=Watchers&color=blue&style=flat-square"></a>
-<a href="https://github.com/salmanytofficial/XLICON-V3-MD"><img title="Open Source" src="https://img.shields.io/badge/Author-Salman%20Ser.-red?v=103"></a>
-<a href="https://github.com/salmanytofficial/XLICON-V3-MD/"><img title="Size" src="https://img.shields.io/github/repo-size/salmanytofficial/XLICON-V3-MD?style=flat-square&color=green"></a>
-<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsalmanytofficial%2FXLICON-V3-MD&count_bg=%2379C83D&title_bg=%23555555&icon=probot.svg&icon_color=%2300FF6D&title=hits&edge_flat=false"/></a>
-<a href="https://github.com/salmanytofficial/XLICON-V3-MD/graphs/commit-activity"><img height="20" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>&nbsp;&nbsp;
+<a href="https://github.com/salmanytofficial/NAO-SHION/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/salmanytofficial/NAO-SHION?color=blue&style=flat-square"></a>
+<a href="https://github.com/salmanytofficial/NAO-SHION/network/members"><img title="Forks" src="https://img.shields.io/github/forks/salmanytofficial/NAO-SHION?color=red&style=flat-square"></a>
+<a href="https://github.com/salmanytofficial/NAO-SHION/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/salmanytofficial/NAO-SHION?label=Watchers&color=blue&style=flat-square"></a>
+<a href="https://github.com/salmanytofficial/NAO-SHION"><img title="Open Source" src="https://img.shields.io/badge/Author-Salman%20Ser.-red?v=103"></a>
+<a href="https://github.com/salmanytofficial/NAO-SHION/"><img title="Size" src="https://img.shields.io/github/repo-size/salmanytofficial/NAO-SHION?style=flat-square&color=green"></a>
+<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsalmanytofficial%2FNAO-SHION&count_bg=%2379C83D&title_bg=%23555555&icon=probot.svg&icon_color=%2300FF6D&title=hits&edge_flat=false"/></a>
+<a href="https://github.com/salmanytofficial/NAO-SHION/graphs/commit-activity"><img height="20" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>&nbsp;&nbsp;
 </p>
 <p align='center'>
 </p>
@@ -42,25 +42,15 @@ XLICON-V3 is a Cool Multi-Device WhatsApp bot developed by [Salman Ahamed](https
   
 ####
 
-*XLICON-V3* - A Advanced Multi Device whatsapp bot Based on *CHEEMS V10*
+*Nao Shion* - A Advanced Multi Device whatsapp bot Based on *CHEEMS V10*
 -------
 
 ***
 
 ## ⭐ `Star This Repo`
-If you find XLICON-V3-MD helpful, consider giving it a star ⭐ to show your appreciation.
+If you find NAO-SHION helpful, consider giving it a star ⭐ to show your appreciation.
 
 Thanks to all contributors! 🚀
-
-## 💲 ```Donate Me```
-
-- [`Buy ME A Coffee ☕ `](https://i.ibb.co/SBXWb1R/donate.jpg)
-
-<p align="left">
-Scan qr code from the above button, u can pay through Buy Me A Coffee...
-</p>
-
-- [`Support Me On Patreon ☕ `](https://www.patreon.com/ahmmikun/membership)
 
 <p align="left">
 Click On The Link To Donate ME...
@@ -82,15 +72,15 @@ Click On The Link To Donate ME...
 ## 🛠️ `Installation Methods`
 1. Fork the repo
     <br>
-<a href='https://github.com/salmanytofficial/XLICON-V3-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork Repo-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
+<a href='https://github.com/salmanytofficial/NAO-SHION/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork Repo-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
 2. Get Creds Json (SERVER 1)
     <br>
-<a href='https://xlicon-v3-web.onrender.com' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
+<a href='https://Nao Shion-web.onrender.com' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
 2. Get Creds Json (SERVER 2)
     <br>
-<a href='https://replit.com/@S4SalmanYt/XLICON-V3-PAIRING' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id_2-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
+<a href='https://replit.com/@S4SalmanYt/Nao Shion-PAIRING' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id_2-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
 
 ## 🚀 `Deployments`
@@ -113,7 +103,7 @@ Click On The Link To Donate ME...
 
 2. Now Deploy
     <br>
-    <a href='https://repl.it/github/salmanytofficial/XLICON-V3-MD' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=replit&logoColor=white'/></a>
+    <a href='https://repl.it/github/salmanytofficial/NAO-SHION' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=replit&logoColor=white'/></a>
 
 
 
@@ -205,21 +195,21 @@ NOW Deploy👇
 ## 📛 `OWNER` 
 <a href="https://github.com/salmanytofficial"><img src="https://github.com/salmanytofficial.png" width="250" height="250" alt="Salman Ahmad"/></a>
   
-**XLICON-V3** - By `salmanytofficial`
+**Nao Shion** - By `salmanytofficial`
 <br>
 `Development , Maintainence , Bot Updates`
 
 ## 🏷️ `Main Dev` 
 <a href="https://github.com/V-E-N-O-X"><img src="https://github.com/V-E-N-O-X.png" width="250" height="250" alt="VENOX"/></a>
   
-**XLICON-V3** - By `Slahser Senpai`
+**Nao Shion** - By `Slahser Senpai`
 <br>
 `Development , Features Enhancement , Plugin Debbuging`
 
 ## 🏷️ `Contributer` 
 <a href="https://github.com/dragiez"><img src="https://github.com/dragiez.png" width="250" height="250" alt="DRAGIEZ"/></a>
   
-**XLICON-V3** - By `Dragiez`
+**Nao Shion** - By `Dragiez`
 <br>
 `Development , Features Enhancement , Code Testing`
 
@@ -267,8 +257,8 @@ Misusing the bot may result in a ban from WhatsApp. Use at your own risk.
 * Any text editor
 ## `Clone Repo & Installation dependencies`
 ```bash
-git clone https://github.com/<your gitHub Username>/XLICON-V3-MD.git
-cd XLICON-V3-MD
+git clone https://github.com/<your gitHub Username>/NAO-SHION.git
+cd NAO-SHION
 
 npm start
 ```
@@ -284,8 +274,8 @@ pkg install nodejs -y
 pkg install ffmpeg -y 
 pkg install wget
 pkg install imagemagick -y
-git clone https://github.com/<your gitHub Username>/XLICON-V3-MD
-cd XLICON-V3-MD
+git clone https://github.com/<your gitHub Username>/NAO-SHION
+cd NAO-SHION
 yarn install
 npm start
 ```
@@ -297,8 +287,8 @@ apt apt install ffmpeg
 apt apt install libwebp 
 apt apt install imagrmagick
 apt install bash
-git clone https://github.com/<your gitHub Username>/XLICON-V3-MD
-cd XLICON-V3-MD
+git clone https://github.com/<your gitHub Username>/NAO-SHION
+cd NAO-SHION
 npm start
 ```
 ## `For 24/7 Activation (Termux)`

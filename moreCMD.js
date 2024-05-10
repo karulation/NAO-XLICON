@@ -172,6 +172,20 @@ function additionalCommmand(isCommand) {
                 );
                 break;
             
+            case "neoArt":
+                await XliconStickWait();
+                var notnot = JSON.parse(fs.readFileSync("./src/media/neo/art.json"));
+                var hasil = pickRandom(notnot);
+                XliconBotInc.sendMessage(
+                    m.chat,
+                    { 
+                        caption: hasil.caption, // Use the caption from the JSON file
+                        image: { url: hasil.url } 
+                    },
+                    { quoted: m }
+                );
+                break;
+
             // -------------------------------- NEO INFO END ------------------------------------
             
             // -------------------------------- NEO INTRO START ------------------------------------

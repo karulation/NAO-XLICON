@@ -1,6 +1,8 @@
 
 
 require("./lib/listmenu");
+import { pinterest } from 'lib/pinterest.js'; /
+
 const {
   BufferJSON,
   WA_DEFAULT_EPHEMERAL,
@@ -6171,6 +6173,42 @@ ${meg.result}`);
           await fs.unlinkSync(pl.path);
         }
         break;
+      case "pin":
+      case "pinterest":
+        if (!text) {
+          return XliconBotInc.sendMessage(
+            from,
+            {
+              text: `Example : ${prefix + command} Asuna`,
+              quoted: m,
+            }
+          );
+        }
+      
+        try {
+          let media = await pinterest(text);
+          let textMessage = `Result : ${text}`;
+          XliconBotInc.sendMessage(
+            from,
+            {
+              image: { url: media },
+              caption: textMessage,
+            },
+            { quoted: m }
+          );
+        } catch (error) {
+          console.error(error);
+          XliconBotInc.sendMessage(
+            from,
+            {
+              text: `Failed to fetch image : ${error}`,
+              quoted: m,
+            }
+          );
+        }
+      
+        break;
+
       case "ytmp3":
       case "ytaudio":
         let xeonaudp3 = require("./lib/ytdl");

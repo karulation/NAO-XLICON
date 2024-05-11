@@ -1,7 +1,4 @@
-
-
 require("./lib/listmenu");
-import { pinterest } from 'lib/pinterest.js'; /
 
 const {
   BufferJSON,
@@ -1093,7 +1090,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
     if (isCommand) {
       console.log(
         color(
-          `\n< ================================================== >\n`,
+          `\n< ===================` + isCommand + `=============================== >\n`,
           "cyan"
         )
       );
@@ -1261,7 +1258,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       if (isXliconMedia === "audioMessage") {
         if (XeonTheCreator || isAdmins || !isBotAdmins) {
         } else {
-          replygcXlicon( 
+          replygcXlicon(
             `\`\`\`「 Audio Detected 」\`\`\`\n\n*_Sorry, but I have to delete it, because the admin/owner has activated anti-audio for this group_*`
           );
           return XliconBotInc.sendMessage(m.chat, {
@@ -1368,23 +1365,23 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
 
     if (db.data.chats[m.chat].badword) {
       for (let bak of bad) {
-          if (budy.includes(bak)) {
-              const groupAdmins = participants.filter((p) => p.admin);
-              const listAdmin = groupAdmins
-                  .map((v, i) => `${i + 1}. @${v.id.split("@")[0]}`)
-                  .join("\n");
-  
-              XliconBotInc.sendMessage(
-                  from, {
-                      text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${m.sender.split("@")[0]} *_NAO SHION WARNING! CALLING OUT ALL ADMINS TO CHECK!_*\n\n*Group Admins:*\n${listAdmin}`,
-                      mentions: [...groupAdmins.map((v) => v.id)]
-                  }, { quoted: m }
-              );
-              break; // Stop iterating through bad words once one is found
-          }
+        if (budy.includes(bak)) {
+          const groupAdmins = participants.filter((p) => p.admin);
+          const listAdmin = groupAdmins
+            .map((v, i) => `${i + 1}. @${v.id.split("@")[0]}`)
+            .join("\n");
+
+          XliconBotInc.sendMessage(
+            from, {
+            text: `\`\`\`「 NAO WARNING 」\`\`\`\n\n@${m.sender.split("@")[0]} *_NAO SHION WARNING! CALLING OUT ALL ADMINS TO CHECK!_*\n\n*Group Admins:*\n${listAdmin}`,
+            mentions: [...groupAdmins.map((v) => v.id)]
+          }, { quoted: m }
+          );
+          break; // Stop iterating through bad words once one is found
+        }
       }
-  }
-  
+    }
+
 
 
 
@@ -1483,7 +1480,11 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       let user = global.db.data.users[m.sender];
       let afkDuration = formatAfkDuration(new Date() - user.afkTime);
 
-      replygcXlicon(`Welcome back...\nYou were away for: \`${afkDuration}\``);
+      XliconBotInc.sendMessage(
+        m.chat,
+        { text: `Welcome back...\nYou were away for: \`${afkDuration}\`` },
+        { quoted: m }
+      );
 
       user.afkTime = -1;
       user.afkReason = "";
@@ -1491,7 +1492,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
 
     //total features
     const Xliconfeature = () => {
-      var mytext = fs.readFileSync("./Nao Shion.js").toString();
+      var mytext = fs.readFileSync("./XLICON-V3.js").toString();
       var numUpper = (mytext.match(/case "/g) || []).length;
       return numUpper;
     };
@@ -1902,7 +1903,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (!XeonTheCreator) return XliconStickOwner();
           global.db.data.settings[botNumber].totalhit = 0;
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "setmenu":
@@ -1915,7 +1920,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             );
           if (text.startsWith("v")) {
             typemenu = text;
-            replygcXlicon(mess.done);
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `*_Done ✓_*` },
+              { quoted: m }
+            );
           } else {
             replygcXlicon(
               `*_There are 8 menu(v1,v2,v3,v4,v5,v6,v7,v8)_*\n*_Please select one\nExample ${prefix + command
@@ -1934,7 +1943,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             );
           if (text.startsWith("v")) {
             typereply = text;
-            replygcXlicon(mess.done);
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `*_Done ✓_*` },
+              { quoted: m }
+            );
           } else {
             replygcXlicon(
               `*_There are 3 reply(v1,v2,v3)_*\n*_Please select 1\nExample ${prefix + command
@@ -1957,7 +1970,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               statusJidList: Object.keys(global.db.data.users),
             }
           );
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "statusvideo":
@@ -1978,7 +1995,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               },
               { statusJidList: Object.keys(global.db.data.users) }
             );
-            await replygcXlicon(mess.done);
+            await XliconBotInc.sendMessage(
+              m.chat,
+              { text: `*_Done ✓_*` },
+              { quoted: m }
+            );
           } else {
             replygcXlicon("*_Reply to video_*");
           }
@@ -2003,7 +2024,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               },
               { statusJidList: Object.keys(global.db.data.users) }
             );
-            await replygcXlicon(mess.done);
+            await XliconBotInc.sendMessage(
+              m.chat,
+              { text: `*_Done ✓_*` },
+              { quoted: m }
+            );
           } else {
             replygcXlicon("*_Reply to image_*");
           }
@@ -2031,7 +2056,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
                 statusJidList: Object.keys(global.db.data.users),
               }
             );
-            await replygcXlicon(mess.done);
+            await XliconBotInc.sendMessage(
+              m.chat,
+              { text: `*_Done ✓_*` },
+              { quoted: m }
+            );
           } else {
             replygcXlicon("*_Reply to audio_*");
           }
@@ -2044,7 +2073,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           let delb = await XliconBotInc.downloadAndSaveMediaMessage(quoted);
           await fsx.copy(delb, "./XliconMedia/theme/xliconpic.jpg");
           fs.unlinkSync(delb);
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "setvidmenu":
@@ -2056,7 +2089,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           let delb = await XliconBotInc.downloadAndSaveMediaMessage(quoted);
           await fsx.copy(delb, "./XliconMedia/theme/xliconvid.mp4");
           fs.unlinkSync(delb);
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "addtitle":
@@ -2068,7 +2105,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           titlenya = text.split("|")[1];
           let oo = `${nonya}@s.whatsapp.net`;
           db.data.users[oo].title = titlenya;
-          await replygcXlicon(mess.done);
+          await XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "deltitle":
@@ -2079,7 +2120,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           nonya = text.split(",")[0];
           let oo = `${nonya}@s.whatsapp.net`;
           db.data.users[oo].title = "";
-          await replygcXlicon(mess.done);
+          await XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "addlimit":
@@ -2094,7 +2139,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           limitnya = text.split("|")[1];
           let oo = `${usernya}@s.whatsapp.net`;
           db.data.users[oo].limit += limitnya;
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "dellimit":
@@ -2109,7 +2158,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (db.data.users[usernya + "@s.whatsapp.net"].limit < limitnya)
             return replygcXlicon(`*_His Limit Is Less Than ${limitnya}_*`);
           db.data.users[usernya + "@s.whatsapp.net"].limit -= limitnya;
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "addprem":
@@ -2519,10 +2572,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           return replygcXlicon(`*_Example ${prefix + command} public/self_*`);
         if (q == "public") {
           XliconBotInc.public = true;
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         } else if (q == "self") {
           XliconBotInc.public = false;
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "setexif":
@@ -2606,13 +2667,21 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             ],
           });
           fs.unlinkSync(medis);
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         } else {
           var memeg = await XliconBotInc.updateProfilePicture(botNumber, {
             url: medis,
           });
           fs.unlinkSync(medis);
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "leave":
@@ -2633,7 +2702,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
             if (/image/.test(mime)) {
               var media = await quoted.download();
               await XliconBotInc.sendMessage(i, {
-                image: media,
+                image: { url: media },
                 caption: teksnya,
               });
             } else if (/video/.test(mime)) {
@@ -2769,7 +2838,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               "case" +
               `'${cases}'` +
               fs
-                .readFileSync("Nao Shion.js")
+                .readFileSync("XLICON-V3.js")
                 .toString()
                 .split("case '" + cases + "'")[1]
                 .split("break")[0] +
@@ -2792,21 +2861,20 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             db.data.chats[from].badword = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
+
+
           } else if (args[0] === "off") {
             db.data.chats[from].badword = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
+
           }
         }
         break;
@@ -2881,20 +2949,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             db.data.chats[from].antiaudio = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             db.data.chats[from].antiaudio = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -2908,20 +2972,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             db.data.chats[m.chat].antiforeignnum = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             db.data.chats[m.chat].antiforeignnum = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -2955,20 +3015,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             db.data.chats[from].antipoll = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             db.data.chats[from].antipoll = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -2982,20 +3038,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             db.data.chats[from].antisticker = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             db.data.chats[from].antisticker = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -3009,20 +3061,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             db.data.chats[from].antiimage = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             db.data.chats[from].antiimage = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -3035,10 +3083,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antivideo = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antivideo = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3050,10 +3106,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antivirtex = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antivirtex = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3065,10 +3129,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antibot = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antibot = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3080,10 +3152,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antiviewonce = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antiviewonce = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3095,10 +3175,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antimedia = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antimedia = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3110,10 +3198,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antidocument = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antidocument = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3125,10 +3221,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].anticontact = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].anticontact = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3140,10 +3244,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antilocation = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antilocation = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3155,10 +3267,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antilink = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antilink = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3170,10 +3290,18 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args.length < 1) return replygcXlicon("*_on/off?_*");
           if (args[0] === "on") {
             db.data.chats[from].antilinkgc = true;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is enabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
           } else if (args[0] === "off") {
             db.data.chats[from].antilinkgc = false;
-            XliconBotInc.sendMessage(               from,               {                 text: `${command} is disabled`,                 quoted: m,               }             );
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
           }
         }
         break;
@@ -3186,20 +3314,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             welcome = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             welcome = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disable`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -3212,20 +3336,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             adminevent = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             adminevent = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disable`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -3238,20 +3358,16 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (args[0] === "on") {
             groupevent = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             groupevent = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -3349,7 +3465,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           [blockwww],
           "remove"
         );
-        replygcXlicon(mess.done);
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*_Done ✓_*` },
+          { quoted: m }
+        );
         break;
       case "idgroup":
       case "groupid":
@@ -3583,7 +3703,12 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           ? m.quoted.sender
           : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XliconBotInc.groupParticipantsUpdate(m.chat, [blockwwww], "add");
-        replygcXlicon(mess.done);
+
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*_Done ✓_*` },
+          { quoted: m }
+        );
         break;
       case "promote":
         if (!m.isGroup) return XeonStickGroup();
@@ -3600,7 +3725,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           [blockwwwww],
           "promote"
         );
-        replygcXlicon(mess.done);
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*_Done ✓_*` },
+          { quoted: m }
+        );
         break;
       case "demote":
         if (!m.isGroup) return XeonStickGroup();
@@ -3617,7 +3746,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           [blockwwwwwa],
           "demote"
         );
-        replygcXlicon(mess.done);
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*_Done ✓_*` },
+          { quoted: m }
+        );
         break;
       case "setnamegc":
       case "setsubject":
@@ -3627,7 +3760,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         if (!isBotAdmins) return XliconStickBotAdmin();
         if (!text) return replygcXlicon("*_Text ?_*");
         await XliconBotInc.groupUpdateSubject(m.chat, text);
-        replygcXlicon(mess.done);
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*_Done ✓_*` },
+          { quoted: m }
+        );
         break;
       case "userjid":
         {
@@ -3714,7 +3851,11 @@ https://chat.whatsapp.com/${response}`;
         if (!isBotAdmins) return XliconStickBotAdmin();
         if (!text) return replygcXlicon("*_Text ?_*");
         await XliconBotInc.groupUpdateDescription(m.chat, text);
-        replygcXlicon(mess.done);
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*_Done ✓_*` },
+          { quoted: m }
+        );
         break;
       case "setppgroup":
       case "setppgrup":
@@ -3761,13 +3902,21 @@ https://chat.whatsapp.com/${response}`;
             ],
           });
           fs.unlinkSync(medis);
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         } else {
           var memeg = await XliconBotInc.updateProfilePicture(m.chat, {
             url: medis,
           });
           fs.unlinkSync(medis);
-          replygcXlicon(mess.done);
+          XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Done ✓_*` },
+            { quoted: m }
+          );
         }
         break;
       case "tagall":
@@ -4219,7 +4368,7 @@ ${cpus
               /github\.com\/([^/]+)\/([^/]+)/
             );
             const response = await axios.get(
-              `https://api.github.com/repos/salmanytofficial/Nao Shion-MD`
+              `https://api.github.com/repos/salmanytofficial/XLICON-V3-MD`
             );
             if (response.status === 200) {
               const repoData = response.data;
@@ -4418,32 +4567,32 @@ ${themeemoji} URL: ${repoData.html_url}
       case "updatebot":
       case "cekbot":
       case "sourcecode":
-        {
-          let me = m.sender;
-          let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex
-            }\nGitHub: ${global.botscript}\n\nHi @${me.split("@")[0]
-            } 👋\nDont forget to donate yeah🍜 👇 https://www.buymeacoffee.com/ahmmikun`;
-          sendXliconBotIncMessage(from, {
-            text: teks,
-            mentions: [sender],
-            contextInfo: {
-              forwardingScore: 9999999,
-              isForwarded: true,
-              mentionedJid: [sender],
-              externalAdReply: {
-                showAdAttribution: true,
-                renderLargerThumbnail: true,
-                title: botname,
-                containsAutoReply: true,
-                mediaType: 1,
-                thumbnail: fs.readFileSync("./XliconMedia/theme/xliconpic.jpg"),
-                mediaUrl: `${wagc}`,
-                sourceUrl: `${wagc}`,
-              },
-            },
-          });
-        }
-        break;
+      // {
+      //   let me = m.sender;
+      //   let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex
+      //     }\nGitHub: ${global.botscript}\n\nHi @${me.split("@")[0]
+      //     } 👋\nDont forget to donate yeah🍜 👇 https://www.buymeacoffee.com/ahmmikun`;
+      //   sendXliconBotIncMessage(from, {
+      //     text: teks,
+      //     mentions: [sender],
+      //     contextInfo: {
+      //       forwardingScore: 9999999,
+      //       isForwarded: true,
+      //       mentionedJid: [sender],
+      //       externalAdReply: {
+      //         showAdAttribution: true,
+      //         renderLargerThumbnail: true,
+      //         title: botname,
+      //         containsAutoReply: true,
+      //         mediaType: 1,
+      //         thumbnail: fs.readFileSync("./XliconMedia/theme/xliconpic.jpg"),
+      //         mediaUrl: `${wagc}`,
+      //         sourceUrl: `${wagc}`,
+      //       },
+      //     },
+      //   });
+      // }
+      // break;
       case "owner":
         {
           XliconBotInc.sendMessage(
@@ -4824,7 +4973,7 @@ ${themeemoji} URL: ${repoData.html_url}
           let medi = fs.readFileSync("./" + buff);
           await XliconBotInc.sendMessage(
             from,
-            { image: medi, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��" },
+            { image: medi, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�" },
             { quoted: m }
           );
           setTimeout(() => {
@@ -5141,47 +5290,396 @@ Type *surrender* to give up and admit defeat`;
           }
         }
         break;
+
+      case "hi":
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `Hi *${m.pushName}!*` },
+          { quoted: m }
+        );
+        break;
+
       case "afk":
+        console.log("afk");
         {
           let user = global.db.data.users[m.sender];
           user.afkTime = +new Date();
 
           if (text) {
             user.afkReason = text;
+
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `*${m.pushName}* is now AFK for: \`${text}\``,
-                quoted: m,
-              }
+              m.chat,
+              { text: `*${m.pushName}* is now AFK for: \`${text}\`` },
+              { quoted: m }
             );
 
           } else {
             user.afkReason = "";
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `*${m.pushName}* is now AFK`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `*${m.pushName}* is now AFK` },
+              { quoted: m }
             );
           }
         }
         break;
+
+      // -------------------------------- NEO INFO START ------------------------------------
+
+      case 'neohistory':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '══☩═════☩══♛══☩═════☩══\nHistory of the Neo Anime Community\n══☩═════☩══♛══☩═════☩══\nThe Neo Anime Community was founded on July 31, 2021, under the name "Neo Asterisk," by two admins named Karu and Yama, who had previously withdrawn from another anime community. The name "Neo Asterisk," which means "Little Star," reflects the founder vision of a small community that would one day shine.\n\nThe community employs a hierarchical system, where the top admin holds the power to remove any admin below them, and any admin has the right to remove any community member they wish. The current Neo Asterisk admins are Karu, Yamato, Kemey, and Mio.\n\nOn August 9, 2021, the community was unexpectedly "raided" when a video posted by Karu went viral on TikTok. This event brought a sudden influx of people to the Neo Asterisk community, raising its popularity significantly.\n\nOn October 21, 2021, due to the increasing number of members, the community was renamed Neo Anime Community, and Neo Iota was formed. The word "Iota," inspired by one of the Greek alphabets, represents the idea that Neo Iota is a small part of the Neo community. Admin selections were made, and Rin, Rei, and Zangkuro were chosen as the initial admins of Neo Iota. However, Zangkuro later resigned due to personal reasons, and Nash was selected to replace him.\n\nOn March 5, 2022, Kemey created a WhatsApp group called Neo Star and an MCPE server for Neo members to play together. However, some members caused chaos on the server, and Kemey decided to close it down and rename the WhatsApp group to Neo Arcus. Arcus, meaning "the bow used for shooting arrows," reflects the idea that Neo Arcus members are bows that will shoot arrows to bring victory. Kemey appointed Piko and Luqman as admins to manage Neo Arcus.\n\nOn June 17, 2022, Yama, one of the co-founders of the Neo community, left the community due to mental and physical illness.\n\nOn October 3, 2022, Karu made significant changes to the admin team to improve the quality of the community. Nash demoted from her last position as one of the Neo Iota admins, and Reiki and Rin were promoted as admins in the Neo Asterisk WhatsApp group.\n\nOn October 7, 2022, Neo Judgement announced its new staff members: Nagisa, Hazu, Izumi, and Muisu, as neoanimeme.my Instagram admins, and Riezu and Izysis as gaming admins, who are also admins of Neo Arcus. However, Muisu resigned due to personal reasons and Akkinior has been assigned by Karu to fill in the empty space that has been left by Muisu.\n\nOn May 5, 2023, Reiki was promoted to Neo Judgement, where they will join the management team to manage the community inside and out, while Hazu was promoted to Neo Anti-Skill, filling the vacant space left by Reiki to help other admins handle all of the Neo Anime Community WhatsApp groups.\n\nOn May 31, 2023, Riku joined Neo Team as an admin for neoanimeme.my Instagram. We have recognized Riku exceptional capabilities and believe that he will make a valuable contribution to our community.\n\nOn June 5, 2023, following a voting session held on June 4, 2023, Izumi has been announced for selection as the new head of the Instagram department. Out of the 5 members, Izumi received the majority of the votes and will now lead the department in overseeing content posting and management.\n\nOn June 30, 2023, Mio, one of our dedicated admins and a beloved member of the Neo Anime Community, has decided to leave the WhatsApp groups and administration due to personal commitments. With Mio departure from the Neo Anime Community WhatsApp groups, Karu, the founder of Neo Anime Community, remains as the last member of the original Neo Judgement team. Mio will continue to be an active member of our Neo Discord server.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'halloffame':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "🌟 *NEO TEAM HALL OF FAME* 🌟\n\nLet's take a moment to appreciate and remember the incredible individuals who were once a part of our Neo Team. Their dedication, passion, and hard work have left a lasting impact on our community. 🙌🌟\n\n🌟 *Zangkuro* - Former Anti-Skill\n🌟 *Nash* - Former Anti-Skill\n🌟 *Nagisa* - Former Instagram Department Member\n🌟 *Giru* - Former Gaming Department Member\n🌟 *Piko* - Former Gaming Department Member\n🌟 *Akkinior* - Former Instagram Department Member\n🌟 *Eirelle* - Former Design Department Member\n\nThough they may have moved on to new adventures, their contributions will forever be a part of our Neo legacy. We salute you and express our deepest gratitude for your invaluable service! 🚀🌈 #NeoTeamHallOfFame #CommunityHeroes";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'adminnotbot':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦\n*ADMINS ARE HUMAN, NOT BOTS!*\n✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦\nWe understand that there may be instances where certain members break the rules, and we might not always be available to handle the situation due to our personal commitments or the need for rest. We sincerely apologize if we haven't been able to fulfill our duties to the best of our abilities. Please remember that we are not automated bots who can be present 24/7 without tending to other responsibilities or taking breaks. We are regular individuals who are dedicated to the community but have limitations. We welcome any complaints or concerns you may have, but accusing us of neglecting our responsibilities, not taking the rules seriously, or disregarding the group is unfair and unfounded. Put yourself in our shoes, and imagine being judged for a single instance of unavailability. If you genuinely care about the community, we urge you to support us instead of pointing fingers and making baseless accusations. Let's work together to create a better community experience for everyone.\n\nSincerely, Neo Team";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case "neoart":
+        await XliconStickWait();
+        var notnot = JSON.parse(fs.readFileSync("./src/media/neo/art.json"));
+        var hasil = pickRandom(notnot);
+        XliconBotInc.sendMessage(
+          m.chat,
+          {
+            caption: hasil.caption, // Use the caption from the JSON file
+            image: { url: "https://telegra.ph/file/aa321d2670c88d1bc835d.jpg" }
+          },
+          { quoted: m }
+        );
+        break;
+
+      case "neoteam":
+        console.log("NeoTeam");
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "》》》NEO TEAM《《《\n୨⎯ Neo Judgement (Management) ⎯୧\nFounder - Karu Shion\nCo-Founder - Yamato\nAdministrator - Mio\nAssistant Administrator - Kemey\nManager of Anti-Skill - Rei\n\n୨⎯ Neo Anti-Skill (WhatsApp) ⎯୧\nFirst Tier Anti Skill - Rin\nFirst Tier Anti Skill - Hazu\nSecond Tier Anti Skill - Zen\nSecond Tier Anti Skill - ???\n\n୨⎯ Instagram Department ⎯୧\nLeader: Izumi\n- Riku Fubuki\n- Muisu\n- Ren\n- Son\n- Muichiro\n\n୨⎯ Gaming Department ⎯୧\nLeader: Riezu\n- Izsyis\n- Shiroi\n\n୨⎯ Discord Department ⎯୧\nLeader: Mio\n- Edmond\n- Mentos\n\n୨⎯ Graphic Department⎯୧\nLeader: Rika Akari\n- Syaz\n- Nyom\n\n୨⎯ Rikaru Store Team ⎯୧\nOwner - Karu Shion\nPartner - Rika Akari\nAll Neo Dropshippers\n\n_For Neo Hall Of Fame, type /halloffame_";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      // -------------------------------- NEO INFO END ------------------------------------
+
+
+      //  -------------------------------- NEO RULES START ------------------------------------
+
+      case 'rule1':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*RULE 1: No ASEAN normie meme/sticker allowed*\n\nAccording to Judgemento, "Normie Things" refers to stickers or memes that are unrelated to anime or not widely known. To help you understand, lets compare the "RickRoll" meme, which is globally recognized, with most Malaysian/Indonesian influencer/politician memes that are mainly known locally. The goal is to avoid cringeworthy content that lacks wider appeal. If you have an issue with our rules or administration style, the "Leave Group" button is available.\n\nIts important to recognize that every community has its own unique rules and administration style. Please refrain from comparing our community to others. We believe its unfair to compare our structured community with more "anarchy"-style communities. While we may share the same genre, each community has its own distinct characteristics.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule2':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 2: No Spamming*\n\nWe would like to remind all members that spamming and chain messages are not allowed in our community. Spamming refers to the act of flooding the group chat with multiple messages or sending repetitive content that disrupts the conversation flow. Meanwhile, chain messages refer to any message that encourages members to forward or share the same message to multiple people.\n\nWe consider such actions as disruptive and disrespectful towards other members, and it may lead to unnecessary clutter in the group chat. We encourage all members to respect one anothers space and refrain from sending multiple messages or forwarding chain messages that may annoy other members.\n\nAny member who is found spamming the chat or forwarding chain messages will be warned and reminded to refrain from such actions. If the member continues to do so, they will be removed from the group without any prior warning.\n\nWe want to maintain a healthy and active community where members can interact and engage in meaningful discussions without any disruptions. Therefore, we kindly ask all members to adhere to this rule and respect one anothers space.\n\nThank you for your cooperation.\n\nAny confusion or questions, please do not hesitate to contact any of the admins for clarification.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule3':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 3: Keep your behavior (use less curse word etc)*\n\nRule 3 of the Neo Anime Community states that all members must keep their behavior in check. This means refraining from using excessive curse words or engaging in any other form of behavior that could be considered offensive or disruptive. We want to maintain a positive and respectful environment within our community, and therefore, any behavior that goes against this rule may result in immediate removal from the group. We ask all members to be mindful of their language and behavior when interacting with others in the community. If you have any doubts or concerns about your behavior, please do not hesitate to ask an admin for clarification. Lets work together to create a welcoming and enjoyable space for everyone in the Neo Anime Community!';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule4':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 4: No spoiler*\n\nRule 4 of our community states that no spoilers are allowed. However, we understand that discussing anime and manga often involves spoilers, so we have a few guidelines to follow. Spoilers should be limited to minor details and should not reveal major plot points or character deaths that would ruin the experience for someone who hasnt watched or read the series yet. Additionally, we recommend using spoiler tags or warning others before discussing spoilers to allow them to opt-out of the conversation if they choose to do so. It is important to respect everyones enjoyment and experience of the series, and to avoid spoiling it for others. Anyone found to be intentionally spoiling anime or manga for others will be subject to immediate removal from the community. If you are unsure about what constitutes a spoiler, please ask an admin for clarification.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule5':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 5: Ask for permission before promoting stuff*\n\nRule 5 states that if members want to promote something, they need to submit an application to any admin first before promoting it. The application should include the following details:\n\n1. Content name: This refers to the name of the content that the member wants to promote.\n\n2. About: This refers to a brief description of the content that the member wants to promote.\n\n3. Group/Community/owner/etc: This refers to the group, community, owner, or any relevant information about the content that the member wants to promote.\n\nBy submitting an application and obtaining permission from the admin, members can avoid promoting content that may be considered inappropriate or irrelevant to the anime community.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule6':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 6: no NSFW*\n\nRule 6 of the "Neo Anime Community" states that no NSFW content is allowed in the group. This includes any explicit or suggestive content that is not appropriate for all ages or may offend some members of the community. NSFW content includes but is not limited to sexual content, nudity, and violent or graphic imagery. The aim of this rule is to maintain a safe and respectful environment for all members of the community, regardless of age or personal beliefs. Any member found to be posting NSFW content will be immediately removed from the group.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule7':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 7: No racist/politic*\n\nRule 7 states that racist or political discussions are not allowed in the community. This means that members should avoid sharing or discussing any content that promotes or expresses racism or discrimination based on race, ethnicity, nationality, or any other personal characteristic. Additionally, members should not engage in any political discussions or debates as these topics can be divisive and may create conflict within the community. The goal is to maintain a friendly and respectful environment where everyone feels comfortable and valued regardless of their background or beliefs. Violating this rule may result in immediate removal from the community';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule8':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 8: No kpop/kdrama things (we dont hate but this is anime community)*\n\nRule 8 states that members are not allowed to post anything related to Kpop or Kdrama in the anime community. This does not mean that the community hates Kpop or Kdrama, but the focus of the community is on anime, so anything outside of that is not allowed.\n\nThe reason for this rule is to maintain the focus and integrity of the community. Posting content related to Kpop or Kdrama may distract members from the main purpose of the community, which is to discuss and enjoy anime-related content.\n\nIt is important to respect the communitys guidelines and focus on the content that is relevant to the communitys interests. If members wish to discuss or share content related to Kpop or Kdrama, they can do so in other communities or groups that are dedicated to those topics.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule9':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 9:  harassing other members*\n\nRule 9 is a crucial rule that aims to ensure a safe and comfortable environment for all members, especially female members, who might be vulnerable to harassment. The rule strictly prohibits any form of harassment towards other members, and any violation of this rule may result in an immediate kick from the group.\n\nHarassment can take many forms, including but not limited to verbal harassment, sexual harassment, cyberbullying, and stalking. This rule applies to all members regardless of gender, but it is particularly important for female members who may face more aggressive behavior from some male members.\n\nThe rule aims to create a community where everyone feels respected and safe. Members should not engage in any behavior that makes others feel uncomfortable or harassed. If a member feels harassed by another member, they are encouraged to report the incident to any admin, who will take the necessary action to resolve the issue.\n\nIn summary, Rule 9 aims to promote a safe and respectful environment for all members, and any form of harassment towards other members, especially female members, will not be tolerated.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+      case 'rule10':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = '*Rule Number 10: Avoid conflicts*\n\nRule 10 of the anime community states "Avoid conflicts". This means that members should refrain from engaging in any behavior that may lead to conflicts or arguments within the community. It is important to maintain a positive and respectful atmosphere for everyone to enjoy.\n\nIf a member is found to be causing conflicts or behaving in a confrontational manner towards others, they may face consequences such as warnings or even being kicked out of the community.\n\nIt is important to remember that conflicts can arise due to differences in opinions and preferences, but it is important to handle them in a mature and respectful manner. If there are any issues or conflicts, members are encouraged to reach out to the admins for help in resolving the situation.';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      // -------------------------------- NEO RULES END ------------------------------------
+
+
+      // -------------------------------- NEO INTRO START ------------------------------------
+
+      case 'karu':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/5787412a7ea13e251aa8e.png';
+        var textMessage = '‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\n*NEO STAFF INFO*\n*Name :* Karu Shion\n*Position :* Founder of Neo Anime Community\n*TikTok/Instagram :* karulation\n\n*Description :* *Karu* or also known as *Haikaru* is the founder of Neo Anime Community. You may not see him often but he exists. He can be friendly and dry depending on his mood. An IT student and also a cosplayer. Lastly, Nino is his number 1 waifu since 2019. Feel free to chat with him, he doesnt eat people.\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵';
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'edmond':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO \nName : Edmond\nPosition : Member of Discord Department\n\nA shy person but friendly one. Loves spending my leisure time to expand my knowledge of history, aviation, tanks, cars & Motorsports. Plays Sim Racing & FPS, and RTS sometimes.\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'hazu':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO\nName : Hazu\nPosition : First Tier Neo Anti-Skill\n\nA friendly guy, gamer, not a weeb but likes to watch anime (not much), introvert, I also will give you advice if you did something wrong. I ain't describing my whole personality here, so hope you will have a great day. Just a friendly reminder, we all make mistakes, it's what makes us human. I work in the dark to serve the light, so be careful while chatting. ಡ⁠ ͜⁠ ⁠ʖ⁠ ⁠ಡ\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'izumi':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO\nName : Izumi\nPosition : Head of Instagram Department\n\nPast is past. It always comes when you're traumatized by itself. If you can't move on, just take it for motivation. Btw, I like coffee, games, and also you.\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'mentos':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/82e7c8e5f40aea74247c4.jpg';
+        var textMessage = "MENTOS INTRODUCTION\n══ ══ ══ ≪ °❈° ≫ ══ ══ ══\n\nName: Mentos yamada\nJoined group: Neo Asterisk, Neo arcus, Neo lounge, and Neo iota\nBirthday: 1/9\nDescription: A man whose life is only games, anime, and weeb high-class. Really likes nihongo and anime memes, and also I dont know if Im just a mentos.\n\nTiktok: Just Mentosシ\nIG: irpanmitos\n\nMobile Legend:\nUsername: Just Mentosシ\nId: 792636004\n\nPro lance sing sing sing~~\n=======================\nKeep fighting even if you know you will lose...ฅ⁠^⁠•ω•⁠^⁠ฅ";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'reiki':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/ceeaef936958232fdf7b5.jpg';
+        var textMessage = "*REIKI INTRODUCTION*\n══ ══ ══ ≪ °❈° ≫ ══ ══ ══\n\nName: Setsuna Reiki (yall can just call me Rei)\nPosition: Manager of Neo Anto-Skill\nJoined group: All possible NEO community groups\nBirthday: 9/4\nDescription: Your friendly neighborhood admin. Loves reading, YT reactions or shorts, and sleeping. Feel free to ask or talk to me about anything, Ill try to help as much as I could.\n\nTiktok: Asyraaf-Rei\nIG: asura.reiki_\n\nLike to play games or karaoke at DC, so feel free to join whenever you want.\n=======================\nHave a great day...ฅ⁠^⁠•ω•⁠^⁠ฅ";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'riezu':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO\nName : Riezu\nPosition : Head of Gaming Department Admin\n\nOnce a powerful being who guard the gate of dark and light. Now lives among the mortals and observing the world while keeping the balance between peace and chaos\n\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'rika':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO\nName : Rika Akari\nPosition : Neo Designer/Neo Business Partner\n\nAn Ambivert , i like to spend ma time alot  sleeping cause i don't like to deal with people , i love music alot and also arts . I hate crowds And I'm an easy going person (ㆁωㆁ) if you treat me right , i will treat you the same . If you treat me bad ,i will just ignore you.  Simple . (◍•ᴗ•◍) I'm a goooddd person don't worry. I'm very friendly online , but not in real life . But i will not be online often . Again , I'm a gud person (ㆁωㆁ) okeh .\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'riku':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO\nName : Riku Fubuki\nPosition : Instagram Admin\n\nDon,t think what anyone else say just do what do you want untill you success\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'rin':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/aa321d2670c88d1bc835d.jpg';
+        var textMessage = "*NEO STAFF INFO*\nName : Rin\nPosition : First Tier Neo Anti - Skill\n\nIt student, networking cost. Love traditional art yeah i also makes TikTok for it, mostly i just draw anime, i love colouring. Love to workout 💪. Afraid of woman. I love everything about self improvement or any extreme activity. Tag me if you need anything. Adios🫱\n=======================";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'shiroi':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/b7ed3e737ede1dd5fd885.jpg';
+        var textMessage = "*NEO STAFF INFO*\nName : Shiroi\nPosition : Member of Gaming Department - Skill\nJoined group: Neo Asterisk, Neo arcus, Neo lounge, and Neo iota\nBirthday: 24/11\nDescription: An artist who cant draw cute stuff. An Apex Legends player who avoids ranks. A Genshin Impact addicted person. Very much enjoys voice acting in yandere scripts for fun.\n\nIG: Setsu.illust_0524\nSteam: AnakAyamDikejarMusang (Apex)\nDiscord: ._.7020#0000\n\nHave fun and have a nice day knowing this crazy woman.\n\n=======================\nHave a great day...ฅ⁠^⁠•ω•⁠^⁠ฅ";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'zen':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/81acc75d9671ba3f8401a.jpg';
+        var textMessage = "*NEO STAFF INFO*\nName : Zen\nPosition : Second Tier Neo Anti - Skill\nJoined Group: Neo Asterisk, Neo Arcus, NeoAnicom Lounge\nBirthday: 5/5\nInstagram: yasashiisuisei\nTiktok: yasashijanai\nDescription: Zen or Zenitsu is a man that does exist from an anime yet he is definitely the most coward and hates himself more than others... but other than that he does have hidden strength that he is not discovered yet...\n\nYoroshikune Onegaishimasu Minna 💛\n=======================";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+      case 'mio':
+        await XliconStickWait();
+        var media = 'https://telegra.ph/file/f9285102bf2fb0acfa71c.jpg';
+        var textMessage = "‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\nNEO STAFF INFO\nName : Mio\nPosition : Administrator and Head of Discord Department\n\nNot kind, not bad either. Quite knowledgeable but will always have the heart open to learn something new, I hope so. Dangerous but silent at times. Into cars and florist, a long journey until I will be able to live such a life. Enjoy reading Manga & LN. Plays VN, Racing Simulator & FPS, wish to improve on such a short duration.";
+        XliconBotInc.sendMessage(
+          from, {
+          image: { url: media },
+          caption: textMessage,
+        }, { quoted: m }
+        );
+        break;
+
+
+      // -------------------------------- NEO INTRO END ------------------------------------
+
+
       case "ai":
       case "ask":
       case "openai":
         {
           if (db.data.users[sender].limit < 1) return replygcXlicon(mess.limit);
           if (!q)
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Example : ${prefix + command} who is ronaldo`,
-    quoted: m,
-  }
-);
-
+            return replygcXlicon(
+              `Example : ${prefix + command} who is ronaldo`
+            );
           var isiai = await fetchJson(`https://aemt.me/openai?text=${q}`);
           var isi = isiai.result;
           await replygcXlicon(isi);
@@ -5434,20 +5932,16 @@ Type *surrender* to give up and admit defeat`;
           if (args[0] === "on") {
             antiswview = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             antiswview = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -5459,20 +5953,16 @@ Type *surrender* to give up and admit defeat`;
           if (args[0] === "on") {
             anticall = true;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is enabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
             );
           } else if (args[0] === "off") {
             anticall = false;
             XliconBotInc.sendMessage(
-              from,
-              {
-                text: `${command} is disabled`,
-                quoted: m,
-              }
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
             );
           }
         }
@@ -6108,14 +6598,9 @@ ${meg.result}`);
       case "ytsearch":
         {
           if (!text)
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Example : ${prefix + command} story wa anime`,
-    quoted: m,
-  }
-);
-
+            return replygcXlicon(
+              `Example : ${prefix + command} story wa anime`
+            );
           let yts = require("yt-search");
           let search = await yts(text);
           let teks = "YouTube Search\n\n Result From " + text + "\n\n";
@@ -6138,13 +6623,9 @@ ${meg.result}`);
       case "song":
         {
           if (!text)
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Example : ${prefix + command} anime whatsapp status`,
-    quoted: m,
-  }
-);
+            return replygcXlicon(
+              `Example : ${prefix + command} anime whatsapp status`
+            );
           const xeonplaymp3 = require("./lib/ytdl");
           let yts = require("youtube-yts");
           let search = await yts(text);
@@ -6184,9 +6665,18 @@ ${meg.result}`);
             }
           );
         }
-      
+
         try {
-          let media = await pinterest(text);
+          var query = text;
+          let res = await fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}%20dressed&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`);
+          let json = await res.json();
+          let data = json.resource_response.data.results;
+          if (!data || data.length === 0) {
+            throw 'No images found for the given query';
+          }
+          let index = Math.floor(Math.random() * data.length);
+
+          let media = data[index].images.orig.url;
           let textMessage = `Result : ${text}`;
           XliconBotInc.sendMessage(
             from,
@@ -6206,21 +6696,17 @@ ${meg.result}`);
             }
           );
         }
-      
+
         break;
 
       case "ytmp3":
       case "ytaudio":
         let xeonaudp3 = require("./lib/ytdl");
         if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text))
-          return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Where's the yt link?\nExample: ${prefix + command
-            } https://youtube.com/shorts/YQf-vMjDuKY?feature=share`,
-    quoted: m,
-  }
-);
+          return replygcXlicon(
+            `Where's the yt link?\nExample: ${prefix + command
+            } https://youtube.com/shorts/YQf-vMjDuKY?feature=share`
+          );
         let audio = await xeonaudp3.mp3(text);
         await XliconBotInc.sendMessage(
           m.chat,
@@ -6247,14 +6733,10 @@ ${meg.result}`);
         {
           const xeonvidoh = require("./lib/ytdl");
           if (args.length < 1 || !isUrl(text) || !xeonvidoh.isYTUrl(text))
-            XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Where is the link??\n\nExample : ${prefix + command
-              } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`,
-    quoted: m,
-  }
-);
+            replygcXlicon(
+              `Where is the link??\n\nExample : ${prefix + command
+              } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
+            );
           const vid = await xeonvidoh.mp4(text);
           const ytc = `
 *${themeemoji}Tittle:* ${vid.title}
@@ -6306,13 +6788,7 @@ ${meg.result}`);
       case "tiktokvideo":
         {
           if (!args[0])
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Example : ${prefix + command} link`,
-    quoted: m,
-  }
-);
+            return replygcXlicon(`Example : ${prefix + command} link`);
           await XliconStickWait();
           let resxeon = await fetch(
             `https://api.maher-zubair.tech/download/tiktok2?url=${args[0]}`
@@ -6322,7 +6798,7 @@ ${meg.result}`);
             XliconBotInc.sendMessage(
               from,
               {
-                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��`,
+                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�`,
                 video: { url: jsonxeon.result.url.nowm },
                 fileName: "video.mp4",
                 mimetype: "video/mp4",
@@ -6330,32 +6806,14 @@ ${meg.result}`);
               { quoted: m }
             );
           } else {
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Failed to get video. Try after a while...`,
-    quoted: m,
-  }
-);
+            return replygcXlicon("Failed to get video. Try after a while...");
           }
         }
         break;
       case "tiktokaudio":
         {
-          if (!q) return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Example : ${prefix + command} link`,
-    quoted: m,
-  }
-);
-          if (!q.includes("tiktok")) return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Link Invalid!!`,
-    quoted: m,
-  }
-);
+          if (!q) return replygcXlicon(`Example : ${prefix + command} link`);
+          if (!q.includes("tiktok")) return replygcXlicon(`Link Invalid!!`);
           await XliconStickWait();
           let resxeon = await fetch(
             `https://api.maher-zubair.tech/download/tiktok2?url=${q}`
@@ -6372,13 +6830,7 @@ ${meg.result}`);
               { quoted: m }
             );
           } else {
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Failed to get audio. Try after a while...`,
-    quoted: m,
-  }
-);
+            return replygcXlicon("Failed to get audio. Try after a while...");
           }
         }
 
@@ -6386,13 +6838,7 @@ ${meg.result}`);
       case "google":
         {
           if (!q)
-            return XliconBotInc.sendMessage(
-  from,
-  {
-    text: `Example : ${prefix + command} ${botname}`,
-    quoted: m,
-  }
-);
+            return replygcXlicon(`Example : ${prefix + command} ${botname}`);
           await XliconStickWait();
           let google = require("google-it");
           google({ query: text }).then((res) => {
@@ -6402,13 +6848,7 @@ ${meg.result}`);
               teks += `⭔ *Description* : ${g.snippet}\n`;
               teks += `⭔ *Link* : ${g.link}\n\n────────────────────────\n\n`;
             }
-            XliconBotInc.sendMessage(
-              from,
-              {
-                text: teks,
-                quoted: m,
-              }
-            );
+            replygcXlicon(teks);
           });
         }
         break;
@@ -9237,7 +9677,7 @@ Cieeee, What's Going On❤️💖👀`,
         await XliconBotInc.sendMessage(
           m.chat,
           {
-            caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��`,
+            caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�`,
             image: { url: waifudd.data.url },
           },
           { quoted: m }
@@ -10824,7 +11264,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/blur?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10845,7 +11285,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/beautiful?url${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10866,7 +11306,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/facepalm?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10887,7 +11327,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/invert?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10908,7 +11348,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/pixelate?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10929,7 +11369,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/rainbow?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10948,7 +11388,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/maker/trigger?url=${anu}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10969,7 +11409,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/trigger?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -10990,7 +11430,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/wasted?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11007,7 +11447,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/maker/carbonimg?q=${text}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11025,7 +11465,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/tools/colorize?url=${anu}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11046,7 +11486,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/burn?amount=5&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11067,7 +11507,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/sharpen?amount=3&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11088,7 +11528,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/brightness?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11109,7 +11549,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/darkness?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11130,7 +11570,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/resize?height=500&width=500&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11151,7 +11591,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/delete?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11172,7 +11612,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/jail?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11193,7 +11633,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/jokeOverHead?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11214,7 +11654,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/hitler?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11235,7 +11675,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/trash?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11256,7 +11696,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/rip?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11277,7 +11717,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/greyscale?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11298,7 +11738,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/sepia?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11319,7 +11759,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/shit?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11340,7 +11780,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/circle?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11361,7 +11801,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/reply?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11382,7 +11822,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/guildIcon?name=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11403,7 +11843,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/phub?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11515,7 +11955,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/quote?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11536,7 +11976,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/clyde?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11557,7 +11997,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/opinion?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11578,7 +12018,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/bed?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11596,7 +12036,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/kiss?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11617,7 +12057,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/fuse?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11636,7 +12076,7 @@ ${listAdmin}
               image: {
                 url: `https://api.maher-zubair.tech/maker/enhance?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11655,7 +12095,7 @@ ${listAdmin}
               image: {
                 url: `https://api.maher-zubair.tech/maker/dehaze?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11723,6 +12163,7 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
     『 *_MENU_* 』
     
 ╭⏤͟͟͞͞★
+│➛ ${xprefix}ɴᴇᴏᴍᴇɴᴜ
 │➛ ${xprefix}ᴀʟʟᴍᴇɴᴜ
 │➛ ${xprefix}ᴅᴏᴡɴʟᴏᴀᴅᴍᴇɴᴜ
 │➛ ${xprefix}ғᴜɴᴍᴇɴᴜ
@@ -12047,9 +12488,162 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           }
         }
         break;
+
       case "ownermenu":
         {
           let xmenu_oh = `Hi ${pushname}${readmore}\n\n${ownermenu(
+            prefix,
+            hituet
+          )}`;
+          if (typemenu === "v1") {
+            XliconBotInc.sendMessage(
+              m.chat,
+              {
+                image: fs.readFileSync("./XliconMedia/theme/xliconpic.jpg"),
+                caption: xmenu_oh,
+              },
+              {
+                quoted: m,
+              }
+            );
+          } else if (typemenu === "v2") {
+            XliconBotInc.sendMessage(
+              m.chat,
+              {
+                text: xmenu_oh,
+                contextInfo: {
+                  externalAdReply: {
+                    showAdAttribution: true,
+                    title: botname,
+                    body: ownername,
+                    thumbnail: fs.readFileSync(
+                      "./XliconMedia/theme/xliconpic.jpg"
+                    ),
+                    sourceUrl: wagc,
+                    mediaType: 1,
+                    renderLargerThumbnail: true,
+                  },
+                },
+              },
+              {
+                quoted: m,
+              }
+            );
+          }
+          if (typemenu === "v3") {
+            XliconBotInc.sendMessage(
+              m.chat,
+              {
+                video: fs.readFileSync("./XliconMedia/theme/xliconvid.mp4"),
+                caption: xmenu_oh,
+              },
+              {
+                quoted: m,
+              }
+            );
+          } else if (typemenu === "v4") {
+            XliconBotInc.sendMessage(
+              m.chat,
+              {
+                video: fs.readFileSync("./XliconMedia/theme/xliconvid2.mp4"),
+                caption: xmenu_oh,
+                gifPlayback: true,
+              },
+              {
+                quoted: m,
+              }
+            );
+          } else if (typemenu === "v5") {
+            XliconBotInc.relayMessage(
+              m.chat,
+              {
+                scheduledCallCreationMessage: {
+                  callType: "AUDIO",
+                  scheduledTimestampMs: 1200,
+                  title: xmenu_oh,
+                },
+              },
+              {}
+            );
+          } else if (typemenu === "v6") {
+            XliconBotInc.relayMessage(
+              m.chat,
+              {
+                requestPaymentMessage: {
+                  currencyCodeIso4217: "USD",
+                  amount1000: "9999999900",
+                  requestFrom: m.sender,
+                  noteMessage: {
+                    extendedTextMessage: {
+                      text: xmenu_oh,
+                      contextInfo: {
+                        externalAdReply: {
+                          showAdAttribution: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              {}
+            );
+          } else if (typemenu === "v7") {
+            XliconBotInc.sendMessage(
+              m.chat,
+              {
+                document: {
+                  url: "https://i.ibb.co/2W0H9Jq/avatar-contact.png",
+                },
+                caption: xmenu_oh,
+                mimetype: "application/zip",
+                fileName: ownername,
+                fileLength: "99999999999",
+                contextInfo: {
+                  externalAdReply: {
+                    showAdAttribution: true,
+                    title: botname,
+                    body: ownername,
+                    thumbnail: fs.readFileSync(
+                      "./XliconMedia/theme/xliconpic.jpg"
+                    ),
+                    sourceUrl: wagc,
+                    mediaType: 1,
+                    renderLargerThumbnail: true,
+                  },
+                },
+              },
+              {
+                quoted: fstatus,
+              }
+            );
+          } else if (typemenu === "v8") {
+            XliconBotInc.sendMessage(
+              m.chat,
+              {
+                video: fs.readFileSync("./XliconMedia/theme/xliconvid3.mp4"),
+                gifPlayback: true,
+                caption: xmenu_oh,
+                contextInfo: {
+                  externalAdReply: {
+                    title: botname,
+                    body: ownername,
+                    thumbnailUrl: "https://i.ibb.co/c8JJBZZ/peakpx-2.jpg",
+                    sourceUrl: ``,
+                    mediaType: 1,
+                    renderLargerThumbnail: true,
+                  },
+                },
+              },
+              {
+                quoted: m,
+              }
+            );
+          }
+        }
+        break;
+      case "neomenu":
+        {
+          let xmenu_oh = `Hi ${pushname}${readmore}\n\n${neomenu(
             prefix,
             hituet
           )}`;

@@ -35,35 +35,28 @@ async function getData() {
 getData();
 
 // mysql connection
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: 'your_database_host',
   user: 'your_database_user',
   password: 'your_database_password',
   database: 'your_database_name'
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to database:', err);
-    return;
-  }
-  console.log('Connected to database successfully!');
-});
 
 // // test select table
-// connection.query('SELECT * FROM your_table_name', (err, results, fields) => {
-//   if (err) {
+// pool.promise().query('SELECT * FROM your_table_name')
+//   .then(([rows, fields]) => {
+//     console.log('Query results:', rows);
+//   })
+//   .catch((err) => {
 //     console.error('Error querying database:', err);
-//     return;
-//   }
-//   console.log('Query results:', results);
-// });
-// connection.end((err) => {
+//   });
+// pool.end((err) => {
 //   if (err) {
 //     console.error('Error closing database connection:', err);
 //     return;
 //   }
-//   console.log('Connection closed successfully!');
+//   console.log('Connection pool closed successfully!');
 // });
 
 

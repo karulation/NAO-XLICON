@@ -1494,7 +1494,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
 
     //total features
     const Xliconfeature = () => {
-      var mytext = fs.readFileSync("./Nao Shion.js").toString();
+      var mytext = fs.readFileSync("./XLICON-V3.js").toString();
       var numUpper = (mytext.match(/case "/g) || []).length;
       return numUpper;
     };
@@ -2840,7 +2840,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
               "case" +
               `'${cases}'` +
               fs
-                .readFileSync("Nao Shion.js")
+                .readFileSync("XLICON-V3.js")
                 .toString()
                 .split("case '" + cases + "'")[1]
                 .split("break")[0] +

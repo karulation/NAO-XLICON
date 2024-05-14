@@ -719,6 +719,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
         if (!("antidocument" in chats)) chats.antidocument = false;
         if (!("antilink" in chats)) chats.antilink = false;
         if (!("antilinkgc" in chats)) chats.antilinkgc = false;
+        if (!("neonotify" in chats)) chats.neonotify = false;
       } else
         global.db.data.chats[from] = {
           badword: false,
@@ -737,6 +738,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
           anticontact: false,
           antilink: false,
           antilinkgc: false,
+          neonotify: false,
         };
 
       let setting = global.db.data.settings[botNumber];
@@ -3283,6 +3285,29 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         }
         break;
       case "antilinkgc":
+        {
+          if (!m.isGroup) return XeonStickGroup();
+          if (!isBotAdmins) return XliconStickBotAdmin();
+          if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
+          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args[0] === "on") {
+            db.data.chats[from].antilinkgc = true;
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is enabled` },
+              { quoted: m }
+            );
+          } else if (args[0] === "off") {
+            db.data.chats[from].antilinkgc = false;
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `${command} is disabled` },
+              { quoted: m }
+            );
+          }
+        }
+        break;
+      case "neonotify":
         {
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();

@@ -1,4 +1,5 @@
 require("./lib/listmenu");
+import { tiktok2 } from './lib/tiktok'; // Import the tiktok2 function from your downloader file
 
 const {
   BufferJSON,
@@ -6754,15 +6755,16 @@ ${meg.result}`);
         ).catch((err) => replygcXlicon(mess.error));
         break;
       case "tiktok":
-      case "tiktokvideo":
-        {
-          if (!args[0])
-            return replygcXlicon(`Example : ${prefix + command} link`);
-          await XliconStickWait();
-          let resxeon = await fetch(
-            `https://api.maher-zubair.tech/download/tiktok2?url=${args[0]}`
-          );
-          let jsonxeon = await resxeon.json();
+      case "tiktokvideo": 
+        if (!args[0]) {
+          return replygcXlicon(`Example : ${prefix + command} link`);
+        }
+      
+        await XliconStickWait();
+        
+        try {
+          const jsonxeon = await tiktok2(args[0]); // Call the tiktok2 function to get the video URLs
+      
           if (jsonxeon.status == "200" && jsonxeon.result.url.nowm) {
             XliconBotInc.sendMessage(
               from,
@@ -6777,6 +6779,9 @@ ${meg.result}`);
           } else {
             return replygcXlicon("Failed to get video. Try after a while...");
           }
+        } catch (error) {
+          console.error("Error downloading TikTok video:", error);
+          return replygcXlicon("Failed to get video. Try after a while...");
         }
         break;
       case "tiktokaudio":

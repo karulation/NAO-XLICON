@@ -5640,6 +5640,65 @@ Type *surrender* to give up and admit defeat`;
 
       // -------------------------------- NEO INTRO END ------------------------------------
 
+      // -------------------------------- NEO TEAM START ------------------------------------
+
+      case "igaddday":
+        if (!XeonTheCreator) return XliconStickOwner();
+        // if (!groupAdmins) return replygcXlicon(mess.admin);
+        if (args.length < 2)
+          return replygcXlicon(
+            `*_Send command ${prefix}addday [member] [days]. Example ${prefix}addday ren sunday monday_*`
+          );
+      
+        const [member, ...days] = args;
+      
+        if (!igDepartment["igdepartment"])
+          return replygcXlicon("Invalid department name.");
+      
+        if (!igDepartment["igdepartment"][member])
+          return replygcXlicon("Invalid member name.");
+      
+        igDepartment["igdepartment"][member].days = days;
+        
+        fs.writeFileSync(
+          "./src/data/function/neoteam.json",
+          JSON.stringify(igDepartment, null, 2)
+        );
+      
+        replygcXlicon("Successfully added days for the member in the department.");
+        break;
+
+      case "igdepartment":
+        // Define the file path where the JSON data is stored
+        const filePath = "./src/data/function/neoteam.json";
+      
+        // Read the JSON data from the file
+        const rawData = fs.readFileSync(filePath);
+        const neoTeam = JSON.parse(rawData);
+      
+        // Check if the department data exists
+        if (!neoTeam["igdepartment"]) return replygcXlicon("No department data available.");
+      
+        let departmentData = "📊 *IG Department Overview* 📊\n\n";
+        
+        // Fetching data from the JSON file
+        const department = neoTeam["igdepartment"];
+      
+        // Iterating through each member in the department
+        Object.entries(department).forEach(([member, data]) => {
+          departmentData += `*Member*: ${member}\n`;
+          departmentData += `*Days*: ${data.days.join(", ")}\n`;
+          departmentData += `*Total Need to Post*: ${data["need to post"]}\n\n`;
+        });
+      
+        replygcXlicon(departmentData);
+        break;
+
+      
+
+
+      // -------------------------------- NEO TEAM END ------------------------------------
+
 
       case "ai":
       case "ask":

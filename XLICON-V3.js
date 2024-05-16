@@ -5302,28 +5302,14 @@ Type *surrender* to give up and admit defeat`;
         break;
 
       case "getID":
-        {
-          let user = global.db.data.users[m.sender];
-          user.afkTime = +new Date();
-
-          if (text) {
-            user.afkReason = text;
-
-            XliconBotInc.sendMessage(
-              m.chat,
-              { text: `Chat ID: *${m.chat}*` },
-              { quoted: m }
-            );
-
-          } else {
-            user.afkReason = "";
-            XliconBotInc.sendMessage(
-              m.chat,
-              { text: `*${m.pushName}* is now AFK` },
-              { quoted: m }
-            );
-          }
-        }
+       
+        console.log(
+          color(
+            `\n< ===================\nChat ID: ${m.chat}\n< ===================\n`,
+            "yellow"
+          )
+        );
+          
         break;
 
       // -------------------------------- NEO INFO START ------------------------------------

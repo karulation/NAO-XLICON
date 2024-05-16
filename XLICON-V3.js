@@ -125,8 +125,10 @@ const xeonverifieduser = JSON.parse(
   fs.readFileSync("./src/data/role/user.json")
 );
 
+const neoTeamPath = "./src/data/role/neoteam.json";
+
 const neoTeam = JSON.parse(
-  fs.readFileSync("./src/data/role/neoteam.json")
+  fs.readFileSync(neoTeamPath)
 );
 
 
@@ -5675,7 +5677,7 @@ Type *surrender* to give up and admit defeat`;
         
         // Save the updated data back to the JSON file
         fs.writeFileSync(
-          filePath,
+          neoTeamPath,
           JSON.stringify(neoTeam, null, 2)
         );
         
@@ -5702,7 +5704,7 @@ Type *surrender* to give up and admit defeat`;
         replygcXlicon(departmentData);
         break;
 
-      case "completedpost":
+      case "donepost":
         // Check if the command was sent by an IG department member
         if (!igDepartment[text]) return return XliconBotInc.sendMessage(
             from,
@@ -5719,7 +5721,7 @@ Type *surrender* to give up and admit defeat`;
         igDepartment[text]["need to post"]--;
       
         // Save the updated data back to the JSON file
-        fs.writeFileSync(filePath, JSON.stringify(igDepartment));
+        fs.writeFileSync(neoTeamPath, JSON.stringify(igDepartment));
       
         replygcXlicon("Post completed! Your total need to post has been updated.");
         break;

@@ -5309,6 +5309,12 @@ Type *surrender* to give up and admit defeat`;
             "yellow"
           )
         );
+
+        XliconBotInc.sendMessage(
+          m.chat,
+          { text: `*${m.pushName}* chat ID send, please check dev console.` },
+          { quoted: m }
+        );
           
         break;
 

@@ -125,6 +125,11 @@ const xeonverifieduser = JSON.parse(
   fs.readFileSync("./src/data/role/user.json")
 );
 
+const neoTeam = JSON.parse(
+  fs.readFileSync("./src/data/role/neoteam.json")
+);
+
+
 global.db.data = JSON.parse(fs.readFileSync("./src/database.json"));
 if (global.db.data)
   global.db.data = {
@@ -5642,39 +5647,42 @@ Type *surrender* to give up and admit defeat`;
 
       // -------------------------------- NEO TEAM START ------------------------------------
 
-      case "igaddday":
-        if (!XeonTheCreator) return XliconStickOwner();
-        // if (!groupAdmins) return replygcXlicon(mess.admin);
-        if (args.length < 2)
-          return replygcXlicon(
-            `*_Send command ${prefix}addday [member] [days]. Example ${prefix}addday ren sunday monday_*`
-          );
-      
-        const [member, ...days] = args;
-      
-        if (!igDepartment["igdepartment"])
-          return replygcXlicon("Invalid department name.");
-      
-        if (!igDepartment["igdepartment"][member])
-          return replygcXlicon("Invalid member name.");
-      
-        igDepartment["igdepartment"][member].days = days;
+      case "addday":
         
+        // Check if the command was sent by the bot owner
+        if (!XeonTheCreator) return XliconStickOwner();
+        
+        // Check if the command has the correct format
+        if (!text) {
+          return XliconBotInc.sendMessage(
+            from,
+            {
+              text: `*_Send command ${prefix}addday [member] [days]. Example ${prefix}addday ren sunday monday_*`,
+              quoted: m,
+            }
+          );
+        }
+        
+        // Extract member and days from the text
+        const [member, ...days] = text.split(" ");
+        
+        // Check if the member is part of the IG department
+        if (!neoTeam["igdepartment"]) return replygcXlicon("Invalid department name.");
+        if (!neoTeam["igdepartment"][member]) return replygcXlicon("Invalid member name.");
+        
+        // Assign the days to the member
+        neoTeam["igdepartment"][member].days = days;
+        
+        // Save the updated data back to the JSON file
         fs.writeFileSync(
-          "./src/data/function/neoteam.json",
-          JSON.stringify(igDepartment, null, 2)
+          filePath,
+          JSON.stringify(neoTeam, null, 2)
         );
-      
+        
         replygcXlicon("Successfully added days for the member in the department.");
-        break;
+
 
       case "igdepartment":
-        // Define the file path where the JSON data is stored
-        const filePath = "./src/data/function/neoteam.json";
-      
-        // Read the JSON data from the file
-        const rawData = fs.readFileSync(filePath);
-        const neoTeam = JSON.parse(rawData);
       
         // Check if the department data exists
         if (!neoTeam["igdepartment"]) return replygcXlicon("No department data available.");
@@ -5694,7 +5702,27 @@ Type *surrender* to give up and admit defeat`;
         replygcXlicon(departmentData);
         break;
 
+      case "completedpost":
+        // Check if the command was sent by an IG department member
+        if (!igDepartment[text]) return return XliconBotInc.sendMessage(
+            from,
+            {
+              text: `*Not a member of the IG department*`,
+              quoted: m,
+            }
+          );
       
+        // Check if the member has any posts left to complete
+        if (igDepartment[text]["need to post"] <= 0) return replygcXlicon("You have already completed all your posts.");
+      
+        // Deduct 1 from the total need to post for the member
+        igDepartment[text]["need to post"]--;
+      
+        // Save the updated data back to the JSON file
+        fs.writeFileSync(filePath, JSON.stringify(igDepartment));
+      
+        replygcXlicon("Post completed! Your total need to post has been updated.");
+        break;
 
 
       // -------------------------------- NEO TEAM END ------------------------------------

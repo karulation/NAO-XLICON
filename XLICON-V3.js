@@ -5312,7 +5312,7 @@ Type *surrender* to give up and admit defeat`;
 
         XliconBotInc.sendMessage(
           m.chat,
-          { text: `*${m.pushName}* chat ID send, please check dev console.` },
+          { text: `*${m.pushName}-sama*, Nao already send the chat ID. Please check Nao's dev console.` },
           { quoted: m }
         );
           

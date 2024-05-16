@@ -5277,7 +5277,6 @@ Type *surrender* to give up and admit defeat`;
         break;
 
       case "afk":
-        console.log("afk");
         {
           let user = global.db.data.users[m.sender];
           user.afkTime = +new Date();
@@ -5288,6 +5287,31 @@ Type *surrender* to give up and admit defeat`;
             XliconBotInc.sendMessage(
               m.chat,
               { text: `*${m.pushName}* is now AFK for: \`${text}\`` },
+              { quoted: m }
+            );
+
+          } else {
+            user.afkReason = "";
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `*${m.pushName}* is now AFK` },
+              { quoted: m }
+            );
+          }
+        }
+        break;
+
+      case "getID":
+        {
+          let user = global.db.data.users[m.sender];
+          user.afkTime = +new Date();
+
+          if (text) {
+            user.afkReason = text;
+
+            XliconBotInc.sendMessage(
+              m.chat,
+              { text: `Chat ID: *${m.chat}*` },
               { quoted: m }
             );
 

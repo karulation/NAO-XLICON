@@ -125,7 +125,7 @@ const xeonverifieduser = JSON.parse(
   fs.readFileSync("./src/data/role/user.json")
 );
 
-const neoTeamPath = "./src/data/role/neoteam.json";
+const neoTeamPath = "./src/data/function/neoteam.json";
 
 const neoTeam = JSON.parse(
   fs.readFileSync(neoTeamPath)

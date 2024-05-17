@@ -140,21 +140,21 @@
         "attack": 15,
         "total": 100,
         "durability": 100,
-        "cost": 50  // Adding the cost property for Iron Sword
+        "cost": 50
       },
       {
         "name": "Fire Potion",
         "attack": 20,
         "total": 50,
         "durability": 1,
-        "cost": 30  // Adding the cost property for Fire Potion
+        "cost": 30
       },
       {
         "name": "Steel Sword",
         "attack": 25,
         "total": 70,
         "durability": 150,
-        "cost": 80  // Adding the cost property for Steel Sword
+        "cost": 80  
       }
     ],
     "defensive_items": [
@@ -163,42 +163,42 @@
         "defense": 5,
         "total": 100,
         "durability": 100,
-        "cost": 40  // Adding the cost property for Iron Helmet
+        "cost": 40
       },
       {
         "name": "Iron Chestplate",
         "defense": 10,
         "total": 100,
         "durability": 100,
-        "cost": 60  // Adding the cost property for Iron Chestplate
+        "cost": 60  
       },
       {
         "name": "Iron Leggings",
         "defense": 7,
         "total": 100,
         "durability": 100,
-        "cost": 50  // Adding the cost property for Iron Leggings
+        "cost": 50 
       },
       {
         "name": "Iron Boots",
         "defense": 3,
         "total": 100,
         "durability": 100,
-        "cost": 30  // Adding the cost property for Iron Boots
+        "cost": 30 
       },
       {
         "name": "Health Potion",
         "hp_recovery": 50,
         "total": 200,
         "durability": 1,
-        "cost": 20  // Adding the cost property for Health Potion
+        "cost": 20  
       },
       {
         "name": "Steel Helmet",
         "defense": 10,
         "total": 80,
         "durability": 200,
-        "cost": 70  // Adding the cost property for Steel Helmet
+        "cost": 70  
       }
     ]
   }

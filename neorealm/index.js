@@ -319,7 +319,18 @@ function registerUser(userId, name) {
   // Save updated data to JSON file
   saveDataToJSON();
 
-  console.log('User registered successfully!');
+  console.log(`Welcome to Neo Realms, brave adventurer!
+
+As you enter this mystical realm, you find yourself surrounded by an aura of mystery and danger. The air crackles with anticipation, and the echoes of ancient legends whisper through the wind.
+
+Suddenly, your attention is drawn to a scene of despair. In the distance, you spot Nao Shion, a renowned sorceress, her body battered and bruised, tears streaming down her face. She collapses before you, gasping for breath.
+
+"Hero," she pleads, her voice trembling with fear and urgency, "you must help us! The Demon Lord has kidnapped my dearest friend, Ai-chan, and taken her to the treacherous depths of the 100th floor. Only you have the strength and courage to face the perils that lie ahead, to vanquish the darkness and rescue Ai-chan from the clutches of evil."
+
+With determination burning in your heart, you accept the challenge. Your journey begins now, adventurer. Forge your path through perilous dungeons, battle fearsome monsters, and confront the ultimate evil that lurks in the shadows.
+
+The fate of Ai-chan and the future of Neo Realms rest in your hands. May courage guide your steps, and may victory be yours!
+`);
 }
 
 // Function to simulate a hunt encounter

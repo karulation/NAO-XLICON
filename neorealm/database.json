@@ -1,0 +1,184 @@
+{
+  "users": [
+    {
+      "user_id": "user123",
+      "name": "PlayerOne",
+      "stats": {
+        "hp": 100,
+        "xp": 0,
+        "attack": 10,
+        "defense": 5,
+        "level": 1,
+        "floor": 1
+      },
+      "equipment": {
+        "helmet": "Iron Helmet",
+        "chestplate": "Iron Chestplate",
+        "leggings": "Iron Leggings",
+        "boots": "Iron Boots",
+        "weapon": "Iron Sword"
+      },
+      "inventory": {
+        "offensive_items": [
+          {
+            "name": "Iron Sword",
+            "total": 1,
+            "durability": 100
+          },
+          {
+            "name": "Fire Potion",
+            "total": 2,
+            "durability": 1
+          }
+        ],
+        "defensive_items": [
+          {
+            "name": "Iron Helmet",
+            "total": 1,
+            "durability": 100
+          },
+          {
+            "name": "Iron Chestplate",
+            "total": 1,
+            "durability": 100
+          },
+          {
+            "name": "Iron Leggings",
+            "total": 1,
+            "durability": 100
+          },
+          {
+            "name": "Iron Boots",
+            "total": 1,
+            "durability": 100
+          },
+          {
+            "name": "Health Potion",
+            "total": 5,
+            "durability": 1
+          }
+        ]
+      }
+    },
+    {
+      "user_id": "user124",
+      "name": "PlayerTwo",
+      "stats": {
+        "hp": 120,
+        "xp": 10,
+        "attack": 12,
+        "defense": 6,
+        "level": 2,
+        "floor": 1
+      },
+      "equipment": {
+        "helmet": "Steel Helmet",
+        "chestplate": "Steel Chestplate",
+        "leggings": "Steel Leggings",
+        "boots": "Steel Boots",
+        "weapon": "Steel Sword"
+      },
+      "inventory": {
+        "offensive_items": [
+          {
+            "name": "Steel Sword",
+            "total": 1,
+            "durability": 150
+          },
+          {
+            "name": "Fire Potion",
+            "total": 1,
+            "durability": 1
+          }
+        ],
+        "defensive_items": [
+          {
+            "name": "Steel Helmet",
+            "total": 1,
+            "durability": 200
+          },
+          {
+            "name": "Steel Chestplate",
+            "total": 1,
+            "durability": 200
+          },
+          {
+            "name": "Steel Leggings",
+            "total": 1,
+            "durability": 200
+          },
+          {
+            "name": "Steel Boots",
+            "total": 1,
+            "durability": 200
+          },
+          {
+            "name": "Health Potion",
+            "total": 3,
+            "durability": 1
+          }
+        ]
+      }
+    }
+  ],
+  "available_items": {
+    "offensive_items": [
+      {
+        "name": "Iron Sword",
+        "attack": 15,
+        "total": 100,
+        "durability": 100
+      },
+      {
+        "name": "Fire Potion",
+        "attack": 20,
+        "total": 50,
+        "durability": 1
+      },
+      {
+        "name": "Steel Sword",
+        "attack": 25,
+        "total": 70,
+        "durability": 150
+      }
+    ],
+    "defensive_items": [
+      {
+        "name": "Iron Helmet",
+        "defense": 5,
+        "total": 100,
+        "durability": 100
+      },
+      {
+        "name": "Iron Chestplate",
+        "defense": 10,
+        "total": 100,
+        "durability": 100
+      },
+      {
+        "name": "Iron Leggings",
+        "defense": 7,
+        "total": 100,
+        "durability": 100
+      },
+      {
+        "name": "Iron Boots",
+        "defense": 3,
+        "total": 100,
+        "durability": 100
+      },
+      {
+        "name": "Health Potion",
+        "hp_recovery": 50,
+        "total": 200,
+        "durability": 1
+      },
+      {
+        "name": "Steel Helmet",
+        "defense": 10,
+        "total": 80,
+        "durability": 200
+      }
+    ]
+  }
+}

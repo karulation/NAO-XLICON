@@ -32,8 +32,11 @@ function calculateStats(userId) {
 
   // Reset user's stats to base values
   stats.hp = 100;
-  stats.attack = 10;
-  stats.defense = 5;
+
+  // Increment base attack and defense based on user's level
+  let level = stats.level;
+  stats.attack = 10 + (level - 1) * 2; // Adjust the increment as needed
+  stats.defense = 5 + (level - 1) * 1; // Adjust the increment as needed
 
   // Update user's stats based on equipped items
   updateStatsFromItem(equipment.helmet, 'defense', stats);
@@ -63,6 +66,38 @@ function calculateDamage(attackerAttack, defenderDefense) {
   // Calculate damage dealt
   let damage = Math.max(attackerAttack - defenderDefense, 0);
   return damage;
+}
+
+
+function checkLevelUp(userId) {
+  let userIndex = RPGusers.findIndex(user => user.user_id === userId);
+
+  if (userIndex === -1) {
+    console.log('User not found!');
+    return;
+  }
+
+  let user = RPGusers[userIndex];
+  let xpThresholds = [50, 100, 150, 200]; // Adjust these thresholds as needed
+  let currentLevel = user.stats.level;
+  let currentXP = user.stats.xp;
+
+  // Check if the user's XP meets or exceeds the thresholds for leveling up
+  for (let i = currentLevel - 1; i < xpThresholds.length; i++) {
+    if (currentXP >= xpThresholds[i]) {
+      // Increment user's level
+      user.stats.level++;
+      currentLevel = user.stats.level;
+
+      console.log(`${user.name} leveled up to level ${currentLevel}!`);
+    } else {
+      // Break the loop if the current XP doesn't meet the next threshold
+      break;
+    }
+  }
+
+  // Save updated data to JSON file
+  saveDataToJSON();
 }
 
 // ----------------------------------------END CALCULATION-----------------------------------------------------

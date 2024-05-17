@@ -374,3 +374,128 @@ function hunt(userId) {
   saveDataToJSON();
 }
 
+function buyItem(userId, itemName) {
+  let userIndex = RPGusers.findIndex(user => user.user_id === userId);
+
+  if (userIndex === -1) {
+    console.log('User not found!');
+    return;
+  }
+
+  let user = RPGusers[userIndex];
+  let inventory = user.inventory;
+
+  // Find the item in available_items
+  let item = RPGitems.offensive_items.find(item => item.name === itemName) || 
+             RPGitems.defensive_items.find(item => item.name === itemName);
+
+  if (!item) {
+    console.log('Item not found in the shop!');
+    return;
+  }
+
+  // Check if the user has enough gold
+  let itemCost = item.cost || 0; // Assuming each item has a cost property, defaulting to 0 if not specified
+  if (user.gold < itemCost) {
+    console.log('Insufficient gold to buy this item!');
+    return;
+  }
+
+  // Deduct the gold from user's balance
+  user.gold -= itemCost;
+
+  // Add the item to the user's inventory
+  let inventoryType = RPGitems.offensive_items.includes(item) ? 'offensive_items' : 'defensive_items';
+  let userInventoryItem = inventory[inventoryType].find(i => i.name === itemName);
+
+  if (userInventoryItem) {
+    // If the user already has the item, increase its total count
+    userInventoryItem.total++;
+  } else {
+    // If the user doesn't have the item, add it to the inventory
+    inventory[inventoryType].push({ name: itemName, total: 1, durability: item.durability || 100 }); // Assuming default durability is 100 if not specified
+  }
+
+  // Update user data in RPGusers
+  RPGusers[userIndex] = user;
+
+  // Save updated data to JSON file
+  saveDataToJSON();
+
+  console.log(`${itemName} bought successfully.`);
+}
+
+function buyItem(userId, itemName) {
+  let userIndex = RPGusers.findIndex(user => user.user_id === userId);
+
+  if (userIndex === -1) {
+    console.log('User not found!');
+    return;
+  }
+
+  let user = RPGusers[userIndex];
+  let inventory = user.inventory;
+  let userGold = user.gold;
+
+  // Find the item in available_items
+  let item = RPGitems.offensive_items.find(item => item.name === itemName);
+  if (!item) {
+    item = RPGitems.defensive_items.find(item => item.name === itemName);
+  }
+
+  if (!item) {
+    console.log('Item not found in the shop!');
+    return;
+  }
+
+  // Check if the user has enough gold
+  let itemCost = item.cost || 5; // Assuming each item has a cost property, defaulting to 0 if not specified
+  if (userGold < itemCost) {
+    console.log('Insufficient gold to buy this item!');
+    return;
+  }
+
+  // Deduct the gold from user's balance
+  userGold -= itemCost;
+
+  // Add the item to the user's inventory
+  let inventoryType = RPGitems.offensive_items.includes(item) ? 'offensive_items' : 'defensive_items';
+  let userInventoryItem = inventory[inventoryType].find(i => i.name === itemName);
+
+  if (userInventoryItem) {
+    // If the user already has the item, increase its total count and update durability
+    userInventoryItem.total++;
+    userInventoryItem.durability = item.durability || 100; // Update durability if specified
+  } else {
+    // If the user doesn't have the item, add it to the inventory
+    inventory[inventoryType].push({ name: itemName, total: 1, durability: item.durability || 100 }); // Assuming default durability is 100 if not specified
+  }
+
+  // Update user's gold balance
+  user.gold = userGold;
+
+  // Update user data in RPGusers
+  RPGusers[userIndex] = user;
+
+  // Save updated data to JSON file
+  saveDataToJSON();
+
+  console.log(`${itemName} bought successfully.`);
+}
+
+function showShop() {
+  console.log('🛒 Neo Realm Shop:');
+  
+  // Display offensive items
+  console.log('\nOffensive Items:');
+  RPGitems.offensive_items.forEach(item => {
+    console.log(`- ${item.name} | Cost: ${item.cost || 0} gold | Attack: ${item.attack} | Durability: ${item.durability || 100}`);
+  });
+  
+  // Display defensive items
+  console.log('\nDefensive Items:');
+  RPGitems.defensive_items.forEach(item => {
+    console.log(`- ${item.name} | Cost: ${item.cost || 0} gold | Defense: ${item.defense} | Durability: ${item.durability || 100}`);
+  });
+}
+

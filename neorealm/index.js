@@ -272,6 +272,8 @@ function changeEquipment(userId, slot, itemName) {
 
   // Update user data in RPGusers
   RPGusers[userIndex] = user;
+  
+  calculateStats(userId);
 
   // Save updated data to JSON file
   saveDataToJSON();
@@ -365,6 +367,8 @@ function hunt(userId) {
 
   // Update user data in RPGusers
   RPGusers[userIndex] = user;
+
+  calculateStats(userId);
 
   // Save updated data to JSON file
   saveDataToJSON();

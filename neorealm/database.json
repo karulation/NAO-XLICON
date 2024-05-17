@@ -121,6 +121,16 @@
       }
     }
   ],
+  "mobs": {
+    "floor_1": [
+      { "name": "Goblin", "hp": 20, "attack": 5, "defense": 2, "xp_reward": 50 },
+      { "name": "Skeleton", "hp": 30, "attack": 8, "defense": 3, "xp_reward": 70 }
+    ],
+    "floor_2": [
+      { "name": "Orc", "hp": 40, "attack": 12, "defense": 5, "xp_reward": 100 },
+      { "name": "Zombie", "hp": 35, "attack": 10, "defense": 4, "xp_reward": 90 }
+    ],
+  }
   "available_items": {
     "offensive_items": [
       {

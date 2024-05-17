@@ -4,13 +4,14 @@ const fs = require('fs');
 const jsonData = fs.readFileSync('./database.json', 'utf8');
 const data = JSON.parse(jsonData);
 
-// Access RPGusers and RPGitems from the parsed JSON object
+// Access RPGusers, RPGitems, and RPGmobs from the parsed JSON object
 const RPGusers = data.users;
-const RPGitems = data.available_items; // Accessing available items, not RPG items
+const RPGitems = data.available_items;
+const RPGmobs = data.mobs;
 
 // Function to save updated data to JSON file
 function saveDataToJSON() {
-  let newData = { users: RPGusers, items: RPGitems };
+  let newData = { users: RPGusers, items: RPGitems, mobs: RPGmobs };
   fs.writeFileSync('./database.json', JSON.stringify(newData, null, 2));
 }
 
@@ -233,6 +234,99 @@ function changeEquipment(userId, slot, itemName) {
   //     inventory.defensive_items.splice(itemIndex, 1);
   //   }
   // }
+
+  // Update user data in RPGusers
+  RPGusers[userIndex] = user;
+
+  // Save updated data to JSON file
+  saveDataToJSON();
+}
+
+// Function to register a new user
+function registerUser(userId, name) {
+  // Check if the user is already registered
+  let existingUser = RPGusers.find(user => user.user_id === userId);
+  if (existingUser) {
+    console.log('User already registered!');
+    return;
+  }
+
+  // Create a new user object
+  let newUser = {
+    user_id: userId,
+    name: name,
+    stats: {
+      hp: 100,
+      xp: 0,
+      attack: 10,
+      defense: 5,
+      level: 1,
+      floor: 1
+    },
+    equipment: {
+      helmet: 'Iron Helmet',
+      chestplate: 'Iron Chestplate',
+      leggings: 'Iron Leggings',
+      boots: 'Iron Boots',
+      weapon: 'Iron Sword'
+    },
+    inventory: {
+      offensive_items: [],
+      defensive_items: []
+    }
+  };
+
+  // Add the new user to the RPGusers array
+  RPGusers.push(newUser);
+
+  // Save updated data to JSON file
+  saveDataToJSON();
+
+  console.log('User registered successfully!');
+}
+
+// Function to simulate a hunt encounter
+function hunt(userId) {
+  let userIndex = RPGusers.findIndex(user => user.user_id === userId);
+
+  if (userIndex === -1) {
+    console.log('User not found!');
+    return;
+  }
+
+  let user = RPGusers[userIndex];
+  let floor = user.stats.floor;
+
+  // Get mobs for the user's current floor
+  let availableMobs = RPGmobs[`floor_${floor}`];
+
+  if (!availableMobs) {
+    console.log('No mobs found for this floor!');
+    return;
+  }
+
+  // Randomly select a mob from the available mobs
+  let randomIndex = Math.floor(Math.random() * availableMobs.length);
+  let mob = availableMobs[randomIndex];
+
+  console.log(`You encountered a ${mob.name}!`);
+
+  // Calculate damage dealt by the mob
+  let damageDealt = calculateDamage(mob.attack, user.stats.defense);
+  console.log(`The ${mob.name} dealt ${damageDealt} damage to you.`);
+
+  // Update user's HP
+  user.stats.hp -= damageDealt;
+
+  if (user.stats.hp <= 0) {
+    console.log('You were defeated by the mob!');
+    // Subtract 20% of user's XP upon defeat
+    user.stats.xp -= Math.round(user.stats.xp * 0.2);
+  } else {
+    console.log('You defeated the mob!');
+    // Add XP based on mob defeated
+    user.stats.xp += Math.round(mob.xpReward);
+  }
 
   // Update user data in RPGusers
   RPGusers[userIndex] = user;

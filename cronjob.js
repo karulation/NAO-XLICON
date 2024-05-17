@@ -1,8 +1,9 @@
 //library setup 
+const cron = require('node-cron');
+const fs = require('fs');
 const { google } = require('googleapis');
 const dotenv = require('dotenv');
 dotenv.config();
-const cron = require('node-cron');
 const mysql = require('mysql');
 
 
@@ -60,11 +61,34 @@ const pool = mysql.createPool({
 // });
 
 
+var neoHqID = "groupID";
 
-// cronjob list
+// Load the data from the JSON file
+const neoTeamPath = './src/data/function/neoteam.json";
+let neoTeam = require(neoTeamPath);
 
-cron.schedule('* * * * *', () => {
-  var message = 'This function will run every minute';
-  var chatId = "";
-  sendXliconBotIncMessage(chatId, message);
-});
+// Function to check if a member needs to post on the current day
+function checkPostDay(member) {
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    return member.days.includes(today);
+}
+
+// Function to run the cron job
+function runCronJob() {
+    cron.schedule('* * * * *', () => {
+        const todayMembers = neoTeam.members.filter(member => checkPostDay(member));
+        todayMembers.forEach(member => {
+            if (member.total_need_to_post > 0) {
+                console.log(`${member.name} needs to post today.`);
+                // You can send a WhatsApp message or perform any other action here
+                XliconBotInc.sendMessage(
+                  neoHqID,
+                  { text: `*${m.pushName}* is now AFK for: \`${text}\`` }
+                );
+            }
+        });
+    });
+}
+
+// Start the cron job
+runCronJob();

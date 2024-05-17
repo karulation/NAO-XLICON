@@ -3,6 +3,7 @@
     {
       "user_id": "user123",
       "name": "PlayerOne",
+      "gold": "100",
       "stats": {
         "hp": 100,
         "xp": 0,
@@ -63,6 +64,7 @@
     {
       "user_id": "user124",
       "name": "PlayerTwo",
+      "gold": "100",
       "stats": {
         "hp": 120,
         "xp": 10,
@@ -137,19 +139,22 @@
         "name": "Iron Sword",
         "attack": 15,
         "total": 100,
-        "durability": 100
+        "durability": 100,
+        "cost": 50  // Adding the cost property for Iron Sword
       },
       {
         "name": "Fire Potion",
         "attack": 20,
         "total": 50,
-        "durability": 1
+        "durability": 1,
+        "cost": 30  // Adding the cost property for Fire Potion
       },
       {
         "name": "Steel Sword",
         "attack": 25,
         "total": 70,
-        "durability": 150
+        "durability": 150,
+        "cost": 80  // Adding the cost property for Steel Sword
       }
     ],
     "defensive_items": [
@@ -157,37 +162,43 @@
         "name": "Iron Helmet",
         "defense": 5,
         "total": 100,
-        "durability": 100
+        "durability": 100,
+        "cost": 40  // Adding the cost property for Iron Helmet
       },
       {
         "name": "Iron Chestplate",
         "defense": 10,
         "total": 100,
-        "durability": 100
+        "durability": 100,
+        "cost": 60  // Adding the cost property for Iron Chestplate
       },
       {
         "name": "Iron Leggings",
         "defense": 7,
         "total": 100,
-        "durability": 100
+        "durability": 100,
+        "cost": 50  // Adding the cost property for Iron Leggings
       },
       {
         "name": "Iron Boots",
         "defense": 3,
         "total": 100,
-        "durability": 100
+        "durability": 100,
+        "cost": 30  // Adding the cost property for Iron Boots
       },
       {
         "name": "Health Potion",
         "hp_recovery": 50,
         "total": 200,
-        "durability": 1
+        "durability": 1,
+        "cost": 20  // Adding the cost property for Health Potion
       },
       {
         "name": "Steel Helmet",
         "defense": 10,
         "total": 80,
-        "durability": 200
+        "durability": 200,
+        "cost": 70  // Adding the cost property for Steel Helmet
       }
     ]
   }

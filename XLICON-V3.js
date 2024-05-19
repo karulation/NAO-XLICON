@@ -1,6 +1,6 @@
 require("./lib/listmenu");
-import { tiktok2 } from './lib/tiktok'; // Import the tiktok2 function from your downloader file
-
+const cronjob = require('./cronjob.js'); // Import the function
+cronjob();
 const {
   BufferJSON,
   WA_DEFAULT_EPHEMERAL,
@@ -727,7 +727,6 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
         if (!("antidocument" in chats)) chats.antidocument = false;
         if (!("antilink" in chats)) chats.antilink = false;
         if (!("antilinkgc" in chats)) chats.antilinkgc = false;
-        if (!("neonotify" in chats)) chats.neonotify = false;
       } else
         global.db.data.chats[from] = {
           badword: false,
@@ -746,7 +745,6 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
           anticontact: false,
           antilink: false,
           antilinkgc: false,
-          neonotify: false,
         };
 
       let setting = global.db.data.settings[botNumber];
@@ -965,7 +963,7 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
           );
           result = {
             status: 200,
-            author: "KaruShion",
+            author: "SalmanSer",
             url:
               "https://api.telegram.org/file/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/" +
               data2.data.result.file_path,
@@ -1418,10 +1416,9 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
 
     if (db.data.chats[m.chat].antilinkgc) {
       if (budy.match(`chat.whatsapp.com`)) {
-        bvl = `\`\`\`「 GC Link Detected 」\`\`\`\n\n*_Admin has sent a gc link, admin is free to send any link😇_*`;
-        if (isAdmins) return replygcXlicon(bvl);
-        if (m.key.fromMe) return replygcXlicon(bvl);
-        if (XeonTheCreator) return replygcXlicon(bvl);
+        if (isAdmins) return;
+        if (m.key.fromMe) return;
+        if (XeonTheCreator) return;
         await XliconBotInc.sendMessage(m.chat, {
           delete: {
             remoteJid: m.chat,
@@ -1443,10 +1440,9 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
     }
     if (db.data.chats[m.chat].antilink) {
       if (budy.match("http") && budy.match("https")) {
-        bvl = `\`\`\`「 Link Detected 」\`\`\`\n\n*_Admin has sent a link, admin is free to send any link😇_*`;
-        if (isAdmins) return replygcXlicon(bvl);
-        if (m.key.fromMe) return replygcXlicon(bvl);
-        if (XeonTheCreator) return replygcXlicon(bvl);
+        if (isAdmins) return;
+        if (m.key.fromMe) return;
+        if (XeonTheCreator) return;
         await XliconBotInc.sendMessage(m.chat, {
           delete: {
             remoteJid: m.chat,
@@ -2410,7 +2406,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "autoread":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q === "on") {
           db.data.settings[botNumber].autoread = true;
           replygcXlicon(`*_Successfully changed autoread to ${q}_*`);
@@ -2422,7 +2422,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "unavailable":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q === "on") {
           db.data.settings[botNumber].online = true;
           replygcXlicon(`*_Successfully changed unavailable to ${q}_*`);
@@ -2434,7 +2438,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "autorecordtype":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q === "on") {
           db.data.settings[botNumber].autorecordtype = true;
           replygcXlicon(
@@ -2450,7 +2458,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "autorecord":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q === "on") {
           db.data.settings[botNumber].autorecord = true;
           replygcXlicon(`*_Successfully changed Auto-Recording to ${q}_*`);
@@ -2462,7 +2474,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "autotype":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q === "on") {
           db.data.settings[botNumber].autotype = true;
           replygcXlicon(`*_Successfully changed Auto-Typing to ${q}_*`);
@@ -2474,7 +2490,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "autobio":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].autobio = true;
           replygcXlicon(`*_Successfully Changed AutoBio To ${q}_*`);
@@ -2489,7 +2509,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         if (!isBotAdmins) return XliconStickBotAdmin();
         if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].autosticker = true;
           replygcXlicon(`*_Successfully Changed AutoBio To ${q}_*`);
@@ -2501,7 +2525,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "autoblock":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].autoblocknum = true;
           replygcXlicon(`*_Successfully Changed Auto-Block To ${q}_*`);
@@ -2514,7 +2542,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "onlygc":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].onlygrub = true;
           replygcXlicon(`*_Successfully Changed Onlygroup To ${q}_*`);
@@ -2527,7 +2559,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "onlypc":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].onlypc = true;
           replygcXlicon(`*_Successfully Changed Only-Pc To ${q}_*`);
@@ -2540,7 +2576,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "onlyindianumber":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].onlyindia = true;
           replygcXlicon(`*_Successfully Changed Only-Indian To ${q}_*`);
@@ -2553,7 +2593,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
       case "onlyindonumber":
         if (!XeonTheCreator) return XliconStickOwner();
         if (args.length < 1)
-          return replygcXlicon(`*_Example ${prefix + command} on/off_*`);
+          return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_Example ${prefix + command} on/off_*` },
+            { quoted: m }
+          );
         if (q == "on") {
           db.data.settings[botNumber].onlyindo = true;
           replygcXlicon(`*_Successfully Changed Only-Indonesian To ${q}_*`);
@@ -2867,7 +2911,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].badword = true;
             XliconBotInc.sendMessage(
@@ -2955,7 +3003,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antiaudio = true;
             XliconBotInc.sendMessage(
@@ -2978,7 +3030,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[m.chat].antiforeignnum = true;
             XliconBotInc.sendMessage(
@@ -3021,7 +3077,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antipoll = true;
             XliconBotInc.sendMessage(
@@ -3044,7 +3104,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antisticker = true;
             XliconBotInc.sendMessage(
@@ -3067,7 +3131,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antiimage = true;
             XliconBotInc.sendMessage(
@@ -3090,7 +3158,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antivideo = true;
             XliconBotInc.sendMessage(
@@ -3113,7 +3185,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antivirtex = true;
             XliconBotInc.sendMessage(
@@ -3136,7 +3212,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antibot = true;
             XliconBotInc.sendMessage(
@@ -3159,7 +3239,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antiviewonce = true;
             XliconBotInc.sendMessage(
@@ -3182,7 +3266,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antimedia = true;
             XliconBotInc.sendMessage(
@@ -3205,7 +3293,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antidocument = true;
             XliconBotInc.sendMessage(
@@ -3228,7 +3320,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].anticontact = true;
             XliconBotInc.sendMessage(
@@ -3251,7 +3347,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antilocation = true;
             XliconBotInc.sendMessage(
@@ -3274,7 +3374,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antilink = true;
             XliconBotInc.sendMessage(
@@ -3297,30 +3401,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           if (!m.isGroup) return XeonStickGroup();
           if (!isBotAdmins) return XliconStickBotAdmin();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
-          if (args[0] === "on") {
-            db.data.chats[from].antilinkgc = true;
-            XliconBotInc.sendMessage(
-              m.chat,
-              { text: `${command} is enabled` },
-              { quoted: m }
-            );
-          } else if (args[0] === "off") {
-            db.data.chats[from].antilinkgc = false;
-            XliconBotInc.sendMessage(
-              m.chat,
-              { text: `${command} is disabled` },
-              { quoted: m }
-            );
-          }
-        }
-        break;
-      case "neonotify":
-        {
-          if (!m.isGroup) return XeonStickGroup();
-          if (!isBotAdmins) return XliconStickBotAdmin();
-          if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             db.data.chats[from].antilinkgc = true;
             XliconBotInc.sendMessage(
@@ -3343,7 +3428,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (!m.isGroup) return XeonStickGroup();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             welcome = true;
             XliconBotInc.sendMessage(
@@ -3365,7 +3454,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (!m.isGroup) return XeonStickGroup();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             adminevent = true;
             XliconBotInc.sendMessage(
@@ -3387,7 +3480,11 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (!m.isGroup) return XeonStickGroup();
           if (!isAdmins && !XeonTheCreator) return XliconStickAdmin();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             groupevent = true;
             XliconBotInc.sendMessage(
@@ -4393,7 +4490,63 @@ ${cpus
         }
 
         break;
-      
+      case "repo":
+      case "repository":
+        {
+          try {
+            const [, username, repoName] = botscript.match(
+              /github\.com\/([^/]+)\/([^/]+)/
+            );
+            const response = await axios.get(
+              `https://api.github.com/repos/salmanytofficial/XLICON-V3-MD`
+            );
+            if (response.status === 200) {
+              const repoData = response.data;
+              const formattedInfo = `
+🔎 *_Repository Name:_* ${repoData.name}
+
+📝 *_Description:_* ${repoData.description}
+
+🔮 *_Owner:_* ${repoData.owner.login}
+
+⭐ *_Stars:_* ${repoData.stargazers_count}
+
+🎀 *_Forks:_* ${repoData.forks_count}
+
+${themeemoji} URL: ${repoData.html_url}
+     
+     
+ `.trim();
+              await XliconBotInc.relayMessage(
+                m.chat,
+                {
+                  requestPaymentMessage: {
+                    currencyCodeIso4217: "USD",
+                    amount1000: 69000,
+                    requestFrom: m.sender,
+                    noteMessage: {
+                      extendedTextMessage: {
+                        text: formattedInfo,
+                        contextInfo: {
+                          externalAdReply: {
+                            showAdAttribution: true,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                {}
+              );
+            } else {
+              await replygcXlicon(`Unable to fetch repository information`);
+            }
+          } catch (error) {
+            console.error(error);
+            await replygcXlicon(`Repository currently not available `);
+          }
+        }
+        break;
       case "buypremium":
       case "premiumuser":
         {
@@ -4754,7 +4907,7 @@ ${cpus
             {
               document: audio,
               mimetype: "audio/mp3",
-              fileName: `KaruShion.mp3`,
+              fileName: `SalmanSer.mp3`,
             },
             {
               quoted: m,
@@ -4927,7 +5080,7 @@ ${cpus
       case "fliptext":
         {
           if (args.length < 1)
-            return replygcXlicon(`Example:\n${prefix}fliptext KaruShion`);
+            return replygcXlicon(`Example:\n${prefix}fliptext SalmanSer`);
           quere = args.join(" ");
           flipe = quere.split("").reverse().join("");
           replygcXlicon(
@@ -4950,7 +5103,7 @@ ${cpus
           let medi = fs.readFileSync("./" + buff);
           await XliconBotInc.sendMessage(
             from,
-            { image: medi, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��" },
+            { image: medi, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�" },
             { quoted: m }
           );
           setTimeout(() => {
@@ -5277,6 +5430,7 @@ Type *surrender* to give up and admit defeat`;
         break;
 
       case "afk":
+        console.log("afk");
         {
           let user = global.db.data.users[m.sender];
           user.afkTime = +new Date();
@@ -5301,8 +5455,8 @@ Type *surrender* to give up and admit defeat`;
         }
         break;
 
-      case "getID":
-       
+      case "getid":
+
         console.log(
           color(
             `\n< ===================\nChat ID: ${m.chat}\n< ===================\n`,
@@ -5315,8 +5469,9 @@ Type *surrender* to give up and admit defeat`;
           { text: `*${m.pushName}-sama*, Nao already send the chat ID. Please check Nao's dev console.` },
           { quoted: m }
         );
-          
+
         break;
+
 
       // -------------------------------- NEO INFO START ------------------------------------
 
@@ -5507,7 +5662,7 @@ Type *surrender* to give up and admit defeat`;
       case 'karu':
         await XliconStickWait();
         var media = 'https://telegra.ph/file/5787412a7ea13e251aa8e.png';
-        var textMessage = '‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\n*NEO STAFF INFO*\n*Name :* Karu Shion\n*Position :* Founder of Neo Anime Community\n*TikTok/Instagram :* karulation\n\n*Description :* *Karu* or also known as *Haikaru* is the founder of Neo Anime Community. You may not see him often but he exists. He can be friendly and dry depending on his mood. An IT student and also a cosplayer. Lastly, Nino is his number 1 waifu since 2019. Feel free to chat with him, he doesnt eat people.\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵';
+        var textMessage = '‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵\n*NEO STAFF INFO*\n*Name :* Karu Shion\n*Position :* Founder of Neo Anime Community\n*TikTok/Instagram :* karulation\n\n*Description :* *Karu* or also known as *Haikaru* is the founder of Neo Anime Community. You may not see him often but he exists. He can be friendly and dry depending on his mood. Have passion in web development and also a cosplayer. Lastly, Nino is his number 1 waifu since 2019. Feel free to chat with him, he doesnt eat people.\n‿︵‿︵୨˚̣̣̣͙୧ - - ୨˚̣̣̣͙୧‿︵‿︵';
         XliconBotInc.sendMessage(
           from, {
           image: { url: media },
@@ -5567,7 +5722,7 @@ Type *surrender* to give up and admit defeat`;
       case 'reiki':
         await XliconStickWait();
         var media = 'https://telegra.ph/file/ceeaef936958232fdf7b5.jpg';
-        var textMessage = "*REIKI INTRODUCTION*\n══ ══ ══ ≪ °❈° ≫ ══ ══ ══\n\nName: Setsuna Reiki (yall can just call me Rei)\nPosition: Manager of Neo Anto-Skill\nJoined group: All possible NEO community groups\nBirthday: 9/4\nDescription: Your friendly neighborhood admin. Loves reading, YT reactions or shorts, and sleeping. Feel free to ask or talk to me about anything, Ill try to help as much as I could.\n\nTiktok: Asyraaf-Rei\nIG: asura.reiki_\n\nLike to play games or karaoke at DC, so feel free to join whenever you want.\n=======================\nHave a great day...ฅ⁠^⁠•ω•⁠^⁠ฅ";
+        var textMessage = "*REIKI INTRODUCTION*\n══ ══ ══ ≪ °❈° ≫ ══ ══ ══\n\nName: Setsuna Reiki (yall can just call me Rei)\nPosition: Manager of Neo Anti-Skill\nJoined group: All possible NEO community groups\nBirthday: 9/4\nDescription: Your friendly neighborhood admin. Loves reading, YT reactions or shorts, and sleeping. Feel free to ask or talk to me about anything, Ill try to help as much as I could.\n\nTiktok: Asyraaf-Rei\nIG: asura.reiki_\n\nLike to play games or karaoke at DC, so feel free to join whenever you want.\n=======================\nHave a great day...ฅ⁠^⁠•ω•⁠^⁠ฅ";
         XliconBotInc.sendMessage(
           from, {
           image: { url: media },
@@ -5666,10 +5821,14 @@ Type *surrender* to give up and admit defeat`;
       // -------------------------------- NEO TEAM START ------------------------------------
 
       case "addday":
-        
+
         // Check if the command was sent by the bot owner
         if (!XeonTheCreator) return XliconStickOwner();
-        
+
+        if (m.chat != "60177637943-1634743268@g.us") {
+          return;
+        }
+
         // Check if the command has the correct format
         if (!text) {
           return XliconBotInc.sendMessage(
@@ -5680,70 +5839,112 @@ Type *surrender* to give up and admit defeat`;
             }
           );
         }
-        
+
         // Extract member and days from the text
         const [member, ...days] = text.split(" ");
-        
+
         // Check if the member is part of the IG department
         if (!neoTeam["igdepartment"]) return replygcXlicon("Invalid department name.");
         if (!neoTeam["igdepartment"][member]) return replygcXlicon("Invalid member name.");
-        
+
         // Assign the days to the member
         neoTeam["igdepartment"][member].days = days;
-        
+
         // Save the updated data back to the JSON file
         fs.writeFileSync(
           neoTeamPath,
           JSON.stringify(neoTeam, null, 2)
         );
-        
+
         replygcXlicon("Successfully added days for the member in the department.");
 
 
       case "igdepartment":
-      
+        
+      if (m.chat != "60177637943-1634743268@g.us") {
+        return;
+      }
+
         // Check if the department data exists
         if (!neoTeam["igdepartment"]) return replygcXlicon("No department data available.");
-      
+
         let departmentData = "📊 *IG Department Overview* 📊\n\n";
-        
+
         // Fetching data from the JSON file
-        const department = neoTeam["igdepartment"];
-      
+        var department = neoTeam["igdepartment"].members;
+
         // Iterating through each member in the department
-        Object.entries(department).forEach(([member, data]) => {
-          departmentData += `*Member*: ${member}\n`;
-          departmentData += `*Days*: ${data.days.join(", ")}\n`;
-          departmentData += `*Total Need to Post*: ${data["need to post"]}\n\n`;
+        department.forEach(member => {
+          departmentData += `*Member*: ${member.name}\n`;
+          // Check if 'days' exists and is an array
+          if (Array.isArray(member.days)) {
+            departmentData += `*Days*: ${member.days.join(", ")}\n`;
+          } else {
+            departmentData += `*Days*: No data available\n`;
+          }
+          departmentData += `*Total Need to Post*: ${member.total_need_to_post}\n\n`;
         });
-      
-        replygcXlicon(departmentData);
+
+        XliconBotInc.sendMessage(
+          from,
+          {
+            text: departmentData,
+            quoted: m,
+          }
+        );
         break;
 
+
       case "donepost":
-        // Check if the command was sent by an IG department member
-        if (!igDepartment[text]) return return XliconBotInc.sendMessage(
+
+      
+        if (m.chat != "60177637943-1634743268@g.us") {
+          return;
+        }
+
+        // Assuming `text` is the member's name
+        const memberName = text.trim(); // Ensure no leading/trailing spaces
+        var department = neoTeam["igdepartment"].members;
+
+        // Find the member in the department
+        const memberIndex = department.findIndex(member => member.name === memberName);
+
+        if (memberIndex === -1) {
+          return XliconBotInc.sendMessage(
             from,
             {
               text: `*Not a member of the IG department*`,
               quoted: m,
             }
           );
-      
+        }
+
+        const IGmember = department[memberIndex];
+
         // Check if the member has any posts left to complete
-        if (igDepartment[text]["need to post"] <= 0) return replygcXlicon("You have already completed all your posts.");
-      
+        if (IGmember.total_need_to_post <= 0) {
+          return replygcXlicon("You have already completed all your posts.");
+        }
+
         // Deduct 1 from the total need to post for the member
-        igDepartment[text]["need to post"]--;
-      
+        IGmember.total_need_to_post--;
+
         // Save the updated data back to the JSON file
-        fs.writeFileSync(neoTeamPath, JSON.stringify(igDepartment));
-      
-        replygcXlicon("Post completed! Your total need to post has been updated.");
+        fs.writeFileSync(neoTeamPath, JSON.stringify(neoTeam, null, 2));
+
+        XliconBotInc.sendMessage(
+          from,
+          {
+            text: "Post completed! Your total need to post has been updated.",
+            quoted: m,
+          }
+        );
         break;
 
 
+
       // -------------------------------- NEO TEAM END ------------------------------------
+
 
 
       case "ai":
@@ -6003,7 +6204,11 @@ Type *surrender* to give up and admit defeat`;
       case "autostatusview":
         {
           if (!XeonTheCreator) return XliconStickOwner();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             antiswview = true;
             XliconBotInc.sendMessage(
@@ -6024,7 +6229,11 @@ Type *surrender* to give up and admit defeat`;
       case "anticall":
         {
           if (!XeonTheCreator) return XliconStickOwner();
-          if (args.length < 1) return replygcXlicon("*_on/off?_*");
+          if (args.length < 1) return XliconBotInc.sendMessage(
+            m.chat,
+            { text: `*_on/off?_*` },
+            { quoted: m }
+          );
           if (args[0] === "on") {
             anticall = true;
             XliconBotInc.sendMessage(
@@ -6832,7 +7041,7 @@ ${meg.result}`);
       case "gitclone":
         if (!args[0])
           return replygcXlicon(
-            `Where is the link?\nExample :\n${prefix}${command} [link of repo]`
+            `Where is the link?\nExample :\n${prefix}${command} https://github.com/salmanytofficial/XLICON-MD`
           );
         if (!isUrl(args[0]))
           return replygcXlicon("Link invalid! Please provide a valid URL.");
@@ -6860,21 +7069,20 @@ ${meg.result}`);
         ).catch((err) => replygcXlicon(mess.error));
         break;
       case "tiktok":
-      case "tiktokvideo": 
-        if (!args[0]) {
-          return replygcXlicon(`Example : ${prefix + command} link`);
-        }
-      
-        await XliconStickWait();
-        
-        try {
-          const jsonxeon = await tiktok2(args[0]); // Call the tiktok2 function to get the video URLs
-      
+      case "tiktokvideo":
+        {
+          if (!args[0])
+            return replygcXlicon(`Example : ${prefix + command} link`);
+          await XliconStickWait();
+          let resxeon = await fetch(
+            `https://api.maher-zubair.tech/download/tiktok2?url=${args[0]}`
+          );
+          let jsonxeon = await resxeon.json();
           if (jsonxeon.status == "200" && jsonxeon.result.url.nowm) {
             XliconBotInc.sendMessage(
               from,
               {
-                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��`,
+                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�`,
                 video: { url: jsonxeon.result.url.nowm },
                 fileName: "video.mp4",
                 mimetype: "video/mp4",
@@ -6884,9 +7092,6 @@ ${meg.result}`);
           } else {
             return replygcXlicon("Failed to get video. Try after a while...");
           }
-        } catch (error) {
-          console.error("Error downloading TikTok video:", error);
-          return replygcXlicon("Failed to get video. Try after a while...");
         }
         break;
       case "tiktokaudio":
@@ -7100,7 +7305,7 @@ ${themeemoji} Title: ${result.title}`;
         {
           if (!q)
             return replygcXlicon(
-              `Example ${prefix + command} karulation`
+              `Example ${prefix + command} salmanytofficial`
             );
           await XliconStickWait();
           let githubstalk = require("./lib/scraper");
@@ -7255,7 +7460,7 @@ ID Zone: ${q.split("|")[1]}`);
               mimetype: "audio/mpeg",
               ptt: true,
               waveform: [100, 0, 100, 0, 100, 0, 100],
-              fileName: "KaruShion",
+              fileName: "SalmanSer",
               contextInfo: {
                 mentionedJid: [m.sender],
                 externalAdReply: {
@@ -9756,7 +9961,7 @@ Cieeee, What's Going On❤️💖👀`,
         await XliconBotInc.sendMessage(
           m.chat,
           {
-            caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��`,
+            caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�`,
             image: { url: waifudd.data.url },
           },
           { quoted: m }
@@ -10495,7 +10700,7 @@ Cieeee, What's Going On❤️💖👀`,
       case "shinetext":
         {
           if (!q)
-            return replygcXlicon(`Example : ${prefix + command} KaruShion`);
+            return replygcXlicon(`Example : ${prefix + command} SalmanSer`);
           await XliconStickWait();
           const photooxy = require("./lib/photooxy");
           let link;
@@ -10620,7 +10825,7 @@ Cieeee, What's Going On❤️💖👀`,
       case "lighteffects":
         {
           if (!q)
-            return replygcXlicon(`Example : ${prefix + command} KaruShion`);
+            return replygcXlicon(`Example : ${prefix + command} SalmanSer`);
           await XliconStickWait();
           let link;
           if (/glitchtext/.test(command))
@@ -11070,7 +11275,7 @@ ${translatedTafsirEnglish.text}`;
             groupAdmins.find((p) => p.admin === "superadmin")?.id ||
             m.chat.split`-`[0] + "@s.whatsapp.net";
           let text = `   
-*Group Admins:*
+*Group Admins:*\n_wrong usage of this command will cause a kick_
 ${listAdmin}
 `.trim();
           XliconBotInc.sendMessage(
@@ -11302,7 +11507,7 @@ ${listAdmin}
       case "ttp":
       case "textsticker":
         if (args.length == 0)
-          return replygcXlicon(`Example: ${prefix + command} KaruShion`);
+          return replygcXlicon(`Example: ${prefix + command} SalmanSer`);
         dgxeontks = args.join(" ");
         dgxeonvuff = await getBuffer(
           `https://api.maher-zubair.tech/maker/text2img?q=${dgxeontks}`
@@ -11317,7 +11522,7 @@ ${listAdmin}
       case "attp":
       case "textgif":
         if (args.length == 0)
-          return replygcXlicon(`Example: ${prefix + command} KaruShion`);
+          return replygcXlicon(`Example: ${prefix + command} SalmanSer`);
         dgxeontks2 = args.join(" ");
         dgxeonvuff2 = await getBuffer(
           `https://api.maher-zubair.tech/maker/text2gif?q=${dgxeontks2}`
@@ -11343,7 +11548,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/blur?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11364,7 +11569,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/beautiful?url${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11385,7 +11590,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/facepalm?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11406,7 +11611,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/invert?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11427,7 +11632,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/pixelate?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11448,7 +11653,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/rainbow?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11467,7 +11672,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/maker/trigger?url=${anu}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11488,7 +11693,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/trigger?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11509,7 +11714,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/wasted?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11526,7 +11731,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/maker/carbonimg?q=${text}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11544,7 +11749,7 @@ ${listAdmin}
             m.chat,
             {
               image: { url: `https://vihangayt.me/tools/colorize?url=${anu}` },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11565,7 +11770,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/burn?amount=5&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11586,7 +11791,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/sharpen?amount=3&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11607,7 +11812,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/brightness?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11628,7 +11833,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/darkness?amount=50&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11649,7 +11854,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/resize?height=500&width=500&url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11670,7 +11875,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/delete?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11691,7 +11896,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/jail?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11712,7 +11917,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/jokeOverHead?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11733,7 +11938,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/hitler?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11754,7 +11959,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/trash?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11775,7 +11980,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/rip?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11796,7 +12001,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/greyscale?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11817,7 +12022,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/sepia?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11838,7 +12043,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/shit?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11859,7 +12064,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/circle?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11880,7 +12085,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/reply?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11901,7 +12106,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/guildIcon?name=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -11920,9 +12125,9 @@ ${listAdmin}
             m.chat,
             {
               image: {
-                url: `https://api-smd-1.vercel.app/api/maker/phub?message=hiiiii&name=KaruShion&image=${anu}`,
+                url: `https://api-smd-1.vercel.app/api/maker/phub?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12032,9 +12237,9 @@ ${listAdmin}
             m.chat,
             {
               image: {
-                url: `https://api-smd-1.vercel.app/api/maker/quote?message=hiiiii&name=KaruShion&image=${anu}`,
+                url: `https://api-smd-1.vercel.app/api/maker/quote?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12053,9 +12258,9 @@ ${listAdmin}
             m.chat,
             {
               image: {
-                url: `https://api-smd-1.vercel.app/api/maker/clyde?message=hiiiii&name=KaruShion&image=${anu}`,
+                url: `https://api-smd-1.vercel.app/api/maker/clyde?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12074,9 +12279,9 @@ ${listAdmin}
             m.chat,
             {
               image: {
-                url: `https://api-smd-1.vercel.app/api/maker/opinion?message=hiiiii&name=KaruShion&image=${anu}`,
+                url: `https://api-smd-1.vercel.app/api/maker/opinion?message=hiiiii&name=SalmanSer&image=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12097,7 +12302,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/bed?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12115,7 +12320,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/kiss?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12136,7 +12341,7 @@ ${listAdmin}
               image: {
                 url: `https://api-smd-1.vercel.app/api/maker/fuse?image1=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12155,7 +12360,7 @@ ${listAdmin}
               image: {
                 url: `https://api.maher-zubair.tech/maker/enhance?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12174,7 +12379,7 @@ ${listAdmin}
               image: {
                 url: `https://api.maher-zubair.tech/maker/dehaze?url=${anu}`,
               },
-              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 Nao Shion��",
+              caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐗𝐋𝐈𝐂𝐎𝐍-𝐕𝟑�",
             },
             { quoted: m }
           );
@@ -12213,7 +12418,7 @@ ${mot} 𝗠𝗼𝗱𝗲 : ${XliconBotInc.public ? "Public" : `Self`}
 ${mot} 𝗣𝗹𝘂𝗴𝗶𝗻𝘀: ${Xliconfeature()}
 ${mot} 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 ${mot} 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-${mot} 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : *_KaruShion Server_*
+${mot} 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : *_SalmanSer Server_*
 ${mot} 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
 ${mot} 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length} User
 ${mot} 𝗧𝗼𝘁𝗮𝗹 𝗛𝗶𝘁 : ${global.db.data.settings[botNumber].totalhit} Hit
@@ -16734,6 +16939,8 @@ ${mot} 𝗗𝗮𝘁𝗲 : ${xdate}
           });
         }
     }
+    
+    cronjob();
   } catch (err) {
     console.log(util.format(err));
     if (e.includes("conflict")) return;

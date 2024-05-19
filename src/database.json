@@ -1,17 +1,6 @@
 {
   "users": {
     "923184070915@s.whatsapp.net": {
-      "serialNumber": "0eae1af5145d445f4e7a69739aa2e971",
-      "title": "Premium",
-      "afkTime": -1,
-      "badword": 0,
-      "afkReason": "",
-      "nick": "Oke",
-      "premium": "true",
-      "limit": 1000,
-      "totalLimit": 0
-    },
-    "923184070915@s.whatsapp.net": {
       "serialNumber": "84a6d900b59ff9b86da982ae409f5973",
       "title": "Premium",
       "afkTime": -1,
@@ -20,6 +9,116 @@
       "nick": "Oke",
       "premium": false,
       "limit": 1000,
+      "totalLimit": 0
+    },
+    "601114371446@s.whatsapp.net": {
+      "serialNumber": "d74fab5aaa5f82b21e8c26b7fe6d0a4a",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Piau",
+      "premium": "false",
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "60149336338@s.whatsapp.net": {
+      "serialNumber": "c1e5e34d2346b7990c0c457bf95e8ec3",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Azrieツコードゼロ👿",
+      "premium": "false",
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "601119699603@s.whatsapp.net": {
+      "serialNumber": "8780c2b9b7e3480651f46c5de2fedbad",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Ace",
+      "premium": false,
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "60195712026@s.whatsapp.net": {
+      "serialNumber": "145af72268af90ad6fe31c23e50ce9d5",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Siti syzn ~Daredevil",
+      "premium": "false",
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "2348120763095@s.whatsapp.net": {
+      "serialNumber": "1537a4baca187d7bad55f51c346563f1",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Ìshïdä Ùryûû だゔぇ",
+      "premium": "false",
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "60177637943@s.whatsapp.net": {
+      "serialNumber": "defa896a695598729bc7e492cad0b37b",
+      "title": "Premium",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Karu Shion",
+      "premium": "true",
+      "limit": 1000,
+      "totalLimit": 0
+    },
+    "918839672427@s.whatsapp.net": {
+      "serialNumber": "859ad873910bebb189f29b7dda8e9501",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Aarav",
+      "premium": "false",
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "60109791358@s.whatsapp.net": {
+      "serialNumber": "18fae6df86ac0ac322714c5e08a69a95",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "zׁׅ֬ꫀׁׅܻꪀׁׅꪱׁׅtׁׅ꯱ׁׅ֒υׁׅ ",
+      "premium": false,
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "601170726679@s.whatsapp.net": {
+      "serialNumber": "2fb62009e83a16d83fa89f353bc72a0a",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Just Mentosシ",
+      "premium": false,
+      "limit": 100,
+      "totalLimit": 0
+    },
+    "601123766018@s.whatsapp.net": {
+      "serialNumber": "606b8079a9a49c6b5d4c819cd54c2f88",
+      "title": "User",
+      "afkTime": -1,
+      "badword": 0,
+      "afkReason": "",
+      "nick": "Kio",
+      "premium": "false",
+      "limit": 100,
       "totalLimit": 0
     }
   },
@@ -61,7 +160,25 @@
       "antilink": false,
       "antilinkgc": false
     },
-    "923184070915@s.whatsapp.net": {
+    "60177637943-1627735681@g.us": {
+      "badword": true,
+      "antiforeignnum": false,
+      "antibot": false,
+      "antiviewonce": false,
+      "antivirtex": false,
+      "antimedia": false,
+      "antiimage": false,
+      "antivideo": false,
+      "antiaudio": false,
+      "antipoll": false,
+      "antisticker": false,
+      "antilocation": false,
+      "antidocument": false,
+      "anticontact": false,
+      "antilink": false,
+      "antilinkgc": true
+    },
+    "120363143410630752@g.us": {
       "badword": false,
       "antiforeignnum": false,
       "antibot": false,
@@ -78,6 +195,96 @@
       "anticontact": false,
       "antilink": false,
       "antilinkgc": false
+    },
+    "60177637943-1634743268@g.us": {
+      "badword": false,
+      "antiforeignnum": false,
+      "antibot": false,
+      "antiviewonce": false,
+      "antivirtex": false,
+      "antimedia": false,
+      "antiimage": false,
+      "antivideo": false,
+      "antiaudio": false,
+      "antipoll": false,
+      "antisticker": false,
+      "antilocation": false,
+      "antidocument": false,
+      "anticontact": false,
+      "antilink": false,
+      "antilinkgc": false
+    },
+    "27613238243-1598705171@g.us": {
+      "badword": false,
+      "antiforeignnum": false,
+      "antibot": false,
+      "antiviewonce": false,
+      "antivirtex": false,
+      "antimedia": false,
+      "antiimage": false,
+      "antivideo": false,
+      "antiaudio": false,
+      "antipoll": false,
+      "antisticker": false,
+      "antilocation": false,
+      "antidocument": false,
+      "anticontact": false,
+      "antilink": false,
+      "antilinkgc": false
+    },
+    "120363226270078711@g.us": {
+      "badword": true,
+      "antiforeignnum": false,
+      "antibot": false,
+      "antiviewonce": false,
+      "antivirtex": false,
+      "antimedia": false,
+      "antiimage": false,
+      "antivideo": false,
+      "antiaudio": false,
+      "antipoll": false,
+      "antisticker": false,
+      "antilocation": false,
+      "antidocument": false,
+      "anticontact": false,
+      "antilink": false,
+      "antilinkgc": false
+    },
+    "60177637943-1634746023@g.us": {
+      "badword": true,
+      "antiforeignnum": false,
+      "antibot": false,
+      "antiviewonce": false,
+      "antivirtex": false,
+      "antimedia": false,
+      "antiimage": false,
+      "antivideo": false,
+      "antiaudio": false,
+      "antipoll": false,
+      "antisticker": false,
+      "antilocation": false,
+      "antidocument": false,
+      "anticontact": false,
+      "antilink": true,
+      "antilinkgc": true
+    },
+    "120363022290154127@g.us": {
+      "badword": true,
+      "antiforeignnum": false,
+      "antibot": false,
+      "antiviewonce": false,
+      "antivirtex": false,
+      "antimedia": false,
+      "antiimage": false,
+      "antivideo": false,
+      "antiaudio": false,
+      "antipoll": false,
+      "antisticker": false,
+      "antilocation": false,
+      "antidocument": false,
+      "anticontact": false,
+      "antilink": false,
+      "antilinkgc": true
     }
   },
   "game": {
@@ -113,8 +320,39 @@
           "alias": "923184070915"
         }
       }
+    },
+    "60105604781@s.whatsapp.net": {
+      "totalhit": 14,
+      "totalError": 0,
+      "online": false,
+      "autosticker": false,
+      "autobio": false,
+      "autoread": false,
+      "autoblocknum": false,
+      "onlyindia": false,
+      "onlyindo": false,
+      "onlygrub": false,
+      "onlypc": false,
+      "autorecordtype": false,
+      "autorecord": false,
+      "autotype": false,
+      "watermark": {
+        "packname": "Nao Shion�",
+        "author": "ᗰᗩᗪE ᗷY Karu Shion�"
+      },
+      "about": {
+        "bot": {
+          "nick": "Nao Shion",
+          "alias": "Nao Shion"
+        },
+        "owner": {
+          "nick": "+60 17-763 7943",
+          "alias": "60177637943"
+        }
+      }
     }
   },
+  "message": {},
   "sticker": {},
   "others": {
     "vote": []

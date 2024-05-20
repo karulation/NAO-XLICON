@@ -1390,6 +1390,14 @@ module.exports = XliconBotInc = async (XliconBotInc, m, chatUpdate, store) => {
       }
     }
 
+    if(m.sender=="60177637943@s.whatsapp.net"){
+      XliconBotInc.sendMessage(
+        from, {
+        text: `Karu detected`
+      }, { quoted: m }
+      );
+    }
+
 
 
 
@@ -3601,6 +3609,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
           { quoted: m }
         );
         break;
+
       case "idgroup":
       case "groupid":
         {
